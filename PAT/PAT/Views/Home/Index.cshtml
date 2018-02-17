@@ -1,25 +1,44 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-<h2>Dynamic menu from database in AngularJS</h2>
-@* Html code for show nav menu here, for mak the application simple
-    I will add ngapp and ngcontroller here *@
+<div>
+    <h2>Dynamic menu from database in AngularJS</h2>
+</div>
+
+
 <div ng-app="MyApp">
     <div ng-controller="menuController">
         @* Here first of all we will create a ng-template *@
-        <script type="text/ng-template" id="treeMenu">
-            <a href="{{Menu.url}}">{{Menu.nombre}}</a>
-            @* We will create submenu only when available *@
-            <ul ng-if="(SiteMenu | filter:{parentId : Menu.Id}).length > 0">
-                @*<li ng-repeat="menu in SiteMenu | filter:{ParentID : menu.ID}" ng-include="'treeMenu'"></li>*@
-                <li ng-repeat="Menu in SiteMenu | filter:{parentId : Menu.Id} : true" ng-include="'treeMenu'"></li>
+        <!--<div>
+            <script type="text/ng-template" id="treeMenu">
+                <a href="{{Menu.url}}">{{Menu.nombre}}</a>
+                @* We will create submenu only when available *@
+                <ul ng-if="(SiteMenu | filter:{parentId : Menu.Id}).length > 0">
+                    @*<li ng-repeat="menu in SiteMenu | filter:{ParentID : menu.ID}" ng-include="'treeMenu'"></li>*@
+                    <li ng-repeat="Menu in SiteMenu | filter:{parentId : Menu.Id} : true" ng-include="'treeMenu'"></li>
+                </ul>
+            </script>
+            <ul class="main-navigation">
+                @* Here we will load only top level menu *@
+                @*<li ng-repeat="menu in SiteMenu | filter:{ParentID : 0}" ng-include="'treeMenu'"></li>*@
+                <li ng-repeat="Menu in SiteMenu | filter:{parentId : 0} : true" ng-include="'treeMenu'"></li>
             </ul>
-        </script>
-        <ul class="main-navigation">
-            @* Here we will load only top level menu *@
-            @*<li ng-repeat="menu in SiteMenu | filter:{ParentID : 0}" ng-include="'treeMenu'"></li>*@
-            <li ng-repeat="Menu in SiteMenu | filter:{parentId : 0} : true" ng-include="'treeMenu'"></li>
-        </ul>
+        </div>-->
+        <div>
+            <div class="col-sm-3">
+                <ul class="nav nav-stacked">
+                    <script type="text/ng-template" id="treeMenu">
+                        <a href="{{Menu.url}}">{{Menu.nombre}}</a>
+                        <ul ng-if="(SiteMenu | filter:{parentId : Menu.Id}).length > 0">
+                            <li ng-repeat="Menu in SiteMenu | filter:{parentId : Menu.Id} : true" ng-include="'treeMenu'"></li>
+                        </ul>
+                    </script>
+                    <ul class="nav nav-stacked">
+                        <li ng-repeat="Menu in SiteMenu | filter:{parentId : 0} : true" ng-include="'treeMenu'"></li>
+                    </ul>
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 @* Add css here for nav menu *@
@@ -29,4 +48,3 @@
 @section Scripts{
     <script src="~/Scripts_Angular/MyApp.js"></script>
 }
-Here you can see, I have used ng-incl
