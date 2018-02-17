@@ -8,22 +8,6 @@
 
 <div ng-app="MyApp">
     <div ng-controller="menuController">
-        @* Here first of all we will create a ng-template *@
-        <!--<div>
-            <script type="text/ng-template" id="treeMenu">
-                <a href="{{Menu.url}}">{{Menu.nombre}}</a>
-                @* We will create submenu only when available *@
-                <ul ng-if="(SiteMenu | filter:{parentId : Menu.Id}).length > 0">
-                    @*<li ng-repeat="menu in SiteMenu | filter:{ParentID : menu.ID}" ng-include="'treeMenu'"></li>*@
-                    <li ng-repeat="Menu in SiteMenu | filter:{parentId : Menu.Id} : true" ng-include="'treeMenu'"></li>
-                </ul>
-            </script>
-            <ul class="main-navigation">
-                @* Here we will load only top level menu *@
-                @*<li ng-repeat="menu in SiteMenu | filter:{ParentID : 0}" ng-include="'treeMenu'"></li>*@
-                <li ng-repeat="Menu in SiteMenu | filter:{parentId : 0} : true" ng-include="'treeMenu'"></li>
-            </ul>
-        </div>-->
         <div>
             <div class="col-sm-3">
                 <ul class="nav nav-stacked">
