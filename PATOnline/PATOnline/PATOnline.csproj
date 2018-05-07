@@ -1,0 +1,1024 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B1226943-52D5-4ED3-8FB8-9E48EF4E437C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PATOnline</RootNamespace>
+    <AssemblyName>PATOnline</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=17.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.17.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm, Version=17.1.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpressMvvm.17.1.6.0\lib\net40-client\DevExpress.Mvvm.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.UI, Version=17.1.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30, processorArchitecture=MSIL">
+      <HintPath>..\packages\DevExpressMvvm.17.1.6.0\lib\net40-client\DevExpress.Mvvm.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.10.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.0.0\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.1.10.2\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\AddPhoneNumber.aspx" />
+    <Content Include="Account\Confirm.aspx" />
+    <Content Include="Account\Forgot.aspx" />
+    <Content Include="Account\Lockout.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Manage.aspx" />
+    <Content Include="Account\ManageLogins.aspx" />
+    <Content Include="Account\ManagePassword.aspx" />
+    <Content Include="Account\OpenAuthProviders.ascx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Account\ResetPassword.aspx" />
+    <Content Include="Account\ResetPasswordConfirmation.aspx" />
+    <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
+    <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="App_Data\assets\css\reset.css" />
+    <Content Include="App_Data\assets\css\style.css" />
+    <Content Include="App_Data\assets\css\supersized.css" />
+    <Content Include="App_Data\assets\img\backgrounds\FondoLogin.jpg" />
+    <Content Include="App_Data\assets\img\facebook.png" />
+    <Content Include="App_Data\assets\img\progress.gif" />
+    <Content Include="App_Data\assets\img\twitter.png" />
+    <Content Include="App_Data\assets\js\jquery-1.8.2.min.js" />
+    <Content Include="App_Data\assets\js\scripts.js" />
+    <Content Include="App_Data\assets\js\supersized-init.js" />
+    <Content Include="App_Data\assets\js\supersized.3.2.7.min.js" />
+    <Content Include="assets\css\reset.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\css\supersized.css" />
+    <Content Include="assets\img\backgrounds\1.jpg" />
+    <Content Include="assets\img\backgrounds\2.jpg" />
+    <Content Include="assets\img\backgrounds\3.jpg" />
+    <Content Include="assets\img\backgrounds\FondoLogin.jpg" />
+    <Content Include="assets\js\jquery-1.8.2.min.js" />
+    <Content Include="assets\js\scripts.js" />
+    <Content Include="assets\js\supersized-init.js" />
+    <Content Include="assets\js\supersized.3.2.7.min.js" />
+    <Content Include="ConfirmarUsuario.aspx" />
+    <Content Include="Contact.aspx" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\footable.bootstrap.css" />
+    <Content Include="Content\footable.bootstrap.min.css" />
+    <Content Include="Content\logo-cdag.png" />
+    <Content Include="Content\Site.css" />
+    <Content Include="DashboardAdmin.aspx" />
+    <Content Include="DashboardFADN.aspx" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Account\Web.config" />
+    <Content Include="fullscreen-login.psd" />
+    <None Include="Properties\PublishProfiles\PATOnline.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Reset.aspx" />
+    <Content Include="Scripts\App.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\footable.js" />
+    <Content Include="Scripts\footable.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Site.Master" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Login.aspx" />
+    <Content Include="Views\AdministracionPAT\AdministracionParte3.aspx" />
+    <Content Include="Views\AdministracionPAT\AdministracionPAT.aspx" />
+    <Content Include="Views\C1\IndexC1.aspx" />
+    <Content Include="Views\C1\IndexC1_1.aspx" />
+    <Content Include="Views\C2\IndexC2.aspx" />
+    <Content Include="Views\C2\IndexC2_1.aspx" />
+    <Content Include="Views\C2\IndexC2_2.aspx" />
+    <Content Include="Views\C2\IndexC2_3.aspx" />
+    <Content Include="Views\C3\IndexC3.aspx" />
+    <Content Include="Views\C3\IndexC3_1.aspx" />
+    <Content Include="Views\C3\IndexC3_2.aspx" />
+    <Content Include="Views\C4\IndexC4.aspx" />
+    <Content Include="Views\C4\IndexC4_1.aspx" />
+    <Content Include="Views\C4\IndexC4_2.aspx" />
+    <Content Include="Views\C4\IndexC4_3.aspx" />
+    <Content Include="Views\CPE\IndexCPE.aspx" />
+    <Content Include="Views\CPE\IndexPE1.aspx" />
+    <Content Include="Views\CPE\IndexPE2.aspx" />
+    <Content Include="Views\Cronograma\Organigrama.aspx" />
+    <Content Include="Views\DirigentesFADN\CrearAsamblea.aspx" />
+    <Content Include="Views\DirigentesFADN\CrearComision.aspx" />
+    <Content Include="Views\DirigentesFADN\CrearDirigente.aspx" />
+    <Content Include="Views\DirigentesFADN\CrearOrgano.aspx" />
+    <Content Include="Views\DirigentesFADN\CrearPersonal.aspx" />
+    <Content Include="Views\DirigentesFADN\DirigenciaDeportiva.aspx" />
+    <Content Include="Views\FADN\CreateFADN.aspx" />
+    <Content Include="Views\FADN\FADN.aspx" />
+    <Content Include="Views\FODABEstrategica\CreateFODABEstrategica.aspx" />
+    <Content Include="Views\FODABEstrategica\FODABEstrategica.aspx" />
+    <Content Include="Views\IntroBase\CreateInfo.aspx" />
+    <Content Include="Views\IntroBase\IntroduccionBasesLegales.aspx" />
+    <Content Include="Views\LogroBrecha\CrearBrecha.aspx" />
+    <Content Include="Views\LogroBrecha\CrearPuesto.aspx" />
+    <Content Include="Views\LogroBrecha\LogroBrecha.aspx" />
+    <Content Include="Views\P1\IndexP1.aspx" />
+    <Content Include="Views\P2\IndexP2.aspx" />
+    <Content Include="Views\P3\IndexP3.aspx" />
+    <Content Include="Views\Portada\PortadaPAT.aspx" />
+    <Content Include="Views\ResultadoPotencia\CrearPotencia.aspx" />
+    <Content Include="Views\ResultadoPotencia\CrearResultado.aspx" />
+    <Content Include="Views\ResultadoPotencia\ResultadoPotencia.aspx" />
+    <Content Include="Views\RolPermiso\CreateRolPermiso.aspx" />
+    <Content Include="Views\RolPermiso\RolPermiso.aspx" />
+    <Content Include="Views\Usuarios\Create.aspx" />
+    <Content Include="Views\Usuarios\Editar.aspx" />
+    <Content Include="Views\Usuarios\Usuario.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Bundle.config" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\AddPhoneNumber.aspx.cs">
+      <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AddPhoneNumber.aspx.designer.cs">
+      <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Confirm.aspx.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Confirm.aspx.designer.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Forgot.aspx.cs">
+      <DependentUpon>Forgot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Forgot.aspx.designer.cs">
+      <DependentUpon>Forgot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Lockout.aspx.cs">
+      <DependentUpon>Lockout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Lockout.aspx.designer.cs">
+      <DependentUpon>Lockout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ManageLogins.aspx.cs">
+      <DependentUpon>ManageLogins.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ManageLogins.aspx.designer.cs">
+      <DependentUpon>ManageLogins.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ManagePassword.aspx.cs">
+      <DependentUpon>ManagePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ManagePassword.aspx.designer.cs">
+      <DependentUpon>ManagePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.designer.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ResetPasswordConfirmation.aspx.cs">
+      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ResetPasswordConfirmation.aspx.designer.cs">
+      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TwoFactorAuthenticationSignIn.aspx.cs">
+      <DependentUpon>TwoFactorAuthenticationSignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TwoFactorAuthenticationSignIn.aspx.designer.cs">
+      <DependentUpon>TwoFactorAuthenticationSignIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\VerifyPhoneNumber.aspx.cs">
+      <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
+      <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="ConfirmarUsuario.aspx.cs">
+      <DependentUpon>ConfirmarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmarUsuario.aspx.designer.cs">
+      <DependentUpon>ConfirmarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contact.aspx.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contact.aspx.designer.cs">
+      <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\Create\CreateActividadPAT.cs" />
+    <Compile Include="Controller\Create\CreateAdministracionPAT.cs" />
+    <Compile Include="Controller\Create\CreateBoton.cs" />
+    <Compile Include="Controller\Create\CreateBrecha.cs" />
+    <Compile Include="Controller\Create\CreateC1_1.cs" />
+    <Compile Include="Controller\Create\CreateC1.cs" />
+    <Compile Include="Controller\Create\CreateC2.cs" />
+    <Compile Include="Controller\Create\CreateC2_1.cs" />
+    <Compile Include="Controller\Create\CreateC2_2.cs" />
+    <Compile Include="Controller\Create\CreateC2_3.cs" />
+    <Compile Include="Controller\Create\CreateC3.cs" />
+    <Compile Include="Controller\Create\CreateC3_1.cs" />
+    <Compile Include="Controller\Create\CreateC3_2.cs" />
+    <Compile Include="Controller\Create\CreateC4.cs" />
+    <Compile Include="Controller\Create\CreateC4_1.cs" />
+    <Compile Include="Controller\Create\CreateC4_2.cs" />
+    <Compile Include="Controller\Create\CreateC4_3.cs" />
+    <Compile Include="Controller\Create\CreateCPE.cs" />
+    <Compile Include="Controller\Create\CreateDirigencia.cs" />
+    <Compile Include="Controller\Create\CreateFA.cs" />
+    <Compile Include="Controller\Create\CreateFodaBEstrategica.cs" />
+    <Compile Include="Controller\Create\CreateFormatoC.cs" />
+    <Compile Include="Controller\Create\CreateInfoBaseLegal.cs" />
+    <Compile Include="Controller\Create\CreateIngreso.cs" />
+    <Compile Include="Controller\Create\CreateLogotipo.cs" />
+    <Compile Include="Controller\Create\CreateMenu.cs" />
+    <Compile Include="Controller\Create\CreateOrganigrama.cs" />
+    <Compile Include="Controller\Create\CreateP1.cs" />
+    <Compile Include="Controller\Create\CreateP2.cs" />
+    <Compile Include="Controller\Create\CreateP3.cs" />
+    <Compile Include="Controller\Create\CreatePE1.cs" />
+    <Compile Include="Controller\Create\CreatePE2.cs" />
+    <Compile Include="Controller\Create\CreatePotencia.cs" />
+    <Compile Include="Controller\Create\CreatePuestoLogrado.cs" />
+    <Compile Include="Controller\Create\CreateResultado.cs" />
+    <Compile Include="Controller\Create\CreateRol.cs" />
+    <Compile Include="Controller\Create\CreatRolPermiso.cs" />
+    <Compile Include="Controller\Create\CreateUsuario.cs" />
+    <Compile Include="Controller\Delete\DeleteBotonAccion.cs" />
+    <Compile Include="Controller\Delete\DeleteUsuario.cs" />
+    <Compile Include="Controller\DropdownList\DropDown.cs" />
+    <Compile Include="Controller\Herramientas\Correo.cs" />
+    <Compile Include="Controller\Read\ReadActividadPAT.cs" />
+    <Compile Include="Controller\Read\ReadAdministracionPAT.cs" />
+    <Compile Include="Controller\Read\ReadBoton.cs" />
+    <Compile Include="Controller\Read\ReadBrecha.cs" />
+    <Compile Include="Controller\Read\ReadC1.cs" />
+    <Compile Include="Controller\Read\ReadC1_1.cs" />
+    <Compile Include="Controller\Read\ReadC2.cs" />
+    <Compile Include="Controller\Read\ReadC2_1.cs" />
+    <Compile Include="Controller\Read\ReadC2_2.cs" />
+    <Compile Include="Controller\Read\ReadC2_3.cs" />
+    <Compile Include="Controller\Read\ReadC3.cs" />
+    <Compile Include="Controller\Read\ReadC3_1.cs" />
+    <Compile Include="Controller\Read\ReadC3_2.cs" />
+    <Compile Include="Controller\Read\ReadC4.cs" />
+    <Compile Include="Controller\Read\ReadC4_1.cs" />
+    <Compile Include="Controller\Read\ReadC4_2.cs" />
+    <Compile Include="Controller\Read\ReadC4_3.cs" />
+    <Compile Include="Controller\Read\ReadComiteEjectuvio.cs" />
+    <Compile Include="Controller\Read\ReadCPE.cs" />
+    <Compile Include="Controller\Read\ReadDepartamento.cs" />
+    <Compile Include="Controller\Read\ReadDirigencia.cs" />
+    <Compile Include="Controller\Read\ReadFADN.cs" />
+    <Compile Include="Controller\Read\ReadFodaBEstrategica.cs" />
+    <Compile Include="Controller\Read\ReadFormatoC.cs" />
+    <Compile Include="Controller\Read\ReadIBL.cs" />
+    <Compile Include="Controller\Read\ReadMenu.cs" />
+    <Compile Include="Controller\Read\ReadOrganigrama.cs" />
+    <Compile Include="Controller\Read\ReadP1.cs" />
+    <Compile Include="Controller\Read\ReadP2.cs" />
+    <Compile Include="Controller\Read\ReadP3.cs" />
+    <Compile Include="Controller\Read\ReadPais.cs" />
+    <Compile Include="Controller\Read\ReadPE1.cs" />
+    <Compile Include="Controller\Read\ReadPE2.cs" />
+    <Compile Include="Controller\Read\ReadPontencia.cs" />
+    <Compile Include="Controller\Read\ReadPuestoLogrado.cs" />
+    <Compile Include="Controller\Read\ReadResultado.cs" />
+    <Compile Include="Controller\Read\ReadRol.cs" />
+    <Compile Include="Controller\Read\ReadRolPermiso.cs" />
+    <Compile Include="Controller\Read\ReadTipoFADN.cs" />
+    <Compile Include="Controller\Read\ReadUsuario.cs" />
+    <Compile Include="Controller\Search\LoginUsuario.cs" />
+    <Compile Include="Controller\Search\SearchActividadPAT.cs" />
+    <Compile Include="Controller\Search\SearchAdministracionPAT.cs" />
+    <Compile Include="Controller\Search\SearchBoton.cs" />
+    <Compile Include="Controller\Search\SearchC1.cs" />
+    <Compile Include="Controller\Search\SearchC1_1.cs" />
+    <Compile Include="Controller\Search\SearchC2.cs" />
+    <Compile Include="Controller\Search\SearchC2_1.cs" />
+    <Compile Include="Controller\Search\SearchC2_2.cs" />
+    <Compile Include="Controller\Search\SearchC2_3.cs" />
+    <Compile Include="Controller\Search\SearchC3.cs" />
+    <Compile Include="Controller\Search\SearchC3_1.cs" />
+    <Compile Include="Controller\Search\SearchC3_2.cs" />
+    <Compile Include="Controller\Search\SearchC4.cs" />
+    <Compile Include="Controller\Search\SearchC4_1.cs" />
+    <Compile Include="Controller\Search\SearchC4_2.cs" />
+    <Compile Include="Controller\Search\SearchC4_3.cs" />
+    <Compile Include="Controller\Search\SearchCPE.cs" />
+    <Compile Include="Controller\Search\SearchFADN.cs" />
+    <Compile Include="Controller\Search\SearchFederacion.cs" />
+    <Compile Include="Controller\Search\SearchFormatoC.cs" />
+    <Compile Include="Controller\Search\SearchIngreso.cs" />
+    <Compile Include="Controller\Search\SearchLogotipo.cs" />
+    <Compile Include="Controller\Search\SearchMenu.cs" />
+    <Compile Include="Controller\Search\SearchP1.cs" />
+    <Compile Include="Controller\Search\SearchP2.cs" />
+    <Compile Include="Controller\Search\SearchP3.cs" />
+    <Compile Include="Controller\Search\SearchPE1.cs" />
+    <Compile Include="Controller\Search\SearchPE2.cs" />
+    <Compile Include="Controller\Search\SearchPermisoRol.cs" />
+    <Compile Include="Controller\Search\SearchRol.cs" />
+    <Compile Include="Controller\Search\SerachUsuario.cs" />
+    <Compile Include="Controller\Update\UpdateResetPassword.cs" />
+    <Compile Include="Controller\Update\UpdateUsuario.cs" />
+    <Compile Include="DashboardAdmin.aspx.cs">
+      <DependentUpon>DashboardAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DashboardAdmin.aspx.designer.cs">
+      <DependentUpon>DashboardAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardFADN.aspx.cs">
+      <DependentUpon>DashboardFADN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DashboardFADN.aspx.designer.cs">
+      <DependentUpon>DashboardFADN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DBConnection\ConexionMysql.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ModeloActividadPAT.cs" />
+    <Compile Include="Models\ModeloBoton.cs" />
+    <Compile Include="Models\ModeloBrecha.cs" />
+    <Compile Include="Models\ModeloBrechaCategoria.cs" />
+    <Compile Include="Models\ModeloC1.cs" />
+    <Compile Include="Models\ModeloC3.cs" />
+    <Compile Include="Models\ModeloC4.cs" />
+    <Compile Include="Models\ModeloCargo.cs" />
+    <Compile Include="Models\ModeloCategoria.cs" />
+    <Compile Include="Models\ModeloCPE.cs" />
+    <Compile Include="Models\ModeloDirigencia.cs" />
+    <Compile Include="Models\ModeloFADN.cs" />
+    <Compile Include="Models\ModeloFodaBEstrategica.cs" />
+    <Compile Include="Models\ModeloFormatoC.cs" />
+    <Compile Include="Models\ModeloIngreso.cs" />
+    <Compile Include="Models\ModeloIntroBaseLegal.cs" />
+    <Compile Include="Models\ModeloLogotipo.cs" />
+    <Compile Include="Models\ModeloMenu.cs" />
+    <Compile Include="Models\ModeloNivel.cs" />
+    <Compile Include="Models\ModeloOrganigrama.cs" />
+    <Compile Include="Models\ModeloP1.cs" />
+    <Compile Include="Models\ModeloP2.cs" />
+    <Compile Include="Models\ModeloP3.cs" />
+    <Compile Include="Models\ModeloPE1.cs" />
+    <Compile Include="Models\ModeloPotencia.cs" />
+    <Compile Include="Models\ModeloPuestoLogrado.cs" />
+    <Compile Include="Models\ModeloResultado.cs" />
+    <Compile Include="Models\ModeloRol.cs" />
+    <Compile Include="Models\ModeloRolPermiso.cs" />
+    <Compile Include="Models\ModeloTipoPersonal.cs" />
+    <Compile Include="Models\ModeloUsuario.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reset.aspx.cs">
+      <DependentUpon>Reset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reset.aspx.designer.cs">
+      <DependentUpon>Reset.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdministracionPAT\AdministracionParte3.aspx.cs">
+      <DependentUpon>AdministracionParte3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AdministracionPAT\AdministracionParte3.aspx.designer.cs">
+      <DependentUpon>AdministracionParte3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdministracionPAT\AdministracionPAT.aspx.cs">
+      <DependentUpon>AdministracionPAT.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AdministracionPAT\AdministracionPAT.aspx.designer.cs">
+      <DependentUpon>AdministracionPAT.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\C1\IndexC1.aspx.cs">
+      <DependentUpon>IndexC1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\C1\IndexC1.aspx.designer.cs">
+      <DependentUpon>IndexC1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\C1\IndexC1_1.aspx.cs">
+      <DependentUpon>IndexC1_1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\C1\IndexC1_1.aspx.designer.cs">
+      <DependentUpon>IndexC1_1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\C2\IndexC2.aspx.cs">
+      <DependentUpon>IndexC2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\C2\IndexC2.aspx.designer.cs">
+      <DependentUpon>IndexC2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\C2\IndexC2_1.aspx.cs">
+      <DependentUpon>IndexC2_1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\C2\IndexC2_1.aspx.designer.cs">
+      <DependentUpon>IndexC2_1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\C2\IndexC2_2.aspx.cs">
+      <DependentUpon>IndexC2_2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\C2\IndexC2_2.aspx.designer.cs">
+      <DependentUpon>IndexC2_2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\C2\IndexC2_3.aspx.cs">
+      <DependentUpon>IndexC2_3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\C2\IndexC2_3.aspx.designer.cs">
+      <DependentUpon>IndexC2_3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\C3\IndexC3.aspx.cs">
+      <DependentUpon>IndexC3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\C3\IndexC3.aspx.designer.cs">
+      <DependentUpon>IndexC3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\C3\IndexC3_1.aspx.cs">
+      <DependentUpon>IndexC3_1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\C3\IndexC3_1.aspx.designer.cs">
+      <DependentUpon>IndexC3_1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\C3\IndexC3_2.aspx.cs">
+      <DependentUpon>IndexC3_2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\C3\IndexC3_2.aspx.designer.cs">
+      <DependentUpon>IndexC3_2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\C4\IndexC4.aspx.cs">
+      <DependentUpon>IndexC4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\C4\IndexC4.aspx.designer.cs">
+      <DependentUpon>IndexC4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\C4\IndexC4_1.aspx.cs">
+      <DependentUpon>IndexC4_1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\C4\IndexC4_1.aspx.designer.cs">
+      <DependentUpon>IndexC4_1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\C4\IndexC4_2.aspx.cs">
+      <DependentUpon>IndexC4_2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\C4\IndexC4_2.aspx.designer.cs">
+      <DependentUpon>IndexC4_2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\C4\IndexC4_3.aspx.cs">
+      <DependentUpon>IndexC4_3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\C4\IndexC4_3.aspx.designer.cs">
+      <DependentUpon>IndexC4_3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CPE\IndexCPE.aspx.cs">
+      <DependentUpon>IndexCPE.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CPE\IndexCPE.aspx.designer.cs">
+      <DependentUpon>IndexCPE.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CPE\IndexPE1.aspx.cs">
+      <DependentUpon>IndexPE1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CPE\IndexPE1.aspx.designer.cs">
+      <DependentUpon>IndexPE1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CPE\IndexPE2.aspx.cs">
+      <DependentUpon>IndexPE2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CPE\IndexPE2.aspx.designer.cs">
+      <DependentUpon>IndexPE2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cronograma\Organigrama.aspx.cs">
+      <DependentUpon>Organigrama.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cronograma\Organigrama.aspx.designer.cs">
+      <DependentUpon>Organigrama.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DirigentesFADN\CrearAsamblea.aspx.cs">
+      <DependentUpon>CrearAsamblea.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\DirigentesFADN\CrearAsamblea.aspx.designer.cs">
+      <DependentUpon>CrearAsamblea.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DirigentesFADN\CrearComision.aspx.cs">
+      <DependentUpon>CrearComision.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\DirigentesFADN\CrearComision.aspx.designer.cs">
+      <DependentUpon>CrearComision.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DirigentesFADN\CrearDirigente.aspx.cs">
+      <DependentUpon>CrearDirigente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\DirigentesFADN\CrearDirigente.aspx.designer.cs">
+      <DependentUpon>CrearDirigente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DirigentesFADN\CrearOrgano.aspx.cs">
+      <DependentUpon>CrearOrgano.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\DirigentesFADN\CrearOrgano.aspx.designer.cs">
+      <DependentUpon>CrearOrgano.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DirigentesFADN\CrearPersonal.aspx.cs">
+      <DependentUpon>CrearPersonal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\DirigentesFADN\CrearPersonal.aspx.designer.cs">
+      <DependentUpon>CrearPersonal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DirigentesFADN\DirigenciaDeportiva.aspx.cs">
+      <DependentUpon>DirigenciaDeportiva.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\DirigentesFADN\DirigenciaDeportiva.aspx.designer.cs">
+      <DependentUpon>DirigenciaDeportiva.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FADN\CreateFADN.aspx.cs">
+      <DependentUpon>CreateFADN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\FADN\CreateFADN.aspx.designer.cs">
+      <DependentUpon>CreateFADN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FADN\FADN.aspx.cs">
+      <DependentUpon>FADN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\FADN\FADN.aspx.designer.cs">
+      <DependentUpon>FADN.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FODABEstrategica\CreateFODABEstrategica.aspx.cs">
+      <DependentUpon>CreateFODABEstrategica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\FODABEstrategica\CreateFODABEstrategica.aspx.designer.cs">
+      <DependentUpon>CreateFODABEstrategica.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FODABEstrategica\FODABEstrategica.aspx.cs">
+      <DependentUpon>FODABEstrategica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\FODABEstrategica\FODABEstrategica.aspx.designer.cs">
+      <DependentUpon>FODABEstrategica.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntroBase\CreateInfo.aspx.cs">
+      <DependentUpon>CreateInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\IntroBase\CreateInfo.aspx.designer.cs">
+      <DependentUpon>CreateInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IntroBase\IntroduccionBasesLegales.aspx.cs">
+      <DependentUpon>IntroduccionBasesLegales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\IntroBase\IntroduccionBasesLegales.aspx.designer.cs">
+      <DependentUpon>IntroduccionBasesLegales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogroBrecha\CrearBrecha.aspx.cs">
+      <DependentUpon>CrearBrecha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\LogroBrecha\CrearBrecha.aspx.designer.cs">
+      <DependentUpon>CrearBrecha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogroBrecha\CrearPuesto.aspx.cs">
+      <DependentUpon>CrearPuesto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\LogroBrecha\CrearPuesto.aspx.designer.cs">
+      <DependentUpon>CrearPuesto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogroBrecha\LogroBrecha.aspx.cs">
+      <DependentUpon>LogroBrecha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\LogroBrecha\LogroBrecha.aspx.designer.cs">
+      <DependentUpon>LogroBrecha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\P1\IndexP1.aspx.cs">
+      <DependentUpon>IndexP1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\P1\IndexP1.aspx.designer.cs">
+      <DependentUpon>IndexP1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\P2\IndexP2.aspx.cs">
+      <DependentUpon>IndexP2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\P2\IndexP2.aspx.designer.cs">
+      <DependentUpon>IndexP2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\P3\IndexP3.aspx.cs">
+      <DependentUpon>IndexP3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\P3\IndexP3.aspx.designer.cs">
+      <DependentUpon>IndexP3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Portada\PortadaPAT.aspx.cs">
+      <DependentUpon>PortadaPAT.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Portada\PortadaPAT.aspx.designer.cs">
+      <DependentUpon>PortadaPAT.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ResultadoPotencia\CrearPotencia.aspx.cs">
+      <DependentUpon>CrearPotencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ResultadoPotencia\CrearPotencia.aspx.designer.cs">
+      <DependentUpon>CrearPotencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ResultadoPotencia\CrearResultado.aspx.cs">
+      <DependentUpon>CrearResultado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ResultadoPotencia\CrearResultado.aspx.designer.cs">
+      <DependentUpon>CrearResultado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ResultadoPotencia\ResultadoPotencia.aspx.cs">
+      <DependentUpon>ResultadoPotencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ResultadoPotencia\ResultadoPotencia.aspx.designer.cs">
+      <DependentUpon>ResultadoPotencia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RolPermiso\CreateRolPermiso.aspx.cs">
+      <DependentUpon>CreateRolPermiso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\RolPermiso\CreateRolPermiso.aspx.designer.cs">
+      <DependentUpon>CreateRolPermiso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RolPermiso\RolPermiso.aspx.cs">
+      <DependentUpon>RolPermiso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\RolPermiso\RolPermiso.aspx.designer.cs">
+      <DependentUpon>RolPermiso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Usuarios\Create.aspx.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Usuarios\Create.aspx.designer.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Usuarios\Editar.aspx.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Usuarios\Editar.aspx.designer.cs">
+      <DependentUpon>Editar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Usuarios\Usuario.aspx.cs">
+      <DependentUpon>Usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Usuarios\Usuario.aspx.designer.cs">
+      <DependentUpon>Usuario.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\img\" />
+    <Folder Include="Views\Content\img\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52829</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52829/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
