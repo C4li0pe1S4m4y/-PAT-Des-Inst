@@ -97,7 +97,7 @@ namespace PATOnline.Views.AdministracionPAT
             {
                 try
                 {
-                    nuevo.BrechaCreate(modelo_brecha);
+                    nuevo.BrechCreate(modelo_brecha);
                 }
                 catch
                 {
