@@ -1,15 +1,21 @@
 ﻿<%@ Page Title="USUARIO - CREAR USUARIO" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Create.aspx.cs" Inherits="PATOnline.Views.Usuarios.Create" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-  <div class="col-sm-6">
-    <h1 class="m-0 text-dark"><%: Title %></h1>
-  </div>
-  <div class="col-sm-6">
-    <ol class="breadcrumb float-sm-right">
-      <li class="breadcrumb-item">Home</li>
-      <li class="breadcrumb-item">Usuario</li>
-      <li class="breadcrumb-item active">Crear Usuario</li>
-    </ol>
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark"><%: Title %></h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item">Dashboard</li>
+            <li class="breadcrumb-item">Usuario</li>
+            <li class="breadcrumb-item active">Crear</li>
+          </ol>
+        </div>
+      </div>
+    </div>
   </div>
   <section class="content">
     <div class="container-fluid">
@@ -70,7 +76,7 @@
             </div>
             <div class="col-md-3">
               <asp:Label runat="server" AssociatedControlID="TxtUsuario" CssClass="control-label"><span style="color:red">*</span> Usuario</asp:Label>
-              <input runat="server" id="TxtUsuario" name="TxtUsuario" class="form-control" type="text" placeholder="UPrueba" onkeypress="return letras(event)" maxlength="10" autofocus required />
+              <input runat="server" id="TxtUsuario" name="TxtUsuario" class="form-control" type="text" placeholder="UPrueba" onkeypress="return letras(event)" maxlength="20" autofocus required />
               <asp:RequiredFieldValidator ValidationGroup="usuario" runat="server" ControlToValidate="TxtUsuario"
                 CssClass="text-danger" ErrorMessage="* El Usuario es obligatorio" />
             </div>

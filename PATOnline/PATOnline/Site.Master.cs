@@ -6,6 +6,8 @@ using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using MySql.Data.MySqlClient;
 using PATOnline.Controller.Search;
+using PATOnline.Controller.ClasesBD;
+using System.Data;
 
 namespace PATOnline
 {
@@ -144,7 +146,7 @@ namespace PATOnline
                                 PAT.Visible = true;
                                 PARTE_1.Visible = true;
                                 DIRIGENCIA_DEPORTIVA.Visible = true;
-                                DIRIGENCIA_DEPORTIVA.HRef = "~/Views/DirigentesFADN/DirigenciaDeportiva.aspx";
+                                DIRIGENCIA_DEPORTIVA.HRef = "~/Views/DirigentesFADN/DirigenteFADN.aspx";
                                 break;
                             case "LOGROS Y BRECHAS":
                                 PAT.Visible = true;
@@ -294,6 +296,15 @@ namespace PATOnline
                 }
             }
             mysql.CerrarConexion();
+
+            if (Session["Rol"].ToString() == "Administrador")
+            {
+                DASHBOARD.HRef = "~/DashboardAdmin.aspx";
+            }
+            else
+            {
+                DASHBOARD.HRef = "~/DashboardFADN.aspx";
+            }
         }
 
         public void EsconderMenu()
@@ -344,6 +355,206 @@ namespace PATOnline
             C43_CI.Visible = false;
         }
 
+        public void countarInformacion()
+        {
+            DataTable data = new DataTable();
+            IntroduccionBaseLegal intro = new IntroduccionBaseLegal();
+            Organigrama organi = new Organigrama();
+            DirigenciaDeportivas dir = new DirigenciaDeportivas();
+            PuestoLogroAnalisisBrecha logrobrecha = new PuestoLogroAnalisisBrecha();
+            ResultadosPotencias resultpoten = new ResultadosPotencias();
+            FODABE fodabe = new FODABE();
+            switch (Session["Rol"].ToString())
+            {
+                case "Usuario CE de FADN":
+                    data = intro.IBLRead(Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 3);
+                    countIntroduccion.Text = data.Rows.Count.ToString();
+                    data = organi.OrgranigramaRead(Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 3);
+                    countOrganigrama.Text = data.Rows.Count.ToString();
+
+                    data = dir.DirigenciaRead(1, Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 3);
+
+                    if (data.Rows.Count > 0)
+                        countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+                    else
+                        countDirigente.Text = "0";
+
+                    data = dir.DirigenciaRead(2, Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 3);
+
+                    if (data.Rows.Count > 0)
+                        countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                    data = dir.DirigenciaRead(3, Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 3);
+
+                    if (data.Rows.Count > 0)
+                        countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                    data = dir.DirigenciaRead(4, Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 3);
+
+                    if (data.Rows.Count > 0)
+                        countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                    data = dir.DirigenciaRead(5, Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 3);
+
+                    if (data.Rows.Count > 0)
+                        countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                    data = logrobrecha.PuestoLogradoRead(Session["Federacion"].ToString(), 3);
+
+                    if (data.Rows.Count > 0)
+                        countLogroBrecha.Text = Convert.ToString(int.Parse(countLogroBrecha.Text) + int.Parse(data.Rows.Count.ToString()));
+                    else
+                        countLogroBrecha.Text = "0";
+
+                    data = logrobrecha.BrechaRead(Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 3);
+
+                    if (data.Rows.Count > 0)
+                        countLogroBrecha.Text = Convert.ToString(int.Parse(countLogroBrecha.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                    data = resultpoten.ResultadoRead(Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 3);
+
+                    if (data.Rows.Count > 0)
+                        countResultadoPotencia.Text = Convert.ToString(int.Parse(countResultadoPotencia.Text) + int.Parse(data.Rows.Count.ToString()));
+                    else
+                        countResultadoPotencia.Text = "0";
+
+                    data = resultpoten.PotenciaRead(Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 3);
+
+                    if (data.Rows.Count > 0)
+                        countResultadoPotencia.Text = Convert.ToString(int.Parse(countResultadoPotencia.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                    data = fodabe.FODABERead(Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 3);
+                    countFODABE.Text = data.Rows.Count.ToString();
+                    break;
+
+                case "Técnico Acompañamiento":
+                    if(Session["FederacionAsignada"] != null)
+                    {
+                        data = intro.IBLRead(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+                        countIntroduccion.Text = data.Rows.Count.ToString();
+                        data = organi.OrgranigramaRead(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+                        countOrganigrama.Text = data.Rows.Count.ToString();
+                        data = dir.DirigenciaRead(1, Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+                        else
+                            countDirigente.Text = "0";
+
+                        data = dir.DirigenciaRead(2, Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                        data = dir.DirigenciaRead(3, Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                        data = dir.DirigenciaRead(4, Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                        data = dir.DirigenciaRead(5, Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                        data = logrobrecha.PuestoLogradoRead(Session["FederacionAsignada"].ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countLogroBrecha.Text = Convert.ToString(int.Parse(countLogroBrecha.Text) + int.Parse(data.Rows.Count.ToString()));
+                        else
+                            countLogroBrecha.Text = "0";
+
+                        data = logrobrecha.BrechaRead(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countLogroBrecha.Text = Convert.ToString(int.Parse(countLogroBrecha.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                        data = resultpoten.ResultadoRead(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countResultadoPotencia.Text = Convert.ToString(int.Parse(countResultadoPotencia.Text) + int.Parse(data.Rows.Count.ToString()));
+                        else
+                            countResultadoPotencia.Text = "0";
+
+                        data = resultpoten.PotenciaRead(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countResultadoPotencia.Text = Convert.ToString(int.Parse(countResultadoPotencia.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                        data = fodabe.FODABERead(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+                        countFODABE.Text = data.Rows.Count.ToString();
+                    }
+                    break;
+
+                case "Técnico Evaluación":
+                    if (Session["FederacionAsignada"] != null)
+                    {
+                        data = intro.IBLRead(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+                        countIntroduccion.Text = data.Rows.Count.ToString();
+                        data = organi.OrgranigramaRead(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+                        countOrganigrama.Text = data.Rows.Count.ToString();
+                        data = dir.DirigenciaRead(1, Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+                        else
+                            countDirigente.Text = "0";
+
+                        data = dir.DirigenciaRead(2, Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                        data = dir.DirigenciaRead(3, Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                        data = dir.DirigenciaRead(4, Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                        data = dir.DirigenciaRead(5, Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                        data = logrobrecha.PuestoLogradoRead(Session["FederacionAsignada"].ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countLogroBrecha.Text = Convert.ToString(int.Parse(countLogroBrecha.Text) + int.Parse(data.Rows.Count.ToString()));
+                        else
+                            countLogroBrecha.Text = "0";
+
+                        data = logrobrecha.BrechaRead(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countLogroBrecha.Text = Convert.ToString(int.Parse(countLogroBrecha.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                        data = resultpoten.ResultadoRead(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countResultadoPotencia.Text = Convert.ToString(int.Parse(countResultadoPotencia.Text) + int.Parse(data.Rows.Count.ToString()));
+                        else
+                            countResultadoPotencia.Text = "0";
+
+                        data = resultpoten.PotenciaRead(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+
+                        if (data.Rows.Count > 0)
+                            countResultadoPotencia.Text = Convert.ToString(int.Parse(countResultadoPotencia.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                        data = fodabe.FODABERead(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString(), 6);
+                        countFODABE.Text = data.Rows.Count.ToString();
+                    }
+                    break;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -358,6 +569,7 @@ namespace PATOnline
                 CargarLogotipoFederacion(lblUsuario.Text);
                 EsconderMenu();
                 CargarMenu();
+                countarInformacion();
             }
             catch
             {

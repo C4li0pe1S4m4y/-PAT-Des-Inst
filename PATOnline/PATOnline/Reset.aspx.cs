@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using PATOnline.Controller.Herramientas;
 using PATOnline.Controller.Update;
 using PATOnline.Models;
 using System.Text;
@@ -14,6 +10,7 @@ namespace PATOnline
     {
         UpdateResetPassword reset = new UpdateResetPassword();
         ModeloUsuario modelo = new ModeloUsuario();
+        Correo correo = new Correo();
         public string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@!/#*";
         public string verificar;
         public int contador = 6;
@@ -41,7 +38,8 @@ namespace PATOnline
             modelo.user = lblUser.Text;
             modelo.verifica = verificar;
             reset.PasswordReset(modelo);
-            Response.Redirect("~/Login.aspx");  
+            correo.CorreoBienvenida(lblUser.Text);
+            Response.Redirect("~/Login.aspx"); 
         }
 
         public string toke()

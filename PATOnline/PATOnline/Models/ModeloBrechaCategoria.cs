@@ -14,5 +14,6 @@ namespace PATOnline.Models
         public int fkbrecha { get; set; }
         public string fadn { get; set; }
         public string anio { get; set; }
+        public int fkestado { get; set; }
     }
 }

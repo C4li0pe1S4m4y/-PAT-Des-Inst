@@ -13,6 +13,7 @@ namespace PATOnline.Models
         public string potencia { get; set; }
         public int fknivel { get; set; }
         public string fadn { get; set; }
-        public string anio { get; set; } 
+        public string anio { get; set; }
+        public int fkestado { get; set; }
     }
 }

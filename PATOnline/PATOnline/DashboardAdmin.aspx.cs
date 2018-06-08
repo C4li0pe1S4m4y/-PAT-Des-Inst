@@ -1,73 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using MySql.Data.MySqlClient;
-using PATOnline.DBConnection;
-using PATOnline.Controller.Search;
+using PATOnline.Controller.ClasesBD;
+using System.Data;
 
 namespace PATOnline
 {
     public partial class DashboardAdmin : System.Web.UI.Page
     {
-        ConexionMysql mysql = new ConexionMysql();
+        Usuario grafica_usuario = new Usuario();
         protected void Page_Load(object sender, EventArgs e)
         {
-            CantidadUsuarios();
-            CargarNombreFederacion();
-            CargarLogotipoFederacion();
+            graficaUsuarioActivoInactivo();
+            usuarioCantidad();
         }
-        public void CantidadUsuarios()
+
+        protected string graficaUsuarioActivoInactivo()
         {
-            mysql.AbrirConexion();
-            string query = "SELECT COUNT(idusuario) AS cantidad FROM seg_usuario;";
+            DataTable Datos = grafica_usuario.graficaUsuarioActivoInactivo();
 
-            MySqlCommand cmd = new MySqlCommand(query, mysql.conectar);
-            MySqlDataReader reader = cmd.ExecuteReader();
-
-            if (reader.Read())
+            string strDatos;
+            strDatos = "[['Usuario','Cantidad'],";
+            foreach (DataRow dr in Datos.Rows)
             {
-                lblContUsuario.Text = reader["cantidad"].ToString();
+                strDatos = strDatos + "[";
+                strDatos = strDatos + "'" + dr[0] + " (" + dr[1] + ")'" + "," + dr[1];
+                strDatos = strDatos + "],";
             }
-            mysql.CerrarConexion();
-
-            mysql.AbrirConexion();
-            string query1 = "SELECT COUNT(idusuario) AS cantidad FROM seg_usuario WHERE fkestado = 1;";
-
-            MySqlCommand cmd1 = new MySqlCommand(query1, mysql.conectar);
-            MySqlDataReader reader1 = cmd1.ExecuteReader();
-
-            if (reader1.Read())
-            {
-                lblUsuarioActivo.Text = reader1["cantidad"].ToString();
-            }
-            mysql.CerrarConexion();
-
-            mysql.AbrirConexion();
-            string query2 = "SELECT COUNT(idusuario) AS cantidad FROM seg_usuario WHERE fkestado = 2;";
-
-            MySqlCommand cmd2 = new MySqlCommand(query2, mysql.conectar);
-            MySqlDataReader reader2 = cmd2.ExecuteReader();
-
-            if (reader2.Read())
-            {
-                lblUsuarioInactivo.Text = reader2["cantidad"].ToString();
-            }
-            mysql.CerrarConexion();
+            strDatos = strDatos + "]";
+            return strDatos;
         }
 
-        public void CargarNombreFederacion()
+        public void usuarioCantidad()
         {
-            SearchFederacion buscar = new SearchFederacion();
-            lblFADN.Text = Convert.ToString(buscar.NombreFederacion(Convert.ToString(this.Session["Usuario"])));
+            DataTable data = grafica_usuario.UsuarioRead();
+
+            cantidadUsuario.Text = data.Rows.Count.ToString();
         }
 
-        public void CargarLogotipoFederacion()
-        {
-            SearchLogotipo buscar = new SearchLogotipo();
-            logo.ImageUrl = Convert.ToString(buscar.LogotipoFederacion(lblFADN.Text));
-        }
     }
 }

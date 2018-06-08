@@ -11,6 +11,7 @@ namespace PATOnline
         ReadRolPermiso rol = new ReadRolPermiso();
         Usuario id = new Usuario();
         FederacionAsiganada asignado = new FederacionAsiganada();
+        graficasPAT grafica = new graficasPAT();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (this.Session["Usuario"] == null) { Response.Redirect("~/Login.aspx"); }
@@ -41,6 +42,42 @@ namespace PATOnline
             }
 
             gridFederacionAsignado.Columns[0].Visible = false;
+        }
+
+        protected string graficasAprobadoRechazadoIntroduccion()
+        {
+            DataTable Datos = new DataTable();
+            if (Session["FederacionAsignada"] != null)
+            {
+                Datos = grafica.graficaAprobadoRechazadoIntroducccion(Session["Usuario"].ToString(), Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString());
+            }
+            else
+            {
+                Datos = grafica.graficaAprobadoRechazadoIntroducccion(Session["Usuario"].ToString(), Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
+            }
+
+            string strDatos="";
+            strDatos = "[['Documentos PAT','Aprobado','Rechazado'],";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + "[";
+                strDatos = strDatos + "'" +dr[0] + "'" + "," + "'" + dr[1] + "'" + "," + dr[2];
+                strDatos = strDatos + "],";
+            }
+            strDatos = strDatos + "]";
+            return strDatos;
+        }
+
+        public string federacionGrafica()
+        {
+            if(Session["FederacionAsignada"] != null)
+            {
+                return "'" + Session["FederacionAsignada"].ToString() + "'";
+            }
+            else
+            {
+                return "'" + Session["Federacion"].ToString() + "'";
+            }
         }
     }
 }

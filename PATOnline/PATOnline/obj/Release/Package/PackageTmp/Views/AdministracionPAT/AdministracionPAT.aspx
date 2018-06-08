@@ -10,7 +10,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item">Dashboard</li>
             <li class="breadcrumb-item active">Administración del PAT</li>
           </ol>
         </div>
@@ -43,7 +43,7 @@
             </asp:LinkButton>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="info-box">
             <div class="info-box-content">
               <span class="info-box-text">Agregar</span>
@@ -65,7 +65,7 @@
             </asp:LinkButton>
           </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <div class="info-box">
             <div class="info-box-content">
               <span class="info-box-text">Agregar</span>
@@ -101,7 +101,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <asp:Label runat="server" AssociatedControlID="txtCrearBrecha" CssClass="control-label"><span style="color:red">*</span> NOMBRE</asp:Label>
-                  <input runat="server" id="txtCrearBrecha" class="form-control" type="text" onkeypress="return letras(event)" minlength="4" placeholder="nombre de brecha" maxlength="40" autofocus required />
+                  <input runat="server" id="txtCrearBrecha" class="form-control" type="text" onkeypress="return letrasynumeros(event)" minlength="4" placeholder="nombre de brecha" maxlength="40" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarCrearBrecha" runat="server" ControlToValidate="txtCrearBrecha"
                     CssClass="text-danger" ErrorMessage="* El Nombre es obligatorio" />
                 </div>
@@ -136,7 +136,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <asp:Label runat="server" AssociatedControlID="txtCrearCargo" CssClass="control-label"><span style="color:red">*</span> NOMBRE</asp:Label>
-                  <input runat="server" id="txtCrearCargo" class="form-control" type="text" onkeypress="return letras(event)" minlength="4" placeholder="nombre de cargo" maxlength="40" autofocus required />
+                  <input runat="server" id="txtCrearCargo" class="form-control" type="text" onkeypress="return letrasynumeros(event)" minlength="4" placeholder="nombre de cargo" maxlength="40" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarCrearCargo" runat="server" ControlToValidate="txtCrearCargo"
                     CssClass="text-danger" ErrorMessage="* El Nombre es obligatorio" />
                 </div>
@@ -173,7 +173,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <asp:Label runat="server" AssociatedControlID="txtCrearCategoria" CssClass="control-label"><span style="color:red">*</span> NOMBRE</asp:Label>
-                  <input runat="server" id="txtCrearCategoria" class="form-control" type="text" onkeypress="return letras(event)" minlength="4" placeholder="nombre de categoría" maxlength="40" autofocus required />
+                  <input runat="server" id="txtCrearCategoria" class="form-control" type="text" onkeypress="return letrasynumeros(event)" minlength="4" placeholder="nombre de categoría" maxlength="40" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarCrearCategoria" runat="server" ControlToValidate="txtCrearCategoria"
                     CssClass="text-danger" ErrorMessage="* El Nombre es obligatorio" />
                 </div>
@@ -216,7 +216,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <asp:Label runat="server" AssociatedControlID="txtCrearNivel" CssClass="control-label"><span style="color:red">*</span> NOMBRE</asp:Label>
-                  <input runat="server" id="txtCrearNivel" class="form-control" type="text" onkeypress="return letras(event)" minlength="4" placeholder="nombre del nivel" maxlength="40" autofocus required />
+                  <input runat="server" id="txtCrearNivel" class="form-control" type="text" onkeypress="return letrasynumeros(event)" minlength="4" placeholder="nombre del nivel" maxlength="40" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarCrearNivel" runat="server" ControlToValidate="txtCrearNivel"
                     CssClass="text-danger" ErrorMessage="* El Nombre es obligatorio" />
                 </div>
@@ -253,7 +253,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <asp:Label runat="server" AssociatedControlID="txtCrearTipoPersona" CssClass="control-label"><span style="color:red">*</span> NOMBRE</asp:Label>
-                  <input runat="server" id="txtCrearTipoPersona" class="form-control" type="text" onkeypress="return letras(event)" minlength="4" placeholder="nombre de tipo de persona" maxlength="40" autofocus required />
+                  <input runat="server" id="txtCrearTipoPersona" class="form-control" type="text" onkeypress="return letrasynumeros(event)" minlength="4" placeholder="nombre de tipo de persona" maxlength="40" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarCrearTipoPersona" runat="server" ControlToValidate="txtCrearTipoPersona"
                     CssClass="text-danger" ErrorMessage="* El Nombre es obligatorio" />
                 </div>
@@ -296,7 +296,7 @@
                 <div class="col-md-12">
                   <asp:Label runat="server" ID="idBrecha"></asp:Label>
                   <asp:Label runat="server" AssociatedControlID="txtEditBrecha" CssClass="control-label"><span style="color:red">*</span> NOMBRE</asp:Label>
-                  <input runat="server" id="txtEditBrecha" class="form-control" type="text" onkeypress="return letras(event)" minlength="4" placeholder="nombre de brecha" maxlength="40" autofocus required />
+                  <input runat="server" id="txtEditBrecha" class="form-control" type="text" onkeypress="return letrasynumeros(event)" minlength="4" placeholder="nombre de brecha" maxlength="40" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarEditBrecha" runat="server" ControlToValidate="txtEditBrecha"
                     CssClass="text-danger" ErrorMessage="* El Nombre es obligatorio" />
                 </div>
@@ -333,7 +333,7 @@
                 <div class="col-md-12">
                   <asp:Label runat="server" ID="idCargo"></asp:Label>
                   <asp:Label runat="server" AssociatedControlID="txtEditCargo" CssClass="control-label"><span style="color:red">*</span> NOMBRE</asp:Label>
-                  <input runat="server" id="txtEditCargo" class="form-control" type="text" onkeypress="return letras(event)" minlength="4" placeholder="nombre de cargo" maxlength="40" autofocus required />
+                  <input runat="server" id="txtEditCargo" class="form-control" type="text" onkeypress="return letrasynumeros(event)" minlength="4" placeholder="nombre de cargo" maxlength="40" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarEditCargo" runat="server" ControlToValidate="txtEditCargo"
                     CssClass="text-danger" ErrorMessage="* El Nombre es obligatorio" />
                 </div>
@@ -370,7 +370,7 @@
                 <div class="col-md-12">
                   <asp:Label runat="server" ID="idCategoria"></asp:Label>
                   <asp:Label runat="server" AssociatedControlID="txtEditCategoria" CssClass="control-label"><span style="color:red">*</span> NOMBRE</asp:Label>
-                  <input runat="server" id="txtEditCategoria" class="form-control" type="text" onkeypress="return letras(event)" minlength="4" placeholder="nombre de categoria" maxlength="40" autofocus required />
+                  <input runat="server" id="txtEditCategoria" class="form-control" type="text" onkeypress="return letrasynumeros(event)" minlength="4" placeholder="nombre de categoria" maxlength="40" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarEditCategoria" runat="server" ControlToValidate="txtEditCategoria"
                     CssClass="text-danger" ErrorMessage="* El Nombre es obligatorio" />
                 </div>
@@ -416,7 +416,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <asp:Label runat="server" AssociatedControlID="txtEditNivel" CssClass="control-label"><span style="color:red">*</span> NOMBRE</asp:Label>
-                  <input runat="server" id="txtEditNivel" class="form-control" type="text" onkeypress="return letras(event)" minlength="4" placeholder="nombre del nivel" maxlength="40" autofocus required />
+                  <input runat="server" id="txtEditNivel" class="form-control" type="text" onkeypress="return letrasynumeros(event)" minlength="4" placeholder="nombre del nivel" maxlength="40" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarCrearNivel" runat="server" ControlToValidate="txtEditNivel"
                     CssClass="text-danger" ErrorMessage="* El Nombre es obligatorio" />
                 </div>
@@ -453,7 +453,7 @@
                 <div class="col-md-12">
                   <asp:Label runat="server" ID="idTipoPersona"></asp:Label>
                   <asp:Label runat="server" AssociatedControlID="txtEditTipoPersona" CssClass="control-label"><span style="color:red">*</span> NOMBRE</asp:Label>
-                  <input runat="server" id="txtEditTipoPersona" class="form-control" type="text" onkeypress="return letras(event)" minlength="4" placeholder="nombre de tipo de persona" maxlength="40" autofocus required />
+                  <input runat="server" id="txtEditTipoPersona" class="form-control" type="text" onkeypress="return letrasynumeros(event)" minlength="4" placeholder="nombre de tipo de persona" maxlength="40" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarEditTipoPersona" runat="server" ControlToValidate="txtEditTipoPersona"
                     CssClass="text-danger" ErrorMessage="* El Nombre es obligatorio" />
                 </div>
@@ -477,7 +477,7 @@
   <section class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="card card-success">
             <div class="card-header" style="text-align: center;">
               <h3 class="card-title"><span class="info-box-number">MOSTRAR INFORMACIÓN</span></h3>
@@ -492,7 +492,7 @@
                 <asp:GridView ID="gvListBrecha" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="numero" OnPageIndexChanging="gvListBrecha_PageIndexChanging" PageSize="5"
                   CssClass="table table-bordered table-responsive dataTable" HeaderStyle-BackColor="#e8f2fc" OnRowCommand="gvListBrecha_RowCommand">
                   <Columns>
-                    <asp:BoundField DataField="brecha" HeaderText="NOMBRE DE LA BRECHA" HeaderStyle-Font-Size="Medium"></asp:BoundField>
+                    <asp:BoundField DataField="brecha" HeaderText="NOMBRE DE LA BRECHA" ItemStyle-Width="100%" HeaderStyle-Font-Size="Medium"></asp:BoundField>
                     <asp:TemplateField HeaderText="OPCIONES" HeaderStyle-Font-Size="Medium">
                       <ItemTemplate>
                         <asp:LinkButton ID="btEditar" runat="server" type="button" class="btn btn-block btn-warning btn-sm" CausesValidation="false"
@@ -508,7 +508,7 @@
           </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="card card-success">
             <div class="card-header" style="text-align: center;">
               <h3 class="card-title"><span class="info-box-number">MOSTRAR INFORMACIÓN</span></h3>
@@ -523,38 +523,7 @@
                 <asp:GridView ID="gvListCargo" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="numero" OnPageIndexChanging="gvListCargo_PageIndexChanging" PageSize="5"
                   CssClass="table table-bordered table-responsive dataTable" HeaderStyle-BackColor="#e8f2fc" OnRowCommand="gvListCargo_RowCommand">
                   <Columns>
-                    <asp:BoundField DataField="cargo" HeaderText="NOMBRE DEL CARGO" HeaderStyle-Font-Size="Medium"></asp:BoundField>
-                    <asp:TemplateField HeaderText="OPCIONES" HeaderStyle-Font-Size="Medium">
-                      <ItemTemplate>
-                        <asp:LinkButton ID="btEditar" runat="server" type="button" class="btn btn-block btn-warning btn-sm" CausesValidation="false"
-                          CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
-                                <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-edit"></span>
-                        </asp:LinkButton>
-                      </ItemTemplate>
-                    </asp:TemplateField>
-                  </Columns>
-                </asp:GridView>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card card-success">
-            <div class="card-header" style="text-align: center;">
-              <h3 class="card-title"><span class="info-box-number">MOSTRAR INFORMACIÓN</span></h3>
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-widget="collapse">
-                  <i class="fa fa-minus"></i>
-                </button>
-              </div>
-            </div>
-            <div class="card-body" style="overflow-x: auto;">
-              <div class="col-md-12">
-                <asp:GridView ID="gvListCategoria" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="numero" OnPageIndexChanging="gvListCategoria_PageIndexChanging" PageSize="5"
-                  CssClass="table table-bordered table-responsive dataTable" HeaderStyle-BackColor="#e8f2fc" OnRowCommand="gvListCategoria_RowCommand">
-                  <Columns>
-                    <asp:BoundField DataField="categoria" HeaderText="NOMBRE DE LA CATEGORIA" HeaderStyle-Font-Size="Medium"></asp:BoundField>
+                    <asp:BoundField DataField="cargo" HeaderText="NOMBRE DEL CARGO" ItemStyle-Width="100%" HeaderStyle-Font-Size="Medium"></asp:BoundField>
                     <asp:TemplateField HeaderText="OPCIONES" HeaderStyle-Font-Size="Medium">
                       <ItemTemplate>
                         <asp:LinkButton ID="btEditar" runat="server" type="button" class="btn btn-block btn-warning btn-sm" CausesValidation="false"
@@ -571,24 +540,54 @@
         </div>
       </div>
       <div class="row">
-        <asp:UpdatePanel runat="server" ID="mostrarNivel">
-          <ContentTemplate>
-            <div class="col-md-6" runat="server" id="mostrarGridNivel">
-              <div class="card card-success">
-                <div class="card-header" style="text-align: center;">
-                  <h3 class="card-title"><span class="info-box-number">MOSTRAR INFORMACIÓN</span></h3>
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-widget="collapse">
-                      <i class="fa fa-minus"></i>
-                    </button>
-                  </div>
-                </div>
+        <div class="col-md-6">
+          <div class="card card-success">
+            <div class="card-header" style="text-align: center;">
+              <h3 class="card-title"><span class="info-box-number">MOSTRAR INFORMACIÓN</span></h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-widget="collapse">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body" style="overflow-x: auto;">
+              <div class="col-md-12">
+                <asp:GridView ID="gvListCategoria" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="numero" OnPageIndexChanging="gvListCategoria_PageIndexChanging" PageSize="5"
+                  CssClass="table table-bordered table-responsive dataTable" HeaderStyle-BackColor="#e8f2fc" OnRowCommand="gvListCategoria_RowCommand">
+                  <Columns>
+                    <asp:BoundField DataField="categoria" HeaderText="NOMBRE DE LA CATEGORIA" ItemStyle-Width="100%" HeaderStyle-Font-Size="Medium"></asp:BoundField>
+                    <asp:TemplateField HeaderText="OPCIONES" HeaderStyle-Font-Size="Medium">
+                      <ItemTemplate>
+                        <asp:LinkButton ID="btEditar" runat="server" type="button" class="btn btn-block btn-warning btn-sm" CausesValidation="false"
+                          CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
+                                <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-edit"></span>
+                        </asp:LinkButton>
+                      </ItemTemplate>
+                    </asp:TemplateField>
+                  </Columns>
+                </asp:GridView>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" runat="server" id="mostrarGridNivel">
+          <div class="card card-success">
+            <div class="card-header" style="text-align: center;">
+              <h3 class="card-title"><span class="info-box-number">MOSTRAR INFORMACIÓN</span></h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-widget="collapse">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <asp:UpdatePanel runat="server" ID="nivelUpdatePanel">
+              <ContentTemplate>
                 <div class="card-body" style="overflow-x: auto;">
                   <div class="col-md-12">
                     <asp:GridView ID="gvListNivel" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="numero" OnPageIndexChanging="gvListNivel_PageIndexChanging" PageSize="5"
                       CssClass="table table-bordered table-responsive dataTable" HeaderStyle-BackColor="#e8f2fc" OnRowCommand="gvListNivel_RowCommand">
                       <Columns>
-                        <asp:BoundField DataField="nivel" HeaderText="NOMBRE DEL NIVEL" HeaderStyle-Font-Size="Medium"></asp:BoundField>
+                        <asp:BoundField DataField="nivel" HeaderText="NOMBRE DEL NIVEL" ItemStyle-Width="100%" HeaderStyle-Font-Size="Medium"></asp:BoundField>
                         <asp:TemplateField HeaderText="OPCIONES" HeaderStyle-Font-Size="Medium">
                           <ItemTemplate>
                             <asp:LinkButton ID="btEditar" runat="server" type="button" class="btn btn-block btn-warning btn-sm" CausesValidation="false"
@@ -601,10 +600,10 @@
                     </asp:GridView>
                   </div>
                 </div>
-              </div>
-            </div>
-          </ContentTemplate>
-        </asp:UpdatePanel>
+              </ContentTemplate>
+            </asp:UpdatePanel>
+          </div>
+        </div>
 
         <div class="col-md-6">
           <div class="card card-success">
@@ -621,7 +620,7 @@
                 <asp:GridView ID="gvListTipoPersonal" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="numero" OnPageIndexChanging="gvListTipoPersonal_PageIndexChanging" PageSize="5"
                   CssClass="table table-bordered dataTable" HeaderStyle-BackColor="#e8f2fc" OnRowCommand="gvListTipoPersonal_RowCommand">
                   <Columns>
-                    <asp:BoundField DataField="tipo_personal" HeaderText="NOMBRE DEL TIPO PERSONA" HeaderStyle-Font-Size="Medium"></asp:BoundField>
+                    <asp:BoundField DataField="tipo_personal" HeaderText="NOMBRE DEL TIPO PERSONA" ItemStyle-Width="100%" HeaderStyle-Font-Size="Medium"></asp:BoundField>
                     <asp:TemplateField HeaderText="OPCIONES" HeaderStyle-Font-Size="Medium">
                       <ItemTemplate>
                         <asp:LinkButton ID="btEditar" runat="server" type="button" class="btn btn-block btn-warning btn-sm" CausesValidation="false"

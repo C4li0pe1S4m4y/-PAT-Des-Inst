@@ -49,6 +49,51 @@ namespace PATOnline.Views.IntroBase {
         protected global::System.Web.UI.WebControls.LinkButton nuevaIntroBaseLegal;
         
         /// <summary>
+        /// vistaPreviaFODABE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl vistaPreviaFODABE;
+        
+        /// <summary>
+        /// txtPreviewIntroduccion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPreviewIntroduccion;
+        
+        /// <summary>
+        /// txtPreviewMarco control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPreviewMarco;
+        
+        /// <summary>
+        /// txtPreviewAfiliacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPreviewAfiliacion;
+        
+        /// <summary>
+        /// cancelVistaPrevia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cancelVistaPrevia;
+        
+        /// <summary>
         /// mostrarIntroBaseLegal control.
         /// </summary>
         /// <remarks>

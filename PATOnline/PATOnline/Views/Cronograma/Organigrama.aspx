@@ -10,7 +10,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item">Dashboard</li>
             <li class="breadcrumb-item active">Organigrama</li>
           </ol>
         </div>
@@ -74,7 +74,7 @@
             <div class="card-body pad" style="display: block;">
               <div class="row">
                 <div class="col-md-12">
-                  <asp:Label runat="server" AssociatedControlID="FileUpload1" CssClass="control-label">Subir Archivo</asp:Label>
+                  <asp:Label runat="server" AssociatedControlID="FileUpload1" CssClass="control-label"><span style="color:red">*</span> Subir Archivo</asp:Label>
                   <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" />
                   <asp:RegularExpressionValidator ID="REGEXFileUploadLogo" runat="server" ValidationGroup="validarCrearOrganigrama"
                     ErrorMessage="Solo se permiten imagenes .jpeg, .png,.jpg" ControlToValidate="FileUpload1"
@@ -109,7 +109,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <asp:Label runat="server" ID="idOrganigrama"></asp:Label>
-                  <asp:Label runat="server" AssociatedControlID="FileUpload2" CssClass="control-label">Subir Archivo</asp:Label>
+                  <asp:Label runat="server" AssociatedControlID="FileUpload2" CssClass="control-label"><span style="color:red">*</span> Subir Archivo</asp:Label>
                   <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" />
                   <asp:RegularExpressionValidator runat="server" ValidationGroup="validarEditOrganigrama"
                     ErrorMessage="Solo se permiten imagenes .jpeg, .png, .jpg" ControlToValidate="FileUpload2"
@@ -151,7 +151,7 @@
                 <div class="col-md-12">
                   <asp:Label runat="server" ID="idIntroObservacionRechazo"></asp:Label>
                   <asp:Label runat="server" AssociatedControlID="txtCrearObservacion" CssClass="control-label"><span style="color:red">*</span> OBSERVACIÓN</asp:Label>
-                  <textarea runat="server" id="txtCrearObservacion" class="form-control" type="text" onkeypress="return descripcion(event)" minlength="4" placeholder="observación" maxlength="250" autofocus required></textarea>
+                  <textarea runat="server" id="txtCrearObservacion" class="form-control" type="text" onkeypress="return descripcion(event)" minlength="4" placeholder="observación" maxlength="1000" autofocus required></textarea>
                   <asp:RequiredFieldValidator runat="server" ValidationGroup="validarObservacion" ControlToValidate="txtCrearObservacion"
                     CssClass="text-danger" ErrorMessage="* La observación es obligatoria" />
                 </div>
@@ -195,7 +195,7 @@
                 <div class="col-md-12">
                   <asp:Label runat="server" ID="idIntroObservacionSinRechazo"></asp:Label>
                   <asp:Label runat="server" AssociatedControlID="txtCrearObservacionSinRechazo" CssClass="control-label"><span style="color:red">*</span> OBSERVACIÓN</asp:Label>
-                  <textarea runat="server" id="txtCrearObservacionSinRechazo" class="form-control" type="text" onkeypress="return descripcion(event)" minlength="4" placeholder="observación" maxlength="250" autofocus required></textarea>
+                  <textarea runat="server" id="txtCrearObservacionSinRechazo" class="form-control" type="text" onkeypress="return descripcion(event)" minlength="4" placeholder="observación" maxlength="1000" autofocus required></textarea>
                   <asp:RequiredFieldValidator runat="server" ValidationGroup="validarObservacionS" ControlToValidate="txtCrearObservacionSinRechazo"
                     CssClass="text-danger" ErrorMessage="* La observación es obligatoria" />
                 </div>
@@ -283,7 +283,7 @@
     </div>
   </section>
 
-  <section class="content" runat="server" id="mostrarObservacion">
+<section class="content" runat="server" id="mostrarObservacion">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
@@ -294,13 +294,16 @@
                 <button type="button" class="btn btn-tool btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fa fa-minus"></i>
                 </button>
+                <button type="button" class="btn btn-tool btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
+                  <i class="fa fa-times"></i>
+                </button>
               </div>
             </div>
 
             <div class="card-body pad">
               <div class="row">
                 <div class="col-md-12">
-                  <h3 class="card-title" style="text-align: right;"><span class="info-box-number">Primer Nivel</span></h3>
+                  <h3 class="card-title" style="text-align: right;"><span class="info-box-number">Federación / Asociación</span></h3>
                   <asp:GridView ID="listObservacionesFADN" runat="server" AutoGenerateColumns="False" BorderStyle="None"
                     CssClass="table" HeaderStyle-BackColor="#e8f2fc" ShowHeader="false">
                     <Columns>
@@ -332,7 +335,7 @@
 
               <div class="row">
                 <div class="col-md-12">
-                  <h3 class="card-title" style="text-align: right;"><span class="info-box-number">Segundo Nivel</span></h3>
+                  <h3 class="card-title" style="text-align: right;"><span class="info-box-number">Acompañamiento</span></h3>
                   <asp:GridView ID="listObservacionesAcompaniamiento" runat="server" AutoGenerateColumns="False"
                     CssClass="table" HeaderStyle-BackColor="#e8f2fc" ShowHeader="false">
                     <Columns>
@@ -364,7 +367,7 @@
 
               <div class="row">
                 <div class="col-md-12" style="overflow-x: auto;">
-                  <h3 class="card-title" style="text-align: right;"><span class="info-box-number">Tercer Nivel</span></h3>
+                  <h3 class="card-title" style="text-align: right;"><span class="info-box-number">Evaluador</span></h3>
                   <asp:GridView ID="listObservacionesEvaluacion" runat="server" AutoGenerateColumns="False"
                     CssClass="table" HeaderStyle-BackColor="#e8f2fc" ShowHeader="false">
                     <Columns>

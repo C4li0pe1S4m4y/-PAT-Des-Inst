@@ -1193,6 +1193,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\grafica.js" />
     <Content Include="Scripts\WebForms\GridView.js" />
     <Content Include="Scripts\WebForms\Menu.js" />
     <Content Include="Scripts\WebForms\MenuStandards.js" />
@@ -1254,26 +1255,15 @@
     <Content Include="Views\CPE\IndexPE1.aspx" />
     <Content Include="Views\CPE\IndexPE2.aspx" />
     <Content Include="Views\Cronograma\Organigrama.aspx" />
-    <Content Include="Views\DirigentesFADN\CrearAsamblea.aspx" />
-    <Content Include="Views\DirigentesFADN\CrearComision.aspx" />
-    <Content Include="Views\DirigentesFADN\CrearDirigente.aspx" />
-    <Content Include="Views\DirigentesFADN\CrearOrgano.aspx" />
-    <Content Include="Views\DirigentesFADN\CrearPersonal.aspx" />
-    <Content Include="Views\DirigentesFADN\DirigenciaDeportiva.aspx" />
-    <Content Include="Views\FADN\CreateFADN.aspx" />
+    <Content Include="Views\DirigentesFADN\DirigenteFADN.aspx" />
     <Content Include="Views\FADN\FADN.aspx" />
-    <Content Include="Views\FODABEstrategica\CreateFODABEstrategica.aspx" />
     <Content Include="Views\FODABEstrategica\FODABEstrategica.aspx" />
     <Content Include="Views\IntroBase\IntroduccionBasesLegales.aspx" />
-    <Content Include="Views\LogroBrecha\CrearBrecha.aspx" />
-    <Content Include="Views\LogroBrecha\CrearPuesto.aspx" />
     <Content Include="Views\LogroBrecha\LogroBrecha.aspx" />
     <Content Include="Views\P1\IndexP1.aspx" />
     <Content Include="Views\P2\IndexP2.aspx" />
     <Content Include="Views\P3\IndexP3.aspx" />
     <Content Include="Views\Portada\PortadaPAT.aspx" />
-    <Content Include="Views\ResultadoPotencia\CrearPotencia.aspx" />
-    <Content Include="Views\ResultadoPotencia\CrearResultado.aspx" />
     <Content Include="Views\ResultadoPotencia\ResultadoPotencia.aspx" />
     <Content Include="Views\RolPermiso\RolPermiso.aspx" />
     <Content Include="Views\Usuarios\Create.aspx" />
@@ -1424,10 +1414,15 @@
     <Compile Include="Controller\ClasesBD\AdministracionPATFormato3.cs" />
     <Compile Include="Controller\ClasesBD\AsiganarFADN.cs" />
     <Compile Include="Controller\ClasesBD\Bitacora.cs" />
+    <Compile Include="Controller\ClasesBD\DirigenciaDeportivas.cs" />
     <Compile Include="Controller\ClasesBD\FederacionAsiganada.cs" />
+    <Compile Include="Controller\ClasesBD\FODABE.cs" />
+    <Compile Include="Controller\ClasesBD\graficasPAT.cs" />
     <Compile Include="Controller\ClasesBD\IntroduccionBaseLegal.cs" />
     <Compile Include="Controller\ClasesBD\Observacion.cs" />
     <Compile Include="Controller\ClasesBD\Organigrama.cs" />
+    <Compile Include="Controller\ClasesBD\PuestoLogroAnalisisBrecha.cs" />
+    <Compile Include="Controller\ClasesBD\ResultadosPotencias.cs" />
     <Compile Include="Controller\ClasesBD\Usuario.cs" />
     <Compile Include="Controller\Create\CreateActividadPAT.cs" />
     <Compile Include="Controller\Create\CreateAdministracionPAT.cs" />
@@ -1782,54 +1777,12 @@
     <Compile Include="Views\Cronograma\Organigrama.aspx.designer.cs">
       <DependentUpon>Organigrama.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\DirigentesFADN\CrearAsamblea.aspx.cs">
-      <DependentUpon>CrearAsamblea.aspx</DependentUpon>
+    <Compile Include="Views\DirigentesFADN\DirigenteFADN.aspx.cs">
+      <DependentUpon>DirigenteFADN.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\DirigentesFADN\CrearAsamblea.aspx.designer.cs">
-      <DependentUpon>CrearAsamblea.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DirigentesFADN\CrearComision.aspx.cs">
-      <DependentUpon>CrearComision.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\DirigentesFADN\CrearComision.aspx.designer.cs">
-      <DependentUpon>CrearComision.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DirigentesFADN\CrearDirigente.aspx.cs">
-      <DependentUpon>CrearDirigente.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\DirigentesFADN\CrearDirigente.aspx.designer.cs">
-      <DependentUpon>CrearDirigente.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DirigentesFADN\CrearOrgano.aspx.cs">
-      <DependentUpon>CrearOrgano.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\DirigentesFADN\CrearOrgano.aspx.designer.cs">
-      <DependentUpon>CrearOrgano.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DirigentesFADN\CrearPersonal.aspx.cs">
-      <DependentUpon>CrearPersonal.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\DirigentesFADN\CrearPersonal.aspx.designer.cs">
-      <DependentUpon>CrearPersonal.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DirigentesFADN\DirigenciaDeportiva.aspx.cs">
-      <DependentUpon>DirigenciaDeportiva.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\DirigentesFADN\DirigenciaDeportiva.aspx.designer.cs">
-      <DependentUpon>DirigenciaDeportiva.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FADN\CreateFADN.aspx.cs">
-      <DependentUpon>CreateFADN.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\FADN\CreateFADN.aspx.designer.cs">
-      <DependentUpon>CreateFADN.aspx</DependentUpon>
+    <Compile Include="Views\DirigentesFADN\DirigenteFADN.aspx.designer.cs">
+      <DependentUpon>DirigenteFADN.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\FADN\FADN.aspx.cs">
       <DependentUpon>FADN.aspx</DependentUpon>
@@ -1837,13 +1790,6 @@
     </Compile>
     <Compile Include="Views\FADN\FADN.aspx.designer.cs">
       <DependentUpon>FADN.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\FODABEstrategica\CreateFODABEstrategica.aspx.cs">
-      <DependentUpon>CreateFODABEstrategica.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\FODABEstrategica\CreateFODABEstrategica.aspx.designer.cs">
-      <DependentUpon>CreateFODABEstrategica.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\FODABEstrategica\FODABEstrategica.aspx.cs">
       <DependentUpon>FODABEstrategica.aspx</DependentUpon>
@@ -1858,20 +1804,6 @@
     </Compile>
     <Compile Include="Views\IntroBase\IntroduccionBasesLegales.aspx.designer.cs">
       <DependentUpon>IntroduccionBasesLegales.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LogroBrecha\CrearBrecha.aspx.cs">
-      <DependentUpon>CrearBrecha.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\LogroBrecha\CrearBrecha.aspx.designer.cs">
-      <DependentUpon>CrearBrecha.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LogroBrecha\CrearPuesto.aspx.cs">
-      <DependentUpon>CrearPuesto.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\LogroBrecha\CrearPuesto.aspx.designer.cs">
-      <DependentUpon>CrearPuesto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\LogroBrecha\LogroBrecha.aspx.cs">
       <DependentUpon>LogroBrecha.aspx</DependentUpon>
@@ -1907,20 +1839,6 @@
     </Compile>
     <Compile Include="Views\Portada\PortadaPAT.aspx.designer.cs">
       <DependentUpon>PortadaPAT.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ResultadoPotencia\CrearPotencia.aspx.cs">
-      <DependentUpon>CrearPotencia.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ResultadoPotencia\CrearPotencia.aspx.designer.cs">
-      <DependentUpon>CrearPotencia.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ResultadoPotencia\CrearResultado.aspx.cs">
-      <DependentUpon>CrearResultado.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ResultadoPotencia\CrearResultado.aspx.designer.cs">
-      <DependentUpon>CrearResultado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\ResultadoPotencia\ResultadoPotencia.aspx.cs">
       <DependentUpon>ResultadoPotencia.aspx</DependentUpon>

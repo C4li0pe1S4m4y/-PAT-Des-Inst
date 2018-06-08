@@ -14,6 +14,9 @@ namespace PATOnline.Models
         public string vision { get; set; }
         public string mision { get; set; }
         public string valor { get; set; }
+        public string fadn { get; set; }
+        public string ano { get; set; }
+        public int fkestado { get; set; }
 
     }
 }

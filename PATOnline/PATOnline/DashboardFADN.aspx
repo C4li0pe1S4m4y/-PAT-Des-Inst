@@ -1,6 +1,33 @@
 ﻿<%@ Page Title="DASHBOARD" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DashboardFADN.aspx.cs" Inherits="PATOnline.DashboardFADN" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['bar'] });
+
+    google.charts.setOnLoadCallback(drawChart1);
+
+    function drawChart1() {
+      var data = google.visualization.arrayToDataTable(<%=graficasAprobadoRechazadoIntroduccion()%>);
+
+      var options = {
+        chart: {
+          title: <%=federacionGrafica()%>,
+          subtitle: 'Acciones en los documentos del PAT',
+          colors: ['#ea4808', '#44b241', '#90c320', '#0bafb8', '#f08600', '#dc0615', '#f6ed12'],
+        }
+      };
+
+      var chart = new google.charts.Bar(document.getElementById('graficasAprobadoRechazado'));
+      chart.draw(data, options);
+    }
+
+    $(window).resize(function () {
+      drawChart();
+    });
+
+  </script>
+
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -11,7 +38,7 @@
     </div>
   </div>
 
-    <section class="content">
+  <section class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
@@ -33,13 +60,23 @@
                     <ItemTemplate>
                       <asp:LinkButton runat="server" ID="idFederacion" type="button" CausesValidation="false" Text='<%# Eval("federacion") %>'
                         CommandName="Asignado" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
-                      </asp:LinkButton>                    
+                      </asp:LinkButton>
                     </ItemTemplate>
                   </asp:TemplateField>
                 </Columns>
               </asp:GridView>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12" style="width: 800px; height: 500px;">
+          <div id="graficasAprobadoRechazado" class="chart"></div>
         </div>
       </div>
     </div>

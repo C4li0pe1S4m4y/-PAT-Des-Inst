@@ -94,8 +94,14 @@ namespace PATOnline.Views.Cronograma
                                 break;
 
                             case "Crear":
-                                crearOrganigramaNew.Visible = true;
-                                nuevoOrganigrama.Visible = true;
+                                DataTable data = new DataTable();
+                                data = pat.OrgranigramaRead(Session["Federacion"].ToString(), year, 12);
+
+                                if (data.Rows.Count > 0)
+                                {
+                                    crearOrganigramaNew.Visible = true;
+                                    nuevoOrganigrama.Visible = true;
+                                }
                                 break;
                         }
                     }
@@ -113,8 +119,6 @@ namespace PATOnline.Views.Cronograma
                         switch (mostrar4.Rows[j][0].ToString())
                         {
                             case "Guardar":
-                                crearOrganigrama.Visible = true;
-                                guardarObservacionRechazo.Visible = true;
                                 break;
 
                             case "PDF":
@@ -130,8 +134,6 @@ namespace PATOnline.Views.Cronograma
                                 break;
 
                             case "Crear":
-                                crearOrganigramaNew.Visible = true;
-                                nuevoOrganigrama.Visible = true;
                                 break;
                         }
                     }
@@ -151,8 +153,6 @@ namespace PATOnline.Views.Cronograma
                         switch (mostrar2.Rows[j][0].ToString())
                         {
                             case "Guardar":
-                                crearOrganigrama.Visible = true;
-                                guardarObservacionRechazo.Visible = true;
                                 break;
 
                             case "PDF":
@@ -164,12 +164,9 @@ namespace PATOnline.Views.Cronograma
                                 break;
 
                             case "Rechazar":
-                                btcrearObservacionRechazo.Visible = true;
                                 break;
 
                             case "Crear":
-                                crearOrganigramaNew.Visible = true;
-                                nuevoOrganigrama.Visible = true;
                                 break;
                         }
                     }
@@ -189,7 +186,6 @@ namespace PATOnline.Views.Cronograma
                         switch (mostrar3.Rows[j][0].ToString())
                         {
                             case "Guardar":
-                                crearOrganigrama.Visible = true;
                                 guardarObservacionRechazo.Visible = true;
                                 break;
 
@@ -206,14 +202,6 @@ namespace PATOnline.Views.Cronograma
                                 break;
 
                             case "Crear":
-                                DataTable data = new DataTable();
-                                data = pat.OrgranigramaRead(Session["Federacion"].ToString(), year, 12);
-
-                                if (data.Rows.Count > 0)
-                                {
-                                    crearOrganigramaNew.Visible = true;
-                                    nuevoOrganigrama.Visible = true;
-                                }
                                 break;
                         }
                     }
@@ -305,7 +293,7 @@ namespace PATOnline.Views.Cronograma
                         break;
 
                     case "Técnico Evaluación":
-                        data = obs.observacionMostrarAcompaniamiento(int.Parse(row.Cells[0].Text), 2);
+                        data = obs.observacionMostrarAcompaniamiento(int.Parse(row.Cells[0].Text), 20);
 
                         for(int i = 0; i < data.Rows.Count; i++)
                         {
@@ -321,9 +309,9 @@ namespace PATOnline.Views.Cronograma
             }
             if (e.CommandName == "Mostrar")
             {
-                listObservacionesFADN.DataSource = obs.observacionMostrarFADN(int.Parse(row.Cells[0].Text), 2);
-                listObservacionesAcompaniamiento.DataSource = obs.observacionMostrarAcompaniamiento(int.Parse(row.Cells[0].Text), 2);
-                listObservacionesEvaluacion.DataSource = obs.observacionMostrarEvaluador(int.Parse(row.Cells[0].Text), 2);
+                listObservacionesFADN.DataSource = obs.observacionMostrarFADN(int.Parse(row.Cells[0].Text), 20);
+                listObservacionesAcompaniamiento.DataSource = obs.observacionMostrarAcompaniamiento(int.Parse(row.Cells[0].Text), 20);
+                listObservacionesEvaluacion.DataSource = obs.observacionMostrarEvaluador(int.Parse(row.Cells[0].Text), 20);
 
                 listObservacionesFADN.DataBind();
                 listObservacionesAcompaniamiento.DataBind();
@@ -380,10 +368,16 @@ namespace PATOnline.Views.Cronograma
                 switch (Session["Rol"].ToString())
                 {
                     case "Usuario CE de FADN":
+                        obseracion.id19 = int.Parse(row.Cells[0].Text);
+                        obseracion.usuario = id.idUsuario(Convert.ToString(Session["Usuario"]));
+                        obs.observacionCreateFADN(obseracion);
                         pat.OrganigramaUpdate(modelo, int.Parse(row.Cells[0].Text), 6);
                         break;
 
                     case "Técnico Evaluación":
+                        obseracion.id19 = int.Parse(row.Cells[0].Text);
+                        obseracion.usuario = id.idUsuario(Convert.ToString(Session["Usuario"]));
+                        obs.observacionCreateEvaluador(obseracion);
                         pat.OrganigramaUpdate(modelo, int.Parse(row.Cells[0].Text), 13);
                         break;
                 }
@@ -399,6 +393,9 @@ namespace PATOnline.Views.Cronograma
                         break;
 
                     case "Técnico Acompañamiento":
+                        obseracion.id19 = int.Parse(row.Cells[0].Text);
+                        obseracion.usuario = id.idUsuario(Convert.ToString(Session["Usuario"]));
+                        obs.observacionCreateAcompaniamiento(obseracion);
                         pat.OrganigramaUpdate(modelo, int.Parse(row.Cells[0].Text), 9);
                         break;
                 }
@@ -432,16 +429,16 @@ namespace PATOnline.Views.Cronograma
                             break;
 
                         case "Editar":
-                            if (obs.ObservacionAcompaniamientoExiste(int.Parse(e.Row.Cells[0].Text), 2) == true)
+                            if (pat.OrganigramaSearch(int.Parse(e.Row.Cells[0].Text)) == 2)
                             {
                                 (e.Row.FindControl("btEditar") as LinkButton).Visible = true;
                             }
                             break;
 
                         case "Ver":
-                            if (obs.ObservacionCEFADNExiste(int.Parse(e.Row.Cells[0].Text), 2) == true
-                                        || obs.ObservacionAcompaniamientoExiste(int.Parse(e.Row.Cells[0].Text), 2) == true
-                                        || obs.ObservacionEvaluadorExiste(int.Parse(e.Row.Cells[0].Text), 2) == true)
+                            if (obs.ObservacionCEFADNExiste(int.Parse(e.Row.Cells[0].Text), 20) == true
+                                        || obs.ObservacionAcompaniamientoExiste(int.Parse(e.Row.Cells[0].Text), 20) == true
+                                        || obs.ObservacionEvaluadorExiste(int.Parse(e.Row.Cells[0].Text), 20) == true)
                             {
                                 (e.Row.FindControl("btVer") as LinkButton).Visible = true;
                             }
@@ -509,7 +506,7 @@ namespace PATOnline.Views.Cronograma
         {
             try
             {
-                obseracion.id1 = int.Parse(idIntroObservacionRechazo.Text);
+                obseracion.id19 = int.Parse(idIntroObservacionRechazo.Text);
                 obseracion.observacion = txtCrearObservacion.Value;
                 obseracion.usuario = id.idUsuario(Convert.ToString(Session["Usuario"]));
                 obs.observacionCreateEvaluador(obseracion);
@@ -528,26 +525,26 @@ namespace PATOnline.Views.Cronograma
         {
             try
             {
-                obseracion.id1 = int.Parse(idIntroObservacionRechazo.Text);
+                obseracion.id19 = int.Parse(idIntroObservacionRechazo.Text);
                 obseracion.observacion = txtCrearObservacion.Value;
                 obseracion.usuario = id.idUsuario(Convert.ToString(Session["Usuario"]));
 
                 if (Session["Rol"].ToString() == "Usuario CE de FADN")
                 {
                     obs.observacionCreateFADN(obseracion);
-                    pat.OrganigramaUpdate(modelo, int.Parse(idIntroObservacionRechazo.Text), 2);
+                    pat.OrganigramaUpdate(modelo, int.Parse(idIntroObservacionRechazo.Text), 20);
                     crearObservacionRechazo.Visible = false;
                     CargarGrid();
                 }
                 if (Session["Rol"].ToString() == "Técnico Evaluación")
                 {
                     obs.observacionCreateEvaluador(obseracion);
-                    pat.OrganigramaUpdate(modelo, int.Parse(idIntroObservacionRechazo.Text), 2);
+                    pat.OrganigramaUpdate(modelo, int.Parse(idIntroObservacionRechazo.Text), 20);
                     crearObservacionRechazo.Visible = false;
                     CargarGrid();
                 }
 
-                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'error');", true);
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
             }
             catch
             {
@@ -564,7 +561,7 @@ namespace PATOnline.Views.Cronograma
         {
             try
             {
-                obseracion.id1 = int.Parse(idIntroObservacionSinRechazo.Text);
+                obseracion.id19 = int.Parse(idIntroObservacionSinRechazo.Text);
                 obseracion.observacion = txtCrearObservacionSinRechazo.Value;
                 obseracion.usuario = id.idUsuario(Convert.ToString(Session["Usuario"]));
                 obs.observacionCreateAcompaniamiento(obseracion);

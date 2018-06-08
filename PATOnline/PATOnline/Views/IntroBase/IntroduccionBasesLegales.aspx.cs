@@ -62,6 +62,8 @@ namespace PATOnline.Views.IntroBase
             btObservacionSinRechazoUpdate.Visible = false;
             btObservacionSinRechazo.Visible = false;
 
+            vistaPreviaFODABE.Visible = false;
+
             switch (Session["Rol"].ToString())
             {
                 case "Usuario Interno de FADN":
@@ -80,6 +82,7 @@ namespace PATOnline.Views.IntroBase
                             (row.FindControl("btObservacion") as LinkButton).Visible = false;
                             (row.FindControl("btAprobar") as LinkButton).Visible = false;
                             (row.FindControl("btEnviar") as LinkButton).Visible = false;
+                            (row.FindControl("btPreview") as LinkButton).Visible = false;
                         }
                     }
 
@@ -162,6 +165,7 @@ namespace PATOnline.Views.IntroBase
                                     if (clase.IntroBaseLegalSearch(int.Parse(row.Cells[0].Text)) == 3 || clase.IntroBaseLegalSearch(int.Parse(row.Cells[0].Text)) == 9)
                                     {
                                         (row.FindControl("btObservacion") as LinkButton).Visible = true;
+                                        (row.FindControl("btPreview") as LinkButton).Visible = true;
                                     }
                                 }
                                 break;
@@ -205,6 +209,8 @@ namespace PATOnline.Views.IntroBase
                             (row.FindControl("btObservacion") as LinkButton).Visible = false;
                             (row.FindControl("btAprobar") as LinkButton).Visible = false;
                             (row.FindControl("btEnviar") as LinkButton).Visible = false;
+                            (row.FindControl("btPreview") as LinkButton).Visible = false;
+
                         }
                     }
 
@@ -289,6 +295,7 @@ namespace PATOnline.Views.IntroBase
                                         || clase.IntroBaseLegalSearch(int.Parse(row.Cells[0].Text)) == 9)
                                     {
                                         (row.FindControl("btObservacion") as LinkButton).Visible = true;
+                                        (row.FindControl("btPreview") as LinkButton).Visible = true;
                                     }
                                 }
                                 break;
@@ -340,6 +347,7 @@ namespace PATOnline.Views.IntroBase
                             (row.FindControl("btObservacion") as LinkButton).Visible = false;
                             (row.FindControl("btAprobar") as LinkButton).Visible = false;
                             (row.FindControl("btEnviar") as LinkButton).Visible = false;
+                            (row.FindControl("btPreview") as LinkButton).Visible = false;
                         }
                     }
 
@@ -424,6 +432,7 @@ namespace PATOnline.Views.IntroBase
                                         || clase.IntroBaseLegalSearch(int.Parse(row.Cells[0].Text)) == 9)
                                     {
                                         (row.FindControl("btObservacion") as LinkButton).Visible = true;
+                                        (row.FindControl("btPreview") as LinkButton).Visible = true;
                                     }
                                 }
                                 break;
@@ -475,6 +484,7 @@ namespace PATOnline.Views.IntroBase
                             (row.FindControl("btObservacion") as LinkButton).Visible = false;
                             (row.FindControl("btAprobar") as LinkButton).Visible = false;
                             (row.FindControl("btEnviar") as LinkButton).Visible = false;
+                            (row.FindControl("btPreview") as LinkButton).Visible = false;
                         }
                     }
 
@@ -560,6 +570,7 @@ namespace PATOnline.Views.IntroBase
                                         || clase.IntroBaseLegalSearch(int.Parse(row.Cells[0].Text)) == 9)
                                     {
                                         (row.FindControl("btObservacion") as LinkButton).Visible = true;
+                                        (row.FindControl("btPreview") as LinkButton).Visible = true;
                                     }
                                 }
                                 break;
@@ -712,6 +723,20 @@ namespace PATOnline.Views.IntroBase
             int index = int.Parse(e.CommandArgument.ToString());
             GridViewRow row = gridCEFADN.Rows[index];
 
+            if (e.CommandName == "Previa")
+            {
+                DataTable data = new DataTable();
+                data = clase.IBLSeleccionadoRead(int.Parse(row.Cells[0].Text));
+
+                for (int i = 0; i < data.Rows.Count; i++)
+                {
+                    txtPreviewIntroduccion.Text = data.Rows[i][1].ToString();
+                    txtPreviewMarco.Text = data.Rows[i][2].ToString();
+                    txtPreviewAfiliacion.Text = data.Rows[i][3].ToString();
+                }
+
+                vistaPreviaFODABE.Visible = true;
+            }
             if (e.CommandName == "Editar")
             {
 
@@ -741,6 +766,9 @@ namespace PATOnline.Views.IntroBase
             {
                 try
                 {
+                    observacion.id0 = int.Parse(row.Cells[0].Text);
+                    observacion.usuario = id.idUsuario(Convert.ToString(Session["Usuario"]));
+                    obs.observacionCreateFADN(observacion);
                     clase.UpdateIntroBaseLegal(modelo, int.Parse(row.Cells[0].Text), 6, Session["Usuario"].ToString());
                     mostrarInformacionUsuario(Convert.ToString(Session["Usuario"]), Convert.ToString(Session["Federacion"]), year);
                     ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
@@ -763,6 +791,20 @@ namespace PATOnline.Views.IntroBase
             int index = int.Parse(e.CommandArgument.ToString());
             GridViewRow row = gridAcompaniamiento.Rows[index];
 
+            if (e.CommandName == "Previa")
+            {
+                DataTable data = new DataTable();
+                data = clase.IBLSeleccionadoRead(int.Parse(row.Cells[0].Text));
+
+                for (int i = 0; i < data.Rows.Count; i++)
+                {
+                    txtPreviewIntroduccion.Text = data.Rows[i][1].ToString();
+                    txtPreviewMarco.Text = data.Rows[i][2].ToString();
+                    txtPreviewAfiliacion.Text = data.Rows[i][3].ToString();
+                }
+
+                vistaPreviaFODABE.Visible = true;
+            }
             if (e.CommandName == "Editar")
             {
 
@@ -797,6 +839,9 @@ namespace PATOnline.Views.IntroBase
             {
                 try
                 {
+                    observacion.id0 = int.Parse(row.Cells[0].Text);
+                    observacion.usuario = id.idUsuario(Convert.ToString(Session["Usuario"]));
+                    obs.observacionCreateAcompaniamiento(observacion);
                     clase.UpdateIntroBaseLegal(modelo, int.Parse(row.Cells[0].Text), 9, Session["Usuario"].ToString());
                     mostrarInformacionUsuario(Convert.ToString(Session["Usuario"]), Convert.ToString(Session["FederacionAsignada"]), year);
                     ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
@@ -815,6 +860,20 @@ namespace PATOnline.Views.IntroBase
             int index = int.Parse(e.CommandArgument.ToString());
             GridViewRow row = gridEvaluacion.Rows[index];
 
+            if (e.CommandName == "Previa")
+            {
+                DataTable data = new DataTable();
+                data = clase.IBLSeleccionadoRead(int.Parse(row.Cells[0].Text));
+
+                for (int i = 0; i < data.Rows.Count; i++)
+                {
+                    txtPreviewIntroduccion.Text = data.Rows[i][1].ToString();
+                    txtPreviewMarco.Text = data.Rows[i][2].ToString();
+                    txtPreviewAfiliacion.Text = data.Rows[i][3].ToString();
+                }
+
+                vistaPreviaFODABE.Visible = true;
+            }
             if (e.CommandName == "Editar")
             {
                 DataTable data = new DataTable();
@@ -854,6 +913,9 @@ namespace PATOnline.Views.IntroBase
             {
                 try
                 {
+                    observacion.id0 = int.Parse(row.Cells[0].Text);
+                    observacion.usuario = id.idUsuario(Convert.ToString(Session["Usuario"]));
+                    obs.observacionCreateEvaluador(observacion);
                     clase.UpdateIntroBaseLegal(modelo, int.Parse(row.Cells[0].Text), 13, Session["Usuario"].ToString());
                     mostrarInformacionUsuario(Convert.ToString(Session["Usuario"]), Convert.ToString(Session["FederacionAsignada"]), year);
                     ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
@@ -917,7 +979,7 @@ namespace PATOnline.Views.IntroBase
                     mostrarInformacionUsuario(Convert.ToString(Session["Usuario"]), Convert.ToString(Session["FederacionAsignada"]), year);
                 }
 
-                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'error');", true);
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
             }
             catch
             {
@@ -967,6 +1029,11 @@ namespace PATOnline.Views.IntroBase
             {
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Error!', 'La informaicón no fue ingresada', 'error');", true);
             }
+        }
+
+        protected void cancelVistaPrevia_Click(object sender, EventArgs e)
+        {
+            vistaPreviaFODABE.Visible = false;
         }
     }
 }

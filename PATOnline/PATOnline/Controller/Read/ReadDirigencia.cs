@@ -15,7 +15,7 @@ namespace PATOnline.Controller.Read
             DataTable dt = new DataTable();
             var mysql = new DBConnection.ConexionMysql();
 
-            add = " WHERE df.fktipo_personal_fadn = '{0}' AND df.fadn = '{1}' AND df.ano = '{2}' ORDER BY (c.nombre);";
+            add = " ;";
             
             query = String.Format("SELECT idasamblea_personal_fadn AS numero, c.nombre AS cargo, " +
             "CONCAT(df.primer_nombre, ' ', df.segundo_nombre, ' ', df.primer_apellido, ' ', df.segundo_apellido) AS nombre, " +
@@ -24,7 +24,7 @@ namespace PATOnline.Controller.Read
             "df.periodo AS periodo, df.fadn AS federacion " +
             "FROM pat_dirigencia_deportiva_fadn df " +
             "INNER JOIN admin_cargo c ON c.idcargo = df.fkcargo " +
-            "INNER JOIN seg_estado e ON e.idestado = df.fkestado" + add, tipo, fadn, ano);
+            "INNER JOIN seg_estado e ON e.idestado = df.fkestado WHERE df.fktipo_personal_fadn = '{0}' AND df.fadn = '{1}' AND df.ano = '{2}' ORDER BY (c.nombre)", tipo, fadn, ano);
             mysql.AbrirConexion();
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
             consulta.Fill(dt);

@@ -175,6 +175,15 @@ namespace PATOnline {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor INTRODUCCIÓN;
         
         /// <summary>
+        /// countIntroduccion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countIntroduccion;
+        
+        /// <summary>
         /// ORGANIGRAMA control.
         /// </summary>
         /// <remarks>
@@ -182,6 +191,15 @@ namespace PATOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor ORGANIGRAMA;
+        
+        /// <summary>
+        /// countOrganigrama control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countOrganigrama;
         
         /// <summary>
         /// DIRIGENCIA_DEPORTIVA control.
@@ -193,6 +211,15 @@ namespace PATOnline {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor DIRIGENCIA_DEPORTIVA;
         
         /// <summary>
+        /// countDirigente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countDirigente;
+        
+        /// <summary>
         /// LOGROS_Y_BRECHAS control.
         /// </summary>
         /// <remarks>
@@ -200,6 +227,15 @@ namespace PATOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor LOGROS_Y_BRECHAS;
+        
+        /// <summary>
+        /// countLogroBrecha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countLogroBrecha;
         
         /// <summary>
         /// PRINCIPALES_POTENCIAS control.
@@ -211,6 +247,15 @@ namespace PATOnline {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor PRINCIPALES_POTENCIAS;
         
         /// <summary>
+        /// countResultadoPotencia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countResultadoPotencia;
+        
+        /// <summary>
         /// FODA control.
         /// </summary>
         /// <remarks>
@@ -218,6 +263,15 @@ namespace PATOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor FODA;
+        
+        /// <summary>
+        /// countFODABE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countFODABE;
         
         /// <summary>
         /// PARTE_2 control.

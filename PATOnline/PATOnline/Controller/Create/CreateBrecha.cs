@@ -19,7 +19,7 @@ namespace PATOnline.Controller.Create
             DataTable dt = new DataTable();
             query = String.Format("INSERT INTO dbcdagpat.pat_analisis_brecha (puntos, puntos_obtenidos, comparacion, observacion, fkbrecha, fadn, ano) " +
             "VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}'); ",
-            objCrear.punteo, objCrear.puntos, objCrear.comparacion, objCrear.observacion, objCrear.fkbrecha, objCrear.fadn, objCrear.anio);
+            objCrear.punteo, objCrear.puntos, objCrear.comparacion, objCrear.observacion, objCrear.fkbrecha, objCrear.fadn);
             mysql.AbrirConexion();
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
             consulta.Fill(dt);

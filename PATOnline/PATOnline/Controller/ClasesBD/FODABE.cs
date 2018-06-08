@@ -5,77 +5,79 @@ using PATOnline.Models;
 
 namespace PATOnline.Controller.ClasesBD
 {
-    public class Organigrama
+    public class FODABE
     {
         public string query = "";
-        public DataTable OrganigramaCreate(ModeloOrganigrama objCrear)
-        {
-            var mysql = new DBConnection.ConexionMysql();
-            DataTable dt = new DataTable();
-            query = String.Format("INSERT INTO pat_organigrama (organigrama, fadn, ano, fkestado) " +
-            "VALUES('{0}', '{1}', '{2}', '1'); ", objCrear.imagen, objCrear.fadn, objCrear.anio);
-            mysql.AbrirConexion();
-            MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
-            consulta.Fill(dt);
-            mysql.CerrarConexion();
-            return dt;
-        }
-
-        public DataTable OrgranigramaRead(string fadn, string ano, int estado)
-        {
-            DataTable dt = new DataTable();
-            var mysql = new DBConnection.ConexionMysql();
-            if(estado == 1)
-            {
-                query = String.Format("SELECT idorganigrama as numero, organigrama as organigrama " +
-                "FROM pat_organigrama WHERE fadn = '{0}' AND ano = '{1}' AND fkestado IN (1,2)", fadn, ano);
-            }
-            if (estado == 12)
-            {
-                query = String.Format("SELECT idorganigrama as numero, organigrama as organigrama " +
-                "FROM pat_organigrama WHERE fadn = '{0}' AND ano = '{1}' AND fkestado != '{2}'", fadn, ano, estado);
-            }
-            if (estado > 1)
-            {
-                query = String.Format("SELECT idorganigrama as numero, organigrama as organigrama " +
-                "FROM pat_organigrama WHERE fadn = '{0}' AND ano = '{1}' AND fkestado = '{2}'", fadn, ano, estado);
-            }
-
-            mysql.AbrirConexion();
-            MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
-            consulta.Fill(dt);
-            mysql.CerrarConexion();
-            return dt;
-        }
-
-        public DataTable OrgranigramaSeleccionar(int id)
+        public DataTable FODABERead(string fadn, string ano, int estado)
         {
             DataTable dt = new DataTable();
             var mysql = new DBConnection.ConexionMysql();
 
-            query = String.Format("SELECT idorganigrama as numero, organigrama as organigrama " +
-            "FROM pat_organigrama WHERE idorganigrama = '{0}'", id);
-            mysql.AbrirConexion();
-            MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
-            consulta.Fill(dt);
-            mysql.CerrarConexion();
-            return dt;
-        }
-
-        public Boolean OrganigramaUpdate(ModeloOrganigrama o, int id, int estado)
-        {
-            var mysql = new DBConnection.ConexionMysql();
             if(estado > 1)
             {
+                query = String.Format("SELECT idfoda_bestrategica AS numero, fortaleza, oportunidad, debilidad, amenaza, " +
+                "mision, vision, valor " +
+                "FROM pat_foda_baestrategica  WHERE fadn = '{0}' AND ano = '{1}' AND fkestado = '{2}';", fadn, ano, estado);
+            }
+            else
+            {
+                query = String.Format("SELECT idfoda_bestrategica AS numero, fortaleza, oportunidad, debilidad, amenaza, " +
+                "mision, vision, valor " +
+                "FROM pat_foda_baestrategica  WHERE fadn = '{0}' AND ano = '{1}' AND fkestado IN (1,2);", fadn, ano);
+            }
+
+            mysql.AbrirConexion();
+            MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
+            consulta.Fill(dt);
+            mysql.CerrarConexion();
+            return dt;
+        }
+
+        public DataTable FODABECreate(ModeloFodaBEstrategica objCrear)
+        {
+            var mysql = new DBConnection.ConexionMysql();
+            DataTable dt = new DataTable();
+            query = String.Format("INSERT INTO pat_foda_baestrategica (fortaleza, oportunidad, debilidad, amenaza, mision, vision, valor, fadn, ano, fkestado) " +
+            "VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}');",
+            objCrear.fortaleza, objCrear.oportunidad, objCrear.debilidad, objCrear.amenaza, objCrear.mision, objCrear.vision, 
+            objCrear.valor, objCrear.fadn, objCrear.ano, objCrear.fkestado);
+            mysql.AbrirConexion();
+            MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
+            consulta.Fill(dt);
+            mysql.CerrarConexion();
+            return dt;
+        }
+
+        public DataTable FODABESeleccionar(int id)
+        {
+            DataTable dt = new DataTable();
+            var mysql = new DBConnection.ConexionMysql();
+
+            query = String.Format("SELECT idfoda_bestrategica AS numero, fortaleza, oportunidad, debilidad, amenaza, " +
+                "mision, vision, valor FROM pat_foda_baestrategica  WHERE idfoda_bestrategica = '{0}';", id);
+            mysql.AbrirConexion();
+            MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
+            consulta.Fill(dt);
+            mysql.CerrarConexion();
+            return dt;
+        }
+
+        public Boolean FODABEUpdate(ModeloFodaBEstrategica o, int id, int estado)
+        {
+            var mysql = new DBConnection.ConexionMysql();
+            if (estado > 1)
+            {
                 query = String.Format("SET SQL_SAFE_UPDATES=0; " +
-                "UPDATE pat_organigrama SET fkestado = '{0}' WHERE idorganigrama = '{1}'",
+                "UPDATE pat_foda_baestrategica SET fkestado = '{0}' WHERE idfoda_bestrategica = '{1}'",
                 estado, id);
             }
             else
             {
                 query = String.Format("SET SQL_SAFE_UPDATES=0; " +
-                "UPDATE pat_organigrama SET organigrama = '{0}' WHERE idorganigrama = '{1}'",
-                o.imagen, id);
+                "UPDATE pat_foda_baestrategica SET fortaleza = '{0}', oportunidad = '{1}', " +
+                "debilidad = '{2}', amenaza = '{3}', mision = '{4}', vision = '{5}', " +
+                "valor = '{6}' WHERE idfoda_bestrategica = '{7}'",
+                o.fortaleza, o.oportunidad, o.debilidad, o.amenaza, o.mision, o.vision, o.vision, id);
             }
 
 
@@ -93,13 +95,13 @@ namespace PATOnline.Controller.ClasesBD
             }
         }
 
-        public int OrganigramaSearch(int id)
+        public int FODABESearch(int id)
         {
             try
             {
                 var mysql = new DBConnection.ConexionMysql();
-                query = String.Format("SELECT fkestado FROM pat_organigrama " +
-                "WHERE idorganigrama = '{0}'", id);
+                query = String.Format("SELECT fkestado FROM pat_foda_baestrategica " +
+                "WHERE idfoda_bestrategica = '{0}'", id);
                 mysql.AbrirConexion();
                 MySqlCommand consulta = new MySqlCommand(query, mysql.conectar);
                 MySqlDataReader buscar = consulta.ExecuteReader();

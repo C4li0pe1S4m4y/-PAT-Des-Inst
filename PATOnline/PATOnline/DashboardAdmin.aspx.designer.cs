@@ -13,48 +13,12 @@ namespace PATOnline {
     public partial class DashboardAdmin {
         
         /// <summary>
-        /// logo control.
+        /// cantidadUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image logo;
-        
-        /// <summary>
-        /// lblFADN control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFADN;
-        
-        /// <summary>
-        /// lblContUsuario control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblContUsuario;
-        
-        /// <summary>
-        /// lblUsuarioActivo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsuarioActivo;
-        
-        /// <summary>
-        /// lblUsuarioInactivo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUsuarioInactivo;
+        protected global::System.Web.UI.WebControls.Label cantidadUsuario;
     }
 }
