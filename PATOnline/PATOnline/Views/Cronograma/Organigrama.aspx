@@ -236,7 +236,7 @@
             </div>
             <div class="card-body" style="overflow-x: auto;">
               <div class="col-md-12">
-                <asp:GridView ID="gridFADN" runat="server" AutoGenerateColumns="False" DataKeyNames="numero" OnRowDataBound="gridFADN_RowDataBound" 
+                <asp:GridView ID="gridFADN" runat="server" AutoGenerateColumns="False" DataKeyNames="numero" OnRowDataBound="gridFADN_RowDataBound"
                   CssClass="table table-bordered dataTable" HeaderStyle-BackColor="#e8f2fc" OnRowCommand="gridFADN_RowCommand">
                   <Columns>
                     <asp:BoundField DataField="numero" ShowHeader="false" />
@@ -283,7 +283,7 @@
     </div>
   </section>
 
-<section class="content" runat="server" id="mostrarObservacion">
+  <section class="content" runat="server" id="mostrarObservacion">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">

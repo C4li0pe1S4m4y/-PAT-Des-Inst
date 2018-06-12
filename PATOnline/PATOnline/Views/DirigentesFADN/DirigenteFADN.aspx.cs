@@ -1888,6 +1888,7 @@ namespace PATOnline.Views.DirigentesFADN
                 crearObservacionRechazo.Visible = false;
                 CargarGrid();
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
+                txtCrearObservacion.Value = null;
             }
             catch
             {
@@ -1919,6 +1920,7 @@ namespace PATOnline.Views.DirigentesFADN
                 }
 
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
+                txtCrearObservacion.Value = null;
             }
             catch
             {
@@ -1943,6 +1945,7 @@ namespace PATOnline.Views.DirigentesFADN
                 crearObservacionSinRechazo.Visible = false;
                 CargarGrid();
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
+                txtCrearObservacionSinRechazo.Value = null;
             }
             catch
             {

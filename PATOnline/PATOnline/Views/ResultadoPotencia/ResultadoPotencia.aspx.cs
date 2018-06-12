@@ -452,6 +452,7 @@ namespace PATOnline.Views.ResultadoPotencia
                 crearObservacionRechazo.Visible = false;
                 CargarGrid();
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
+                txtCrearObservacion.Value = null;
             }
             catch
             {
@@ -489,6 +490,7 @@ namespace PATOnline.Views.ResultadoPotencia
                     CargarGrid();
                 }
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
+                txtCrearObservacion.Value = null;
             }
             catch
             {
@@ -527,6 +529,7 @@ namespace PATOnline.Views.ResultadoPotencia
                 crearObservacionSinRechazo.Visible = false;
                 CargarGrid();
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
+                txtCrearObservacionSinRechazo.Value = null;
             }
             catch
             {

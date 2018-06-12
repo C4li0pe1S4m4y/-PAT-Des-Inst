@@ -211,6 +211,7 @@ namespace PATOnline.Views.RolPermiso
                 mostrarCrearPermiso.Visible = false;
                 CargarGrid();
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'El Permiso fue creado', 'success');", true);
+                this.Session["Menu"] = null;
             }
             catch
             {
@@ -269,6 +270,7 @@ namespace PATOnline.Views.RolPermiso
                     CargarGrid();
                     mostrarEditarPermiso.Visible = false;
                     ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'El Permiso fue modificado', 'success');", true);
+                    this.Session["Menu"] = null;
                 }
                 catch
                 {

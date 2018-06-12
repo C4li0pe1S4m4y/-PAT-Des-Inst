@@ -366,6 +366,67 @@ namespace PATOnline
             FODABE fodabe = new FODABE();
             switch (Session["Rol"].ToString())
             {
+                case "Usuario Interno de FADN":
+                    data = intro.IBLRead(Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 1);
+                    countIntroduccion.Text = data.Rows.Count.ToString();
+                    data = organi.OrgranigramaRead(Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 1);
+                    countOrganigrama.Text = data.Rows.Count.ToString();
+
+                    data = dir.DirigenciaRead(1, Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 1);
+
+                    if (data.Rows.Count > 0)
+                        countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+                    else
+                        countDirigente.Text = "0";
+
+                    data = dir.DirigenciaRead(2, Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 1);
+
+                    if (data.Rows.Count > 0)
+                        countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                    data = dir.DirigenciaRead(3, Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 1);
+
+                    if (data.Rows.Count > 0)
+                        countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                    data = dir.DirigenciaRead(4, Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 1);
+
+                    if (data.Rows.Count > 0)
+                        countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                    data = dir.DirigenciaRead(5, Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 1);
+
+                    if (data.Rows.Count > 0)
+                        countDirigente.Text = Convert.ToString(int.Parse(countDirigente.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                    data = logrobrecha.PuestoLogradoRead(Session["Federacion"].ToString(), 3);
+
+                    if (data.Rows.Count > 0)
+                        countLogroBrecha.Text = Convert.ToString(int.Parse(countLogroBrecha.Text) + int.Parse(data.Rows.Count.ToString()));
+                    else
+                        countLogroBrecha.Text = "0";
+
+                    data = logrobrecha.BrechaRead(Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 1);
+
+                    if (data.Rows.Count > 0)
+                        countLogroBrecha.Text = Convert.ToString(int.Parse(countLogroBrecha.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                    data = resultpoten.ResultadoRead(Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 1);
+
+                    if (data.Rows.Count > 0)
+                        countResultadoPotencia.Text = Convert.ToString(int.Parse(countResultadoPotencia.Text) + int.Parse(data.Rows.Count.ToString()));
+                    else
+                        countResultadoPotencia.Text = "0";
+
+                    data = resultpoten.PotenciaRead(Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 1);
+
+                    if (data.Rows.Count > 0)
+                        countResultadoPotencia.Text = Convert.ToString(int.Parse(countResultadoPotencia.Text) + int.Parse(data.Rows.Count.ToString()));
+
+                    data = fodabe.FODABERead(Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 1);
+                    countFODABE.Text = data.Rows.Count.ToString();
+                    break;
+
                 case "Usuario CE de FADN":
                     data = intro.IBLRead(Session["Federacion"].ToString(), DateTime.Now.Year.ToString(), 3);
                     countIntroduccion.Text = data.Rows.Count.ToString();
@@ -567,8 +628,10 @@ namespace PATOnline
                 }
                 lblUsuario.Text = Convert.ToString(Session["Usuario"]);
                 CargarLogotipoFederacion(lblUsuario.Text);
-                EsconderMenu();
-                CargarMenu();
+
+                    EsconderMenu();
+                    CargarMenu();
+
                 countarInformacion();
             }
             catch

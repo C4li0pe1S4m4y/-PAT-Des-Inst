@@ -56,15 +56,25 @@ namespace PATOnline
                 Datos = grafica.graficaAprobadoRechazadoIntroducccion(Session["Usuario"].ToString(), Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
             }
 
-            string strDatos="";
-            strDatos = "[['Documentos PAT','Aprobado','Rechazado'],";
+            string strDatos="{";
+            strDatos = strDatos + "name: 'Aprovado',";
+            strDatos = strDatos + "data: [";
             foreach (DataRow dr in Datos.Rows)
             {
-                strDatos = strDatos + "[";
-                strDatos = strDatos + "'" +dr[0] + "'" + "," + "'" + dr[1] + "'" + "," + dr[2];
-                strDatos = strDatos + "],";
+                strDatos = strDatos + dr[1] + ", ";
+                
             }
-            strDatos = strDatos + "]";
+            strDatos = strDatos + "]},";
+
+            strDatos = strDatos + "{";
+            strDatos = strDatos + "name: 'Rechazado',";
+            strDatos = strDatos + "data: [";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + dr[2] + ", ";
+
+            }
+            strDatos = strDatos + "]}";
             return strDatos;
         }
 

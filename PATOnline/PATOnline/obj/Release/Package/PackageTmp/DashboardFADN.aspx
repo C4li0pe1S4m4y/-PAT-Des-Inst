@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="DASHBOARD" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DashboardFADN.aspx.cs" Inherits="PATOnline.DashboardFADN" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+  <script src="Content/Highcharts-6.1.0/code/highcharts.js"></script>
+
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -11,7 +13,7 @@
     </div>
   </div>
 
-    <section class="content">
+  <section class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
@@ -33,7 +35,7 @@
                     <ItemTemplate>
                       <asp:LinkButton runat="server" ID="idFederacion" type="button" CausesValidation="false" Text='<%# Eval("federacion") %>'
                         CommandName="Asignado" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
-                      </asp:LinkButton>                    
+                      </asp:LinkButton>
                     </ItemTemplate>
                   </asp:TemplateField>
                 </Columns>
@@ -44,4 +46,61 @@
       </div>
     </div>
   </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12" style="width: 800px; height: 500px;">
+          <div id="container" class="chart"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script type="text/javascript">
+
+  Highcharts.chart('container', {
+    chart: {
+      type: 'column'
+    },
+    title: {
+      text: 'Documentos del PAT'
+    },
+    subtitle: {
+      text: 'Aprovados / Rechazados'
+    },
+    xAxis: {
+      categories: [
+        'INTRODUCCIÓN',
+        'ORGANIGRAMA',
+        'DIRIGENTES DEPORTIVOS',
+        'LOGROS Y BRECHAS',
+        'RESULTADOS Y POTENCIAS',
+        'FODA Y BASE LEGAL'
+      ],
+      crosshair: true
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: 'cantidad'
+      }
+    },
+    tooltip: {
+      headerFormat: '<span style="font-size:10px">{point.key} </span><table>',
+      pointFormat: '<tr><td style="color:{series.color};padding:0"> {series.name}: </td>' +
+        '<td style="padding:0"><b> {point.y:.f} total</b></td></tr>',
+      footerFormat: '</table>',
+      shared: true,
+      useHTML: true
+    },
+    plotOptions: {
+      column: {
+        pointPadding: 0.2,
+        borderWidth: 0
+      }
+    },
+    series: [<%=graficasAprobadoRechazadoIntroduccion()%>]
+  });
+		</script>
 </asp:Content>

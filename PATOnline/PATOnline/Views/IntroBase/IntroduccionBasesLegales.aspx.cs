@@ -623,6 +623,9 @@ namespace PATOnline.Views.IntroBase
                 clase.InfoCreate(modelo, Session["Usuario"].ToString());
                 mostrarIntroBaseLegal.Visible = false;
                 mostrarInformacionUsuario(Session["Usuario"].ToString(), Session["Federacion"].ToString(), year);
+                TxtIntroduccion.Value = null;
+                TxtMarco.Value = null;
+                TxtAfiliacion.Value = null;
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue creada', 'success');", true);
             }
             catch
@@ -647,6 +650,9 @@ namespace PATOnline.Views.IntroBase
                 clase.UpdateIntroBaseLegal(modelo, int.Parse(idIntroBase.Text), 0, Session["Usuario"].ToString());
                 mostrarEditIntroBaseLegal.Visible = false;
                 mostrarInformacionUsuario(Convert.ToString(Session["Usuario"]), Convert.ToString(Session["Federacion"]), year);
+                txtEditIntroduccion.Value = null;
+                txtEditMarco.Value = null;
+                txtEditAfiliacion = null;
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue modificada', 'success');", true);
             }
             catch
@@ -948,6 +954,7 @@ namespace PATOnline.Views.IntroBase
                 clase.UpdateIntroBaseLegal(modelo, int.Parse(idIntroObservacionSinRechazo.Text), 9, Session["Usuario"].ToString());
                 crearObservacionSinRechazo.Visible = false;
                 mostrarInformacionUsuario(Convert.ToString(Session["Usuario"]), Convert.ToString(Session["FederacionAsignada"]), year);
+                txtCrearObservacionSinRechazo.Value = null;
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
             }
             catch
@@ -980,6 +987,7 @@ namespace PATOnline.Views.IntroBase
                 }
 
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
+                txtCrearObservacion.Value = null;
             }
             catch
             {
@@ -1009,6 +1017,7 @@ namespace PATOnline.Views.IntroBase
                 crearObservacionRechazo.Visible = false;
                 mostrarInformacionUsuario(Convert.ToString(Session["Usuario"]), Convert.ToString(Session["FederacionAsignada"]), year);
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
+                txtCrearObservacion.Value = null;
             }
             catch
             {

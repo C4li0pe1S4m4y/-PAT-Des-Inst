@@ -43,8 +43,10 @@
         <asp:ScriptReference Path="plugins/slimScroll/jquery.slimscroll.min.js" />
         <asp:ScriptReference Path="dist/js/demo.js" />
         <asp:ScriptReference Path="Scripts/WebForms/sweetalert.min.js" />
+        <asp:ScriptReference Path="Scripts/WebForms/grafica.js" />
       </Scripts>
     </asp:ScriptManager>
+
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
       <!-- Left navbar links -->
@@ -98,48 +100,45 @@
             </li>
             <li class="nav-item has-treeview">
               <a id="SEGURIDAD" runat="server" class="nav-link"><i class="nav-icon fa fa-lock"></i>
-                <p>
-                  SEGURIDAD<i class="right fa fa-angle-left"></i>
+                <p>SEGURIDAD<i class="right fa fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a id="USUARIO" runat="server" class="nav-link"><i class="nav-icon fa fa-user"></i>
-                    <p>USUARIO</p>
+                    <p style="font-size: 12px">USUARIO</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a id="ROL_Y_PERMISOS" runat="server" class="nav-link"><i class="nav-icon fa fa-unlock-alt"></i>
-                    <p>ROL Y PERMISOS</p>
+                    <p style="font-size: 12px">ROL Y PERMISOS</p>
                   </a>
                 </li>
               </ul>
             </li>
             <li class="nav-item has-treeview">
               <a id="OPCIONES_PAT" runat="server" class="nav-link"><i class="nav-icon fa fa-cogs"></i>
-                <p>
-                  OPCIONES PAT<i class="right fa fa-angle-left"></i>
-                </p>
+                <p>OPCIONES PAT<i class="right fa fa-angle-left"></i></p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a id="FADN" runat="server" class="nav-link"><i class="nav-icon fa fa-bank"></i>
-                    <p>FADN</p>
+                    <p style="font-size: 12px">FADN</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a id="ASIGNAR_FADN" runat="server" class="nav-link"><i class="nav-icon fa fa-suitcase"></i>
-                    <p>ASIGNAR FADN</p>
+                    <p style="font-size: 12px">ASIGNAR FADN</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a id="ADMINISTRACIÓN_PAT" runat="server" class="nav-link"><i class="nav-icon fa fa-cog"></i>
-                    <p>ADMIN PAT</p>
+                    <p style="font-size: 12px">ADMIN PAT</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a id="ADMINISTRACIÓN_PARTE_3" runat="server" class="nav-link"><i class="nav-icon fa fa-cog"></i>
-                    <p>ADMIN PARTE 3</p>
+                    <p style="font-size: 12px">ADMIN PARTE 3</p>
                   </a>
                 </li>
               </ul>
@@ -156,37 +155,37 @@
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a id="PORTADA" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                        <p>PORTADA</p>
+                        <p style="font-size: 12px">PORTADA</p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a id="INTRODUCCIÓN" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                        <p>INTRODUCCIÓN</p>
+                        <p style="font-size: 12px">INTRODUCCIÓN <span class="badge badge-info right"><asp:label runat="server" ID="countIntroduccion"></asp:label></span></p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a id="ORGANIGRAMA" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                        <p>ORGANIGRAMA</p>
+                        <p style="font-size: 12px">ORGANIGRAMA <span class="badge badge-info right"><asp:label runat="server" ID="countOrganigrama"></asp:label></span></p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a id="DIRIGENCIA_DEPORTIVA" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                        <p>DIRIGENCIA DEPORTIVA</p>
+                        <p style="font-size: 12px">DIRIGENCIA DEPORTIVA <span class="badge badge-info right"><asp:label runat="server" ID="countDirigente"></asp:label></span></p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a id="LOGROS_Y_BRECHAS" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                        <p>LOGROS Y BRECHAS</p>
+                        <p style="font-size: 12px">LOGROS Y BRECHAS <span class="badge badge-info right"><asp:label runat="server" ID="countLogroBrecha"></asp:label></span></p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a id="PRINCIPALES_POTENCIAS" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                        <p>PRINCIPALES POTENCIAS</p>
+                        <p style="font-size: 12px">PRINCIPALES POTENCIAS <span class="badge badge-info right"><asp:label runat="server" ID="countResultadoPotencia"></asp:label></span></p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a id="FODA" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                        <p>FODA</p>
+                        <p style="font-size: 12px">FODA <span class="badge badge-info right"><asp:label runat="server" ID="countFODABE"></asp:label></span></p>
                       </a>
                     </li>
                   </ul>

@@ -514,6 +514,7 @@ namespace PATOnline.Views.Cronograma
                 crearObservacionRechazo.Visible = false;
                 CargarGrid();
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
+                txtCrearObservacion.Value = null;
             }
             catch
             {
@@ -529,22 +530,17 @@ namespace PATOnline.Views.Cronograma
                 obseracion.observacion = txtCrearObservacion.Value;
                 obseracion.usuario = id.idUsuario(Convert.ToString(Session["Usuario"]));
 
-                if (Session["Rol"].ToString() == "Usuario CE de FADN")
+                if (Session["Rol"].ToString() == "Usuario CE de FADN" || Session["Rol"].ToString() == "Técnico Evaluación")
                 {
                     obs.observacionCreateFADN(obseracion);
-                    pat.OrganigramaUpdate(modelo, int.Parse(idIntroObservacionRechazo.Text), 20);
-                    crearObservacionRechazo.Visible = false;
-                    CargarGrid();
-                }
-                if (Session["Rol"].ToString() == "Técnico Evaluación")
-                {
-                    obs.observacionCreateEvaluador(obseracion);
-                    pat.OrganigramaUpdate(modelo, int.Parse(idIntroObservacionRechazo.Text), 20);
+                    pat.OrganigramaUpdate(modelo, int.Parse(idIntroObservacionRechazo.Text), 2);
                     crearObservacionRechazo.Visible = false;
                     CargarGrid();
                 }
 
+
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
+                txtCrearObservacion.Value = null;
             }
             catch
             {
@@ -569,6 +565,7 @@ namespace PATOnline.Views.Cronograma
                 crearObservacionSinRechazo.Visible = false;
                 CargarGrid();
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La informaicón fue ingresada', 'success');", true);
+                txtCrearObservacionSinRechazo.Value = null;
             }
             catch
             {

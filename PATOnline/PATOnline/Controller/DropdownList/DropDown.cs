@@ -384,7 +384,8 @@ namespace PATOnline.Controller.DropdownList
             DataTable dt = new DataTable();
             var mysql = new DBConnection.ConexionMysql();
             mysql.AbrirConexion();
-            query = String.Format("SELECT idingreso_corriente, nombre FROM admin_ingreso_corriente WHERE idpadre = {0} AND subpadre = 0 AND idpadre != 0;", id);
+            query = String.Format("SELECT idingreso_corriente, nombre FROM admin_ingreso_corriente WHERE idpadre = {0} AND subpadre = 0 AND idpadre != 0;", 
+                id);
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
             consulta.Fill(dt);
             mysql.CerrarConexion();
@@ -399,12 +400,12 @@ namespace PATOnline.Controller.DropdownList
             ddl.DataBind();
         }
 
-        public void Drop_CodigoIngreso(DropDownList ddl, int id)
+        public void Drop_CodigoIngreso(DropDownList ddl, int id, string fadn)
         {
             DataTable dt = new DataTable();
             var mysql = new DBConnection.ConexionMysql();
             mysql.AbrirConexion();
-            query = String.Format("SELECT idingreso_corriente, CONCAT(codigo,' | ',nombre) as ingreso FROM admin_ingreso_corriente WHERE subpadre = {0} AND idpadre != 0;", id);
+            query = String.Format("SELECT idingreso_corriente, CONCAT(codigo,' | ',nombre) as ingreso FROM admin_ingreso_corriente WHERE subpadre = {0} AND idpadre != 0 AND fadn = '{1}' OR fadn = '';", id, fadn);
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
             consulta.Fill(dt);
             mysql.CerrarConexion();
