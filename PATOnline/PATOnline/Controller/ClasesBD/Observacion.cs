@@ -55,6 +55,12 @@ namespace PATOnline.Controller.ClasesBD
 
         public DataTable observacionCreateEvaluador(ModeloObservacion o)
         {
+            /*
+             fkinformacion - 0, fkanalisis_brecha - 1, fkanalisis_puesto - 2, fkc1 - 3, fkc1_1 - 4, fkc2 - 5, fkc2_1 - 6, fkc2_2 - 7, fkc2_3 - 8
+             fkc3 - 9, fkc3_1 - 10, fkc3_2 - 11, fkc4 - 12, fkc4_1 - 13, fkc4_2 - 14, fkc4_3 - 15, fkcpe - 16, fkdirigencia_deportiva_fadn - 17,
+             fkfoda_baestrategica - 18, fkorganigrama - 19, fkp1 - 20, fkp2 - 21, fkp3 - 22, fkpe1 - 23, fkpe2 - 24, fkpotencia_ag - 25,
+             fkresultado_dih - 26,                  
+            */
             var mysql = new DBConnection.ConexionMysql();
             DataTable dt = new DataTable();
             o.fecha = DateTime.Now;

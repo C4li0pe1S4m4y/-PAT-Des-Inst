@@ -30,5 +30,6 @@ namespace PATOnline.Models
         public int femenino { get; set; }
         public int total { get; set; }
         public string departamento { get; set; }
+        public int fkestado { get; set; }
     }
 }

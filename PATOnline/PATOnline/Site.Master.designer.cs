@@ -292,6 +292,15 @@ namespace PATOnline {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor P1_INGRESOS;
         
         /// <summary>
+        /// countP1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countP1;
+        
+        /// <summary>
         /// P2_EGRESOS_POR_RENGLÓN control.
         /// </summary>
         /// <remarks>
@@ -299,6 +308,15 @@ namespace PATOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor P2_EGRESOS_POR_RENGLÓN;
+        
+        /// <summary>
+        /// countP2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countP2;
         
         /// <summary>
         /// P3_EGRESOS_POR_ACTIVIDAD control.
@@ -310,6 +328,15 @@ namespace PATOnline {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor P3_EGRESOS_POR_ACTIVIDAD;
         
         /// <summary>
+        /// countP3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countP3;
+        
+        /// <summary>
         /// PARTE_3 control.
         /// </summary>
         /// <remarks>
@@ -317,6 +344,15 @@ namespace PATOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor PARTE_3;
+        
+        /// <summary>
+        /// CPEINDEX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor CPEINDEX;
         
         /// <summary>
         /// CPE control.
@@ -328,6 +364,15 @@ namespace PATOnline {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor CPE;
         
         /// <summary>
+        /// countCPE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countCPE;
+        
+        /// <summary>
         /// PE1_GAD control.
         /// </summary>
         /// <remarks>
@@ -335,6 +380,15 @@ namespace PATOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor PE1_GAD;
+        
+        /// <summary>
+        /// countPE1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countPE1;
         
         /// <summary>
         /// PE2_AGP control.
@@ -346,6 +400,24 @@ namespace PATOnline {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor PE2_AGP;
         
         /// <summary>
+        /// countPE2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countPE2;
+        
+        /// <summary>
+        /// C1INDEX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor C1INDEX;
+        
+        /// <summary>
         /// C1 control.
         /// </summary>
         /// <remarks>
@@ -353,6 +425,15 @@ namespace PATOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor C1;
+        
+        /// <summary>
+        /// countC1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countC1;
         
         /// <summary>
         /// C11_DCH control.
@@ -364,6 +445,24 @@ namespace PATOnline {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor C11_DCH;
         
         /// <summary>
+        /// countC11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countC11;
+        
+        /// <summary>
+        /// C2INDEX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor C2INDEX;
+        
+        /// <summary>
         /// C2 control.
         /// </summary>
         /// <remarks>
@@ -371,6 +470,15 @@ namespace PATOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor C2;
+        
+        /// <summary>
+        /// countC2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countC2;
         
         /// <summary>
         /// C21_AFDF control.
@@ -382,6 +490,15 @@ namespace PATOnline {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor C21_AFDF;
         
         /// <summary>
+        /// countC21 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countC21;
+        
+        /// <summary>
         /// C22_PAD control.
         /// </summary>
         /// <remarks>
@@ -389,6 +506,15 @@ namespace PATOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor C22_PAD;
+        
+        /// <summary>
+        /// countC22 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countC22;
         
         /// <summary>
         /// C23_AFDPD control.
@@ -400,6 +526,24 @@ namespace PATOnline {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor C23_AFDPD;
         
         /// <summary>
+        /// countC23 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countC23;
+        
+        /// <summary>
+        /// C3INDEX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor C3INDEX;
+        
+        /// <summary>
         /// C3 control.
         /// </summary>
         /// <remarks>
@@ -407,6 +551,15 @@ namespace PATOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor C3;
+        
+        /// <summary>
+        /// countC3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countC3;
         
         /// <summary>
         /// C31_SCN control.
@@ -418,6 +571,15 @@ namespace PATOnline {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor C31_SCN;
         
         /// <summary>
+        /// countC31 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countC31;
+        
+        /// <summary>
         /// C32_SJDN control.
         /// </summary>
         /// <remarks>
@@ -425,6 +587,24 @@ namespace PATOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor C32_SJDN;
+        
+        /// <summary>
+        /// countC32 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countC32;
+        
+        /// <summary>
+        /// C4INDEX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor C4INDEX;
         
         /// <summary>
         /// C4 control.
@@ -436,6 +616,15 @@ namespace PATOnline {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor C4;
         
         /// <summary>
+        /// countC4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countC4;
+        
+        /// <summary>
         /// C41_CEAPD control.
         /// </summary>
         /// <remarks>
@@ -443,6 +632,15 @@ namespace PATOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor C41_CEAPD;
+        
+        /// <summary>
+        /// countC41 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countC41;
         
         /// <summary>
         /// C42_CP control.
@@ -454,6 +652,15 @@ namespace PATOnline {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor C42_CP;
         
         /// <summary>
+        /// countC42 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countC42;
+        
+        /// <summary>
         /// C43_CI control.
         /// </summary>
         /// <remarks>
@@ -461,6 +668,15 @@ namespace PATOnline {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor C43_CI;
+        
+        /// <summary>
+        /// countC43 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countC43;
         
         /// <summary>
         /// MainContent control.

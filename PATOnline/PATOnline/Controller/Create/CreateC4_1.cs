@@ -22,7 +22,7 @@ namespace PATOnline.Controller.Create
             "fkpais_departamento, lugar, presupuesto, fadn, ano) " +
             "VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', " +
             "'{11}', '{12}', '{13}', '{14}', '{15}', '{16}', '{17}');",
-            objCrear.codigo, objCrear.fkactividad, objCrear.descripcion, objCrear.fkobjetivo, objCrear.fketapa_prepacion,
+            objCrear.codigo, objCrear.fkactividad, objCrear.descripcion, objCrear.fketapa_prepacion,
             objCrear.dirigido, objCrear.linea, objCrear.fkcategoria, objCrear.registro, objCrear.inicio_dia, objCrear.inicio_mes, objCrear.fin_dia, objCrear.fin_mes,
             objCrear.fkpais_departamento, objCrear.lugar, objCrear.presupuesto, objCrear.fadn, objCrear.ano);
             mysql.AbrirConexion();

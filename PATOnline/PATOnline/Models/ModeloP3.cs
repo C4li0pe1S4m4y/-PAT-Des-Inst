@@ -16,5 +16,6 @@ namespace PATOnline.Models
         public double total { get; set; }
         public string fadn { get; set; }
         public string ano { get; set; }
+        public int fkestado { get; set; }
     }
 }

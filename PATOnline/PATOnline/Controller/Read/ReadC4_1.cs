@@ -17,13 +17,12 @@ namespace PATOnline.Controller.Read
             DataTable dt = new DataTable();
             var mysql = new DBConnection.ConexionMysql();
             query = String.Format("SELECT c4.idc4_1 AS numero, c4.codigo AS codigo, act.nombre AS actividad, " +
-            "c4.descripcion AS descripcion, o.nombre AS objetivo, ep.nombre AS etapa, " +
+            "c4.descripcion AS descripcion, c4.objetivo AS objetivo, ep.nombre AS etapa, " +
             "c4.dirigido AS dirigido, c4.linea AS linea, c.nombre AS categoria, " +
             "c4.registro AS registro, c4.inicio_dia AS inicio_dia, c4.inicio_mes AS inicio_mes, " +
             "c4.fin_dia AS fin_dia, c4.fin_mes AS fin_mes, d.nombre AS departamento, " +
             "p.nombre AS pais, c4.lugar AS lugar, c4.presupuesto AS presupuesto " +
             "FROM pat_c4_1 c4 INNER JOIN admin_actividad_pat act ON act.idactividad_pat = c4.fkactividad " +
-            "INNER JOIN admin_objetivo o ON o.idobjetivo = c4.fkobjetivo " +
             "INNER JOIN admin_etapa_preparacion ep ON ep.idetapa_preparacion = c4.fketapa_preparacion " +
             "INNER JOIN admin_categoria c ON c.idcategoria = c4.fkcategoria " +
             "INNER JOIN admin_pais_departamento d ON d.idpais_departamento = c4.fkpais_departamento " +

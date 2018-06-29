@@ -13,11 +13,11 @@ namespace PATOnline.Controller.Read
     {
         public string query = "";
         public string add = "";
-        public DataTable FADNRead(string username)
+        public DataTable FADNRead(string username, string fadn)
         {
             DataTable dt = new DataTable();
             var mysql = new DBConnection.ConexionMysql();
-            if(username == "admin")
+            if(fadn == "Confederación Deportiva Autónoma de Guatemala")
             {
                 add = ";";
             }

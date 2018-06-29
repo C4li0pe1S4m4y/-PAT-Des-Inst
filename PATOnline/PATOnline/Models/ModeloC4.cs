@@ -10,7 +10,7 @@ namespace PATOnline.Models
         public string codigo { get; set; }
         public int fkactividad { get; set; }
         public string descripcion { get; set; }
-        public int fkobjetivo { get; set; }
+        public int fkestado { get; set; }
         public int fketapa_prepacion { get; set; }
         public string dirigido { get; set; }
         public string linea { get; set; }
@@ -25,7 +25,7 @@ namespace PATOnline.Models
         public double presupuesto { get; set; }
         public string actividad { get; set; }
         public int fknivel { get; set; }
-        public string departamento { get; set; }
+        public string objetivo { get; set; }
         public string competicion { get; set; }
         public int fkclasificacion { get; set; }
         public string edades { get; set; }

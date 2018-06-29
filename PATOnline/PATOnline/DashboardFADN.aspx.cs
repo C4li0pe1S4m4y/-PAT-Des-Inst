@@ -15,7 +15,12 @@ namespace PATOnline
         protected void Page_Load(object sender, EventArgs e)
         {
             if (this.Session["Usuario"] == null) { Response.Redirect("~/Login.aspx"); }
+            cargarGrid();
+        }
 
+        protected void cargarGrid()
+        {
+            mostrarAsignados.Visible = false;
             gridFederacionAsignado.Visible = false;
             DataTable data = new DataTable();
             data = rol.RolReadUsuario(Session["Usuario"].ToString());
@@ -24,6 +29,11 @@ namespace PATOnline
             {
                 gridFederacionAsignado.DataSource = asignado.FederacionAsigandasRead(id.idUsuario(Session["Usuario"].ToString()));
                 gridFederacionAsignado.DataBind();
+                data = asignado.FederacionAsigandasRead(id.idUsuario(Session["Usuario"].ToString()));
+                if(data.Rows.Count > 0)
+                {
+                    mostrarAsignados.Visible = true;
+                }
                 gridFederacionAsignado.Visible = true;
                 gridFederacionAsignado.Columns[0].Visible = false;
             }
@@ -44,16 +54,16 @@ namespace PATOnline
             gridFederacionAsignado.Columns[0].Visible = false;
         }
 
-        protected string graficasAprobadoRechazadoIntroduccion()
+        protected string graficasAprobadoRechazadoComite()
         {
             DataTable Datos = new DataTable();
             if (Session["FederacionAsignada"] != null)
             {
-                Datos = grafica.graficaAprobadoRechazadoIntroducccion(Session["Usuario"].ToString(), Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString());
+                Datos = grafica.graficaAprobadoRechazadoComite(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString());
             }
             else
             {
-                Datos = grafica.graficaAprobadoRechazadoIntroducccion(Session["Usuario"].ToString(), Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
+                Datos = grafica.graficaAprobadoRechazadoComite(Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
             }
 
             string strDatos="{";
@@ -61,7 +71,7 @@ namespace PATOnline
             strDatos = strDatos + "data: [";
             foreach (DataRow dr in Datos.Rows)
             {
-                strDatos = strDatos + dr[1] + ", ";
+                strDatos = strDatos + dr[0] + ", ";
                 
             }
             strDatos = strDatos + "]},";
@@ -71,10 +81,110 @@ namespace PATOnline
             strDatos = strDatos + "data: [";
             foreach (DataRow dr in Datos.Rows)
             {
-                strDatos = strDatos + dr[2] + ", ";
+                strDatos = strDatos + dr[1] + ", ";
 
             }
             strDatos = strDatos + "]}";
+            return strDatos;
+        }
+
+        protected string graficasAprobadoRechazadoAcompaniamiento()
+        {
+            DataTable Datos = new DataTable();
+            if (Session["FederacionAsignada"] != null)
+            {
+                Datos = grafica.graficaAprobadoRechazadoAcompaniamiento(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString());
+            }
+            else
+            {
+                Datos = grafica.graficaAprobadoRechazadoAcompaniamiento(Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
+            }
+
+            string strDatos = "{";
+            strDatos = strDatos + "name: 'Aprovado',";
+            strDatos = strDatos + "data: [";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + dr[0] + ", ";
+
+            }
+            strDatos = strDatos + "]},";
+
+            strDatos = strDatos + "{";
+            strDatos = strDatos + "name: 'Rechazado',";
+            strDatos = strDatos + "data: [";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + dr[1] + ", ";
+
+            }
+            strDatos = strDatos + "]}";
+            return strDatos;
+        }
+
+        protected string graficasAprobadoRechazadoEvaluador()
+        {
+            DataTable Datos = new DataTable();
+            if (Session["FederacionAsignada"] != null)
+            {
+                Datos = grafica.graficaAprobadoRechazadoEvaluador(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString());
+            }
+            else
+            {
+                Datos = grafica.graficaAprobadoRechazadoEvaluador(Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
+            }
+
+            string strDatos = "{";
+            strDatos = strDatos + "name: 'Aprovado',";
+            strDatos = strDatos + "data: [";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + dr[0] + ", ";
+
+            }
+            strDatos = strDatos + "]},";
+
+            strDatos = strDatos + "{";
+            strDatos = strDatos + "name: 'Rechazado',";
+            strDatos = strDatos + "data: [";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + dr[1] + ", ";
+
+            }
+            strDatos = strDatos + "]}";
+            return strDatos;
+        }
+
+        protected string graficasPorcentajeEstado()
+        {
+            int cantidad_inicial = 0;
+            int cantidad_final = 0;
+            DataTable Datos = new DataTable();
+            if (Session["FederacionAsignada"] != null)
+            {
+                Datos = grafica.graficaPorcentajeEstado(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString());
+            }
+            else
+            {
+                Datos = grafica.graficaPorcentajeEstado(Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
+            }
+
+            string strDatos = " ";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                if(cantidad_final > 0)
+                {
+                    cantidad_inicial++;
+                }
+                cantidad_final = cantidad_inicial + 1;
+                strDatos = strDatos + "{ ";
+                strDatos = strDatos + "x: " + cantidad_inicial + ", ";
+                strDatos = strDatos + "x2: " + cantidad_final + ", ";
+                strDatos = strDatos + "y: " + cantidad_inicial + ", ";
+                strDatos = strDatos + "partialFill: " + dr[0] + " }, ";
+            }
+
             return strDatos;
         }
 
@@ -88,6 +198,174 @@ namespace PATOnline
             {
                 return "'" + Session["Federacion"].ToString() + "'";
             }
+        }
+
+        protected string graficaEstadosPATIntroduccion()
+        {
+            DataTable Datos = new DataTable();
+            if (Session["FederacionAsignada"] != null)
+            {
+                Datos = grafica.graficaEstadosPATIntroduccion(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString());
+            }
+            else
+            {
+                Datos = grafica.graficaEstadosPATIntroduccion(Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
+            }
+
+            string strDatos = " ";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + "[ " + "'" + dr[0] + "'" + ", " + dr[1] + " ], ";
+            }
+
+            return strDatos;
+        }
+
+        protected string graficaEstadosPATOrganigrama()
+        {
+            DataTable Datos = new DataTable();
+            if (Session["FederacionAsignada"] != null)
+            {
+                Datos = grafica.graficaEstadosPATOrganigrama(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString());
+            }
+            else
+            {
+                Datos = grafica.graficaEstadosPATOrganigrama(Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
+            }
+
+            string strDatos = " ";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + "[ " + "'" + dr[0] + "'" + ", " + dr[1] + " ], ";
+            }
+
+            return strDatos;
+        }
+
+        protected string graficaEstadosPATDirigencia()
+        {
+            DataTable Datos = new DataTable();
+            if (Session["FederacionAsignada"] != null)
+            {
+                Datos = grafica.graficaEstadosPATDirigencia(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString());
+            }
+            else
+            {
+                Datos = grafica.graficaEstadosPATDirigencia(Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
+            }
+
+            string strDatos = " ";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + "[ " + "'" + dr[0] + "'" + ", " + dr[1] + " ], ";
+            }
+
+            return strDatos;
+        }
+
+        protected string graficaEstadosPATLogros()
+        {
+            DataTable Datos = new DataTable();
+            if (Session["FederacionAsignada"] != null)
+            {
+                Datos = grafica.graficaEstadosPATLogros(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString());
+            }
+            else
+            {
+                Datos = grafica.graficaEstadosPATLogros(Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
+            }
+
+            string strDatos = " ";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + "[ " + "'" + dr[0] + "'" + ", " + dr[1] + " ], ";
+            }
+
+            return strDatos;
+        }
+
+        protected string graficaEstadosPATBrechas()
+        {
+            DataTable Datos = new DataTable();
+            if (Session["FederacionAsignada"] != null)
+            {
+                Datos = grafica.graficaEstadosPATBrechas(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString());
+            }
+            else
+            {
+                Datos = grafica.graficaEstadosPATBrechas(Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
+            }
+
+            string strDatos = " ";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + "[ " + "'" + dr[0] + "'" + ", " + dr[1] + " ], ";
+            }
+
+            return strDatos;
+        }
+
+        protected string graficaEstadosPATPotencia()
+        {
+            DataTable Datos = new DataTable();
+            if (Session["FederacionAsignada"] != null)
+            {
+                Datos = grafica.graficaEstadosPATPotencia(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString());
+            }
+            else
+            {
+                Datos = grafica.graficaEstadosPATPotencia(Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
+            }
+
+            string strDatos = " ";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + "[ " + "'" + dr[0] + "'" + ", " + dr[1] + " ], ";
+            }
+
+            return strDatos;
+        }
+
+        protected string graficaEstadosPATResultado()
+        {
+            DataTable Datos = new DataTable();
+            if (Session["FederacionAsignada"] != null)
+            {
+                Datos = grafica.graficaEstadosPATResultado(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString());
+            }
+            else
+            {
+                Datos = grafica.graficaEstadosPATResultado(Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
+            }
+
+            string strDatos = " ";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + "[ " + "'" + dr[0] + "'" + ", " + dr[1] + " ], ";
+            }
+
+            return strDatos;
+        }
+
+        protected string graficaEstadosPATFODA()
+        {
+            DataTable Datos = new DataTable();
+            if (Session["FederacionAsignada"] != null)
+            {
+                Datos = grafica.graficaEstadosPATFODA(Session["FederacionAsignada"].ToString(), DateTime.Now.Year.ToString());
+            }
+            else
+            {
+                Datos = grafica.graficaEstadosPATFODA(Session["Federacion"].ToString(), DateTime.Now.Year.ToString());
+            }
+
+            string strDatos = " ";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + "[ " + "'" + dr[0] + "'" + ", " + dr[1] + " ], ";
+            }
+
+            return strDatos;
         }
     }
 }

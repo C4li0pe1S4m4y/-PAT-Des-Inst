@@ -48,6 +48,9 @@
       <HintPath>..\packages\AjaxControlToolkit.17.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Mvvm, Version=17.1.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpressMvvm.17.1.6.0\lib\net40-client\DevExpress.Mvvm.dll</HintPath>
       <Private>True</Private>
@@ -852,109 +855,6 @@
     <Content Include="Content\Highcharts-6.1.0\code\themes\skies.src.js" />
     <Content Include="Content\Highcharts-6.1.0\code\themes\sunset.js" />
     <Content Include="Content\Highcharts-6.1.0\code\themes\sunset.src.js" />
-    <Content Include="Content\Highcharts-6.1.0\examples\3d-column-interactive\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\3d-column-null-values\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\3d-column-stacking-grouping\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\3d-pie-donut\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\3d-pie\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\3d-scatter-draggable\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\annotations\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\area-basic\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\area-inverted\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\area-missing\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\area-negative\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\area-stacked-percent\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\area-stacked\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\arearange-line\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\arearange\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\areaspline\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\bar-basic\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\bar-negative-stack\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\bar-stacked\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\bellcurve\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\box-plot\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\bubble-3d\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\bubble\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\bullet-graph\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\chart-update\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\column-basic\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\column-drilldown\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\column-negative\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\column-parsed\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\column-placement\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\column-rotated-labels\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\column-stacked-and-grouped\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\column-stacked-percent\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\column-stacked\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\columnrange\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\combo-dual-axes\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\combo-meteogram\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\combo-multi-axes\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\combo-regression\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\combo-timeline\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\combo\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\dynamic-click-to-add\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\dynamic-master-detail\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\dynamic-update\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\error-bar\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\funnel\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\gauge-activity\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\gauge-clock\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\gauge-dual\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\gauge-solid\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\gauge-speedometer\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\gauge-vu-meter\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\heatmap-canvas\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\heatmap\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\histogram\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\honeycomb-usa\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\item-series\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\line-ajax\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\line-basic\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\line-boost\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\line-labels\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\line-log-axis\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\line-time-series\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\live-data\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\parallel-coordinates\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\pareto\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\pie-basic\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\pie-donut\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\pie-drilldown\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\pie-gradient\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\pie-legend\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\pie-monochrome\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\pie-semi-circle\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\polar-spider\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\polar-wind-rose\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\polar\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\polygon\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\pyramid\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\renderer\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\responsive\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\sankey-diagram\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\scatter-boost\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\scatter\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\sparkline\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\spline-inverted\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\spline-irregular-time\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\spline-plot-bands\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\spline-symbols\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\streamgraph\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\styled-mode-column\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\styled-mode-pie\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\sunburst\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\synchronized-charts\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\treemap-coloraxis\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\treemap-large-dataset\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\treemap-with-levels\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\variable-radius-pie\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\variwide\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\vector-plot\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\waterfall\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\windbarb-series\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\wordcloud\index.htm" />
-    <Content Include="Content\Highcharts-6.1.0\examples\x-range\index.htm" />
     <Content Include="Content\Highcharts-6.1.0\gfx\vml-radial-gradient.png" />
     <Content Include="Content\Highcharts-6.1.0\graphics\arrow.svg" />
     <Content Include="Content\Highcharts-6.1.0\graphics\circle.svg" />
@@ -1368,6 +1268,17 @@
     <Content Include="Content\Highcharts-6.1.0\code\themes\sand-signika.js.map" />
     <Content Include="Content\Highcharts-6.1.0\code\themes\skies.js.map" />
     <Content Include="Content\Highcharts-6.1.0\code\themes\sunset.js.map" />
+    <Content Include="DataSet\dataSetIntroduccion.xsc">
+      <DependentUpon>dataSetIntroduccion.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSet\dataSetIntroduccion.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dataSetIntroduccion.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSet\dataSetIntroduccion.xss">
+      <DependentUpon>dataSetIntroduccion.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\PATOnline.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="plugins\bootstrap-slider\bootstrap-slider.js" />
@@ -2256,6 +2167,20 @@
     <Compile Include="Controller\ClasesBD\AdministracionPATFormato3.cs" />
     <Compile Include="Controller\ClasesBD\AsiganarFADN.cs" />
     <Compile Include="Controller\ClasesBD\Bitacora.cs" />
+    <Compile Include="Controller\ClasesBD\C1Accion.cs" />
+    <Compile Include="Controller\ClasesBD\C1_1.cs" />
+    <Compile Include="Controller\ClasesBD\C2Accion.cs" />
+    <Compile Include="Controller\ClasesBD\C2_1.cs" />
+    <Compile Include="Controller\ClasesBD\C2_2.cs" />
+    <Compile Include="Controller\ClasesBD\C2_3.cs" />
+    <Compile Include="Controller\ClasesBD\C3Accion.cs" />
+    <Compile Include="Controller\ClasesBD\C3_1.cs" />
+    <Compile Include="Controller\ClasesBD\C3_2.cs" />
+    <Compile Include="Controller\ClasesBD\C4Accion.cs" />
+    <Compile Include="Controller\ClasesBD\C4_1.cs" />
+    <Compile Include="Controller\ClasesBD\C4_2.cs" />
+    <Compile Include="Controller\ClasesBD\C4_3.cs" />
+    <Compile Include="Controller\ClasesBD\CPEAccion.cs" />
     <Compile Include="Controller\ClasesBD\DirigenciaDeportivas.cs" />
     <Compile Include="Controller\ClasesBD\FederacionAsiganada.cs" />
     <Compile Include="Controller\ClasesBD\FODABE.cs" />
@@ -2265,6 +2190,10 @@
     <Compile Include="Controller\ClasesBD\Observacion.cs" />
     <Compile Include="Controller\ClasesBD\Organigrama.cs" />
     <Compile Include="Controller\ClasesBD\P1Ingresos.cs" />
+    <Compile Include="Controller\ClasesBD\P2EgresosRenglon.cs" />
+    <Compile Include="Controller\ClasesBD\P3EgresosActividad.cs" />
+    <Compile Include="Controller\ClasesBD\PE1.cs" />
+    <Compile Include="Controller\ClasesBD\PE2.cs" />
     <Compile Include="Controller\ClasesBD\PuestoLogroAnalisisBrecha.cs" />
     <Compile Include="Controller\ClasesBD\ResultadosPotencias.cs" />
     <Compile Include="Controller\ClasesBD\Usuario.cs" />
@@ -2404,6 +2333,11 @@
     <Compile Include="DashboardFADN.aspx.designer.cs">
       <DependentUpon>DashboardFADN.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\dataSetIntroduccion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dataSetIntroduccion.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DBConnection\ConexionMysql.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -2451,6 +2385,12 @@
     <Compile Include="Models\ModeloUsuario.cs" />
     <Compile Include="Models\ModeloObservacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\reportIntroduccion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>reportIntroduccion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reset.aspx.cs">
       <DependentUpon>Reset.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2716,6 +2656,15 @@
   <ItemGroup>
     <Folder Include="pages\" />
     <Folder Include="Views\Content\img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reportes\reportIntroduccion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>reportIntroduccion.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

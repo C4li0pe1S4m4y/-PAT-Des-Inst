@@ -9,6 +9,100 @@ namespace PATOnline.Controller.ClasesBD
     {
         public string query = "";
         public string opcion;
+
+        public DataTable FormatoCGridEditRead()
+        {
+            query = "";
+            DataTable dt = new DataTable();
+            var mysql = new DBConnection.ConexionMysql();
+
+            for (int i = 1; i < 6; i++)
+            {
+                if (i == 5)
+                {
+                    query = String.Format(query + " SELECT idformato_c, nombre FROM admin_formato_c WHERE idformato_c = '{0}' " +
+                    "UNION ALL " +
+                    "SELECT idformato_c, nombre FROM admin_formato_c WHERE idpadre = '{0}'", i);
+                }
+                else
+                {
+                    query = String.Format(query + " SELECT idformato_c, nombre FROM admin_formato_c WHERE idformato_c = '{0}' " +
+                    "UNION ALL " +
+                    "SELECT idformato_c, nombre FROM admin_formato_c WHERE idpadre = '{0}' UNION ALL", i);
+                }
+            }
+
+            mysql.AbrirConexion();
+            MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
+            consulta.Fill(dt);
+            mysql.CerrarConexion();
+            return dt;
+        }
+
+        public DataTable CategoriaGridEditRead()
+        {
+            query = "";
+            DataTable dt = new DataTable();
+            var mysql = new DBConnection.ConexionMysql();
+
+            for (int i = 1; i < 20; i++)
+            {
+                if (i == 1 || i == 2 || i == 8 || i == 11 || i == 13 || i == 16 || i == 19)
+                {
+                    if (i == 19)
+                    {
+                        query = String.Format(query + " SELECT idcategoria as numero, nombre FROM admin_categoria WHERE idcategoria = '{0}' " +
+                        "UNION ALL " +
+                        "SELECT idcategoria as numero, nombre FROM admin_categoria WHERE idpadre = '{0}'", i);
+                    }
+                    else
+                    {
+                        query = String.Format(query + " SELECT idcategoria as numero, nombre FROM admin_categoria WHERE idcategoria = '{0}' " +
+                        "UNION ALL " +
+                        "SELECT idcategoria as numero, nombre FROM admin_categoria WHERE idpadre = '{0}' UNION ALL", i);
+                    }
+                }
+            }
+
+            mysql.AbrirConexion();
+            MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
+            consulta.Fill(dt);
+            mysql.CerrarConexion();
+            return dt;
+        }
+
+        public DataTable ActividadGridEditRead()
+        {
+            query = "";
+            DataTable dt = new DataTable();
+            var mysql = new DBConnection.ConexionMysql();
+
+            for (int i = 1; i < 27; i++)
+            {
+                if (i == 1 || i == 2 || i == 3 || i == 4 || i == 5 || i == 6 || i == 21 || i == 26)
+                {
+                    if (i == 26)
+                    {
+                        query = String.Format(query + " SELECT idactividad_pat, nombre FROM admin_actividad_pat WHERE idactividad_pat = '{0}' " +
+                        "UNION ALL " +
+                        "SELECT idactividad_pat, nombre FROM admin_actividad_pat WHERE idpadre = '{0}'", i);
+                    }
+                    else
+                    {
+                        query = String.Format(query + " SELECT idactividad_pat, nombre FROM admin_actividad_pat WHERE idactividad_pat = '{0}' " +
+                        "UNION ALL " +
+                        "SELECT idactividad_pat, nombre FROM admin_actividad_pat WHERE idpadre = '{0}' UNION ALL", i);
+                    }
+                }
+            }
+
+            mysql.AbrirConexion();
+            MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
+            consulta.Fill(dt);
+            mysql.CerrarConexion();
+            return dt;
+        }
+
         public DataTable FormatoCRead(int id, string tipoid)
         {
             DataTable dt = new DataTable();
@@ -198,8 +292,8 @@ namespace PATOnline.Controller.ClasesBD
         public Boolean FormatoCUpdate(ModeloFormatoC o, int id)
         {
             var mysql = new DBConnection.ConexionMysql();
-            query = String.Format("SET SQL_SAFE_UPDATES=0; " + 
-                "UPDATE admin_formato_c SET nombre = '{0}', idpadre = '{1}' WHERE idformato_c = '{2}'", 
+            query = String.Format("SET SQL_SAFE_UPDATES=0; " +
+                "UPDATE admin_formato_c SET nombre = '{0}', idpadre = '{1}' WHERE idformato_c = '{2}'",
                 o.nombre, o.idpadre, id);
 
             try

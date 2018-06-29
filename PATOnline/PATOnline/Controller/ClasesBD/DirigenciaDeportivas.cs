@@ -14,9 +14,7 @@ namespace PATOnline.Controller.ClasesBD
             var mysql = new DBConnection.ConexionMysql();
 
             query = String.Format("SELECT dbsecretaria.t.descripcion AS tipo, CONCAT(dbsecretaria.d.Nombres,' ',dbsecretaria.d.Apellidos) AS nombre, " +
-            "CONCAT(DAY(dbsecretaria.c.Fecha_inicio), '/', MONTH(dbsecretaria.c.Fecha_inicio), '/', YEAR(dbsecretaria.c.Fecha_inicio)) AS posesion, " +
-            "CONCAT(DAY(dbsecretaria.c.Fecha_final), '/', MONTH(dbsecretaria.c.Fecha_final), '/', YEAR(dbsecretaria.c.Fecha_final)) AS entrega, " +
-            "dbsecretaria.c.Periodo AS periodo, dbsecretaria.f.nombre AS federacion " +
+            "dbsecretaria.f.nombre AS federacion " +
             "FROM dbsecretaria.sg_comite_ejecutivo c " +
             "INNER JOIN dbsecretaria.sg_dirigente d ON dbsecretaria.d.idDirigente = dbsecretaria.c.id_dirigente " +
             "INNER JOIN dbsecretaria.sg_fadn f ON dbsecretaria.f.id_fand = dbsecretaria.c.id_fadn " +
@@ -38,22 +36,20 @@ namespace PATOnline.Controller.ClasesBD
             {
                 query = String.Format("SELECT idasamblea_personal_fadn AS numero, c.nombre AS cargo, " +
                 "CONCAT(df.primer_nombre, ' ', df.segundo_nombre, ' ', df.primer_apellido, ' ', df.segundo_apellido) AS nombre, " +
-                "CONCAT(DAY(df.inicio_cargo), '/', MONTH(df.inicio_cargo), '/', YEAR(df.inicio_cargo)) AS inicio, " +
-                "CONCAT(DAY(df.fin_cargo), '/', MONTH(df.fin_cargo), '/', YEAR(df.fin_cargo)) AS fin, " +
-                "df.periodo AS periodo, df.fadn AS federacion " +
+                "df.fadn AS federacion, d.nombre as departamento " +
                 "FROM pat_dirigencia_deportiva_fadn df " +
                 "INNER JOIN admin_cargo c ON c.idcargo = df.fkcargo " +
+                "INNER JOIN admin_pais_departamento d ON d.idpais_departamento = df.fkdepartamento " +
                 "WHERE df.fktipo_personal_fadn = '{0}' AND df.fadn = '{1}' AND df.ano = '{2}' AND df.fkestado = '{3}' ORDER BY (c.nombre)", tipo, fadn, ano, estado);
             }
             else
             {
                 query = String.Format("SELECT idasamblea_personal_fadn AS numero, c.nombre AS cargo, " +
                 "CONCAT(df.primer_nombre, ' ', df.segundo_nombre, ' ', df.primer_apellido, ' ', df.segundo_apellido) AS nombre, " +
-                "CONCAT(DAY(df.inicio_cargo), '/', MONTH(df.inicio_cargo), '/', YEAR(df.inicio_cargo)) AS inicio, " +
-                "CONCAT(DAY(df.fin_cargo), '/', MONTH(df.fin_cargo), '/', YEAR(df.fin_cargo)) AS fin, " +
-                "df.periodo AS periodo, df.fadn AS federacion " +
+                "df.fadn AS federacion, d.nombre as departamento " +
                 "FROM pat_dirigencia_deportiva_fadn df " +
                 "INNER JOIN admin_cargo c ON c.idcargo = df.fkcargo " +
+                "INNER JOIN admin_pais_departamento d ON d.idpais_departamento = df.fkdepartamento " +
                 "WHERE df.fktipo_personal_fadn = '{0}' AND df.fadn = '{1}' AND df.ano = '{2}' AND df.fkestado IN (1,2) ORDER BY (c.nombre)", tipo, fadn, ano, estado);
             }
 
@@ -68,13 +64,30 @@ namespace PATOnline.Controller.ClasesBD
         {
             var mysql = new DBConnection.ConexionMysql();
             DataTable dt = new DataTable();
-            query = String.Format("INSERT INTO pat_dirigencia_deportiva_fadn " +
-            "(primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, inicio_cargo, fin_cargo, " +
-            "periodo, fktipo_personal_fadn, fkcargo, fkestado, fadn, ano) " +
-            "VALUES('{0}', '{1}', '{2}', '{3}', STR_TO_DATE('{4}', '%Y-%m-%d'), DATE_ADD('{5}', INTERVAL {6} DAY), " +
-            "'{7}', '{8}', '{9}', '{10}', '{11}', '{12}'); ",
-            objCrear.nombre1, objCrear.nombre2, objCrear.apellido1, objCrear.apellido2, objCrear.inicio, objCrear.inicio, objCrear.fin,
-            objCrear.periodo, objCrear.fk_persona, objCrear.fk_cargo, objCrear.fk_estado, objCrear.fadn, objCrear.anio);
+            if(objCrear.fk_cargo == 0)
+            {
+                objCrear.fk_cargo = 3;
+                query = String.Format("INSERT INTO pat_dirigencia_deportiva_fadn " +
+                "(primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, " +
+                "fktipo_personal_fadn, fkcargo, fkestado, fadn, ano, fkdepartamento) " +
+                "VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', " +
+                "'{7}', '{8}', '{9}'); ",
+                objCrear.nombre1, objCrear.nombre2, objCrear.apellido1, objCrear.apellido2,
+                objCrear.fk_persona, objCrear.fk_cargo, objCrear.fk_estado, objCrear.fadn, objCrear.anio, objCrear.fk_departamento);
+            }
+            else
+            {
+                objCrear.fk_departamento = 1;
+
+                query = String.Format("INSERT INTO pat_dirigencia_deportiva_fadn " +
+                "(primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, " +
+                "fktipo_personal_fadn, fkcargo, fkestado, fadn, ano, fkdepartamento) " +
+                "VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', " +
+                "'{7}', '{8}', '{9}'); ",
+                objCrear.nombre1, objCrear.nombre2, objCrear.apellido1, objCrear.apellido2,
+                objCrear.fk_persona, objCrear.fk_cargo, objCrear.fk_estado, objCrear.fadn, objCrear.anio, objCrear.fk_departamento);
+            }
+
             mysql.AbrirConexion();
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
             consulta.Fill(dt);
@@ -88,11 +101,10 @@ namespace PATOnline.Controller.ClasesBD
             DataTable dt = new DataTable();
             query = String.Format("SELECT idasamblea_personal_fadn AS numero, c.nombre AS cargo, " +
             "df.primer_nombre AS numero1, df.segundo_nombre AS numero2, df.primer_apellido AS apellido1, df.segundo_apellido AS apellido2, " +
-            "CONCAT(DAY(df.inicio_cargo), '/', MONTH(df.inicio_cargo), '/', YEAR(df.inicio_cargo)) AS inicio, " +
-            "CONCAT(DAY(df.fin_cargo), '/', MONTH(df.fin_cargo), '/', YEAR(df.fin_cargo)) AS fin, " +
-            "df.periodo AS periodo, df.fadn AS federacion " +
+            "df.fadn AS federacion, df.fkdepartamento as departamento " +
             "FROM pat_dirigencia_deportiva_fadn df " +
             "INNER JOIN admin_cargo c ON c.idcargo = df.fkcargo " +
+            "INNER JOIN admin_pais_departamento d ON d.idpais_departamento = df.fkdepartamento " +
             "WHERE df.idasamblea_personal_fadn = '{0}'", id);
             mysql.AbrirConexion();
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
@@ -140,12 +152,25 @@ namespace PATOnline.Controller.ClasesBD
             }
             else
             {
-                query = String.Format("UPDATE pat_dirigencia_deportiva_fadn SET primer_nombre = '{0}', segundo_nombre = '{1}', " +
-                "primer_apellido = '{2}', segundo_apellido = '{3}', inicio_cargo = STR_TO_DATE('{4}', '%Y-%m-%d'), " +
-                "fin_cargo = DATE_ADD('{5}', INTERVAL '{6}' DAY), periodo = '{7}', fktipo_personal_fadn = '{8}', " +
-                "fkcargo = '{9}'  WHERE idasamblea_personal_fadn = '{11}'",
-                objCrear.nombre1, objCrear.nombre2, objCrear.apellido1, objCrear.apellido2, objCrear.inicio, objCrear.inicio, objCrear.fin,
-                objCrear.periodo, objCrear.fk_persona, objCrear.fk_cargo, id);
+                if (objCrear.fk_cargo == 0)
+                {
+                    query = String.Format("UPDATE pat_dirigencia_deportiva_fadn SET primer_nombre = '{0}', segundo_nombre = '{1}', " +
+                    "primer_apellido = '{2}', segundo_apellido = '{3}',  " +
+                    "fktipo_personal_fadn = '{4}', " +
+                    "fkdepartamento = '{5}'  WHERE idasamblea_personal_fadn = '{6}'",
+                    objCrear.nombre1, objCrear.nombre2, objCrear.apellido1, objCrear.apellido2,
+                    objCrear.fk_persona, objCrear.fk_departamento, id);
+                }
+                else
+                {
+                    query = String.Format("UPDATE pat_dirigencia_deportiva_fadn SET primer_nombre = '{0}', segundo_nombre = '{1}', " +
+                    "primer_apellido = '{2}', segundo_apellido = '{3}',  " +
+                    "fktipo_personal_fadn = '{4}', " +
+                    "fkcargo = '{5}'  WHERE idasamblea_personal_fadn = '{6}'",
+                    objCrear.nombre1, objCrear.nombre2, objCrear.apellido1, objCrear.apellido2,
+                    objCrear.fk_persona, objCrear.fk_cargo, id);
+                }
+
             }
 
 

@@ -19,8 +19,9 @@ namespace PATOnline.Models
         public double prespuesto { get; set; }
         public int fkactividad { get; set; }
         public int fkpais_departamento { get; set; }
-        public int categoria { get; set; }
+        public int fkcategoria { get; set; }
         public string fadn { get; set; }
         public string ano { get; set; }
+        public int fkestado { get; set; }
     }
 }

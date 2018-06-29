@@ -33,7 +33,7 @@ namespace PATOnline.Controller.ClasesBD
             if (estado == 12)
             {
                 query = String.Format("SELECT idorganigrama as numero, organigrama as organigrama " +
-                "FROM pat_organigrama WHERE fadn = '{0}' AND ano = '{1}' AND fkestado != '{2}'", fadn, ano, estado);
+                "FROM pat_organigrama WHERE fadn = '{0}' AND ano = '{1}' AND fkestado != '{2}' OR fkestado != '13'", fadn, ano, estado);
             }
             if (estado > 1)
             {
@@ -120,6 +120,20 @@ namespace PATOnline.Controller.ClasesBD
             {
                 return 0;
             }
+        }
+
+        public DataTable OrgranigramaExiste(string fadn, string ano, int estado)
+        {
+            DataTable dt = new DataTable();
+            var mysql = new DBConnection.ConexionMysql();
+            query = String.Format("SELECT idorganigrama as numero, organigrama as organigrama " +
+            "FROM pat_organigrama WHERE fadn = '{0}' AND ano = '{1}' AND fkestado != '{2}' OR fkestado != '13'", fadn, ano, estado);
+
+            mysql.AbrirConexion();
+            MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
+            consulta.Fill(dt);
+            mysql.CerrarConexion();
+            return dt;
         }
     }
 }

@@ -9,60 +9,86 @@ namespace PATOnline.Controller.ClasesBD
     {
         public string query = null;
         public string add = null;
-        public DataTable Part9Read()
+        public DataTable ContaP1Read(string fadn, string anio, int estado)
         {
             DataTable dt = new DataTable();
             var mysql = new DBConnection.ConexionMysql();
-            query = String.Format("SELECT idingreso_corriente AS idnumero1 FROM admin_ingreso_corriente " +
-            "WHERE subpadre = '0' OR idingreso_corriente = '1' OR idingreso_corriente = '2';");
+
+            if(estado > 1)
+            {
+                query = String.Format("SELECT idp1 FROM pat_p1 WHERE fadn = '{0}' AND ano = '{1}' AND fkestado = '{2}';",
+                fadn, anio, estado);
+            }
+            else
+            {
+                query = String.Format("SELECT idp1 FROM pat_p1 WHERE fadn = '{0}' AND ano = '{1}' AND fkestado IN (1,2);",
+                fadn, anio, estado);
+            }
             mysql.AbrirConexion();
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
             consulta.Fill(dt);
             mysql.CerrarConexion();
             return dt;
         }
-        public DataTable Part11Read(int id1, string fadn, string anio, int estado)
+
+        public DataTable Part11Read(string fadn, string anio, int estado)
         {
             DataTable dt = new DataTable();
             var mysql = new DBConnection.ConexionMysql();
-            if(estado > 1)
+            for (int i = 1; i < 9; i++)
             {
-                if (id1 == 3)
+                add = "";
+                if (estado > 1)
                 {
-                    add = "WHERE idpadre = '1' AND subpadre = '{0}' AND ic.fadn = '{1}' AND fkestado = '{2}' OR idingreso_corriente = '{0}' OR idingreso_corriente = '1' GROUP BY (ic.codigo);";
+                    if (i == 1)
+                    {
+                        add = "WHERE fkestado = '{3}' AND idpadre = '1' AND subpadre = '{0}' AND ic.fadn = '{1}' AND p.ano = '{2}' OR ic.fadn = 'Confederacion Deportiva Autonoma de Guatemala' OR idingreso_corriente = '{0}' OR idingreso_corriente = '1' GROUP BY (ic.codigo)";
+                    }
+                    if (i == 3 || i == 4 || i == 5 || i == 6 || i == 7)
+                    {
+                        add = "WHERE fkestado = '{3}' AND idpadre = '1' AND subpadre = '{0}' AND ic.fadn = '{1}' AND p.ano = '{2}' OR ic.fadn = 'Confederacion Deportiva Autonoma de Guatemala' OR idingreso_corriente = '{0}' GROUP BY (ic.codigo)";
+                    }
+                    if (i == 8)
+                    {
+                        add = "WHERE fkestado = '{3}' AND idpadre = '2' AND subpadre = '{0}' AND ic.fadn = '{1}' AND p.ano = '{2}' OR ic.fadn = 'Confederacion Deportiva Autonoma de Guatemala' OR idingreso_corriente = '{0}' OR idingreso_corriente = '2' GROUP BY (ic.codigo)";
+                    }
                 }
-                if (id1 >= 4 || id1 <= 7)
+                else
                 {
-                    add = "WHERE idpadre = '1' AND subpadre = '{0}' AND ic.fadn = '{1}' AND fkestado = '{2}' OR idingreso_corriente = '{0}' GROUP BY (ic.codigo);";
+                    if (i == 1)
+                    {
+                        add = "WHERE fkestado IN (1,2) AND idpadre = '1' AND subpadre = '{0}' AND ic.fadn = '{1}' AND p.ano = '{2}' OR ic.fadn = 'Confederacion Deportiva Autonoma de Guatemala' OR idingreso_corriente = '{0}' OR idingreso_corriente = '1' GROUP BY (ic.codigo)";
+                    }
+                    if (i == 3 || i == 4 || i == 5 || i == 6 || i == 7)
+                    {
+                        add = "WHERE fkestado IN (1,2) AND idpadre = '1' AND subpadre = '{0}' AND ic.fadn = '{1}' AND p.ano = '{2}' OR ic.fadn = 'Confederacion Deportiva Autonoma de Guatemala' OR idingreso_corriente = '{0}' GROUP BY (ic.codigo)";
+                    }
+                    if (i == 8)
+                    {
+                        add = "WHERE fkestado IN (1,2) AND idpadre = '2' AND subpadre = '{0}' AND ic.fadn = '{1}' AND p.ano = '{2}' OR ic.fadn = 'Confederacion Deportiva Autonoma de Guatemala' OR idingreso_corriente = '{0}' OR idingreso_corriente = '2' GROUP BY (ic.codigo)";
+                    }
                 }
-                if (id1 == 8)
+                if (add != "")
                 {
-                    add = "WHERE idpadre = '2' AND subpadre = '{0}' AND ic.fadn = '{1}' AND fkestado = '{2}' OR idingreso_corriente = '{0}' OR idingreso_corriente = '2' GROUP BY (ic.codigo);";
+                    query = query + String.Format("SELECT p.idp1 AS idnumero2, ic.codigo AS codigo, " +
+                    "ic.nombre AS nombre, p.col_uno AS monto1, p.col_dos AS monto2, p.col_tres AS monto3 " +
+                    "FROM pat_p1 p RIGHT JOIN admin_ingreso_corriente ic " +
+                    "ON ic.idingreso_corriente = p.fkingreso_corriente " + add, i, fadn, anio, estado);
+                }
+
+                if (i == 8)
+                {
+                    mysql.AbrirConexion();
+                    MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
+                    consulta.Fill(dt);
+                    mysql.CerrarConexion();
+                    return dt;
+                }
+                if(i == 2 || i == 3 || i == 4 || i == 5 || i == 6 || i == 7)
+                {
+                    query = String.Format(query + " UNION ALL ");
                 }
             }
-            else
-            {
-                if (id1 == 3)
-                {
-                    add = "WHERE idpadre = '1' AND subpadre = '{0}' AND ic.fadn = '{1}' AND fkestado IN (1,2) OR idingreso_corriente = '{0}' OR idingreso_corriente = '1' GROUP BY (ic.codigo);";
-                }
-                if (id1 >= 4 || id1 <= 7)
-                {
-                    add = "WHERE idpadre = '1' AND subpadre = '{0}' AND ic.fadn = '{1}' AND fkestado IN (1,2) OR idingreso_corriente = '{0}' GROUP BY (ic.codigo);";
-                }
-                if (id1 == 8)
-                {
-                    add = "WHERE idpadre = '2' AND subpadre = '{0}' AND ic.fadn = '{1}' AND fkestado IN (1,2) OR idingreso_corriente = '{0}' OR idingreso_corriente = '2' GROUP BY (ic.codigo);";
-                }
-            }
-            query = String.Format("SELECT ic.idingreso_corriente AS idnumero2, ic.codigo AS codigo, " +
-            "ic.nombre AS nombre, p.col_uno AS monto1, p.col_dos AS monto2, p.col_tres AS monto3 " +
-            "FROM pat_p1 p RIGHT JOIN admin_ingreso_corriente ic " +
-            "ON ic.idingreso_corriente = p.fkingreso_corriente " + add, id1, fadn, estado);
-            mysql.AbrirConexion();
-            MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
-            consulta.Fill(dt);
-            mysql.CerrarConexion();
             return dt;
         }
 
@@ -107,8 +133,10 @@ namespace PATOnline.Controller.ClasesBD
             DataTable dt = new DataTable();
             var mysql = new DBConnection.ConexionMysql();
 
-            query = String.Format("SELECT idp1, col_uno, col_dos, col_tres, fkingreso_corriente  FROM pat_p1 " +
-            "WHERE idp1 = '{0}'; ", id);
+            query = String.Format("SELECT p.idp1, ic1.idpadre, ic1.subpadre, p.fkingreso_corriente, " +
+            "p.col_uno, p.col_dos, p.col_tres " +
+            "FROM pat_p1 p " +
+            "INNER JOIN admin_ingreso_corriente ic1 ON ic1.idingreso_corriente = p.fkingreso_corriente WHERE p.fkestado = '{0}'", id);
             mysql.AbrirConexion();
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
             consulta.Fill(dt);
@@ -197,8 +225,6 @@ namespace PATOnline.Controller.ClasesBD
             }
             mysql.CerrarConexion();
             return false;
-        }
-
-
+        }      
     }
 }

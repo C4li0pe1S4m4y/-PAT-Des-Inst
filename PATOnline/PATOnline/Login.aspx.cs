@@ -24,6 +24,7 @@ namespace PATOnline.Views.Login
             {
                 if (usuario_password.LoginPassword(TxtUser.Text, TxtPass.Text) == true)
                 {
+                    this.Session["Menu"] = null;
                     this.Session["Usuario"] = this.TxtUser.Text;
                     this.Session["Federacion"] = federacion.NombreFederacion(TxtUser.Text);
                     rol = int.Parse(buscar.NombreRol(TxtUser.Text));

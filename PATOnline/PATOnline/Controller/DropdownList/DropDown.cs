@@ -405,7 +405,7 @@ namespace PATOnline.Controller.DropdownList
             DataTable dt = new DataTable();
             var mysql = new DBConnection.ConexionMysql();
             mysql.AbrirConexion();
-            query = String.Format("SELECT idingreso_corriente, CONCAT(codigo,' | ',nombre) as ingreso FROM admin_ingreso_corriente WHERE subpadre = {0} AND idpadre != 0 AND fadn = '{1}' OR fadn = '';", id, fadn);
+            query = String.Format("SELECT idingreso_corriente, CONCAT(codigo,' | ',nombre) as ingreso FROM admin_ingreso_corriente WHERE subpadre = {0} AND idpadre != 0 AND fadn = '{1}' OR fadn = 'Confederacion Deportiva Autonoma de Guatemala';", id, fadn);
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
             consulta.Fill(dt);
             mysql.CerrarConexion();

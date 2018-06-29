@@ -21,5 +21,6 @@ namespace PATOnline.Models
         public int categoria { get; set; }
         public string fadn { get; set; }
         public string ano { get; set; }
+        public int fkestado { get; set; }
     }
 }
