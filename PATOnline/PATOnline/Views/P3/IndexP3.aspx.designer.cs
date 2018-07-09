@@ -31,21 +31,201 @@ namespace PATOnline.Views.P3 {
         protected global::System.Web.UI.WebControls.Label anio;
         
         /// <summary>
-        /// gvP1 control.
+        /// btPDF control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvP1;
+        protected global::System.Web.UI.WebControls.LinkButton btPDF;
         
         /// <summary>
-        /// gvP3 control.
+        /// btExcel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvP3;
+        protected global::System.Web.UI.WebControls.LinkButton btExcel;
+        
+        /// <summary>
+        /// crearObservacionRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl crearObservacionRechazo;
+        
+        /// <summary>
+        /// idIntroObservacionRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label idIntroObservacionRechazo;
+        
+        /// <summary>
+        /// txtCrearObservacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtCrearObservacion;
+        
+        /// <summary>
+        /// cancelarObservacionRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cancelarObservacionRechazo;
+        
+        /// <summary>
+        /// guardarObservacionRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton guardarObservacionRechazo;
+        
+        /// <summary>
+        /// btcrearObservacionRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btcrearObservacionRechazo;
+        
+        /// <summary>
+        /// crearObservacionSinRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl crearObservacionSinRechazo;
+        
+        /// <summary>
+        /// idIntroObservacionSinRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label idIntroObservacionSinRechazo;
+        
+        /// <summary>
+        /// txtCrearObservacionSinRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtCrearObservacionSinRechazo;
+        
+        /// <summary>
+        /// cancelObservacionSinRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cancelObservacionSinRechazo;
+        
+        /// <summary>
+        /// btObservacionSinRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btObservacionSinRechazo;
+        
+        /// <summary>
+        /// btObservacionSinRechazoUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btObservacionSinRechazoUpdate;
+        
+        /// <summary>
+        /// cargaGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel cargaGrid;
+        
+        /// <summary>
+        /// gridFADN1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridFADN1;
+        
+        /// <summary>
+        /// gridFADN2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridFADN2;
+        
+        /// <summary>
+        /// mostrarObservacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mostrarObservacion;
+        
+        /// <summary>
+        /// listObservacionesFADN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView listObservacionesFADN;
+        
+        /// <summary>
+        /// listObservacionesAcompaniamiento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView listObservacionesAcompaniamiento;
+        
+        /// <summary>
+        /// listObservacionesEvaluacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView listObservacionesEvaluacion;
+        
+        /// <summary>
+        /// cancelMostrarObservacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cancelMostrarObservacion;
     }
 }

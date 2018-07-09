@@ -307,6 +307,19 @@ namespace PATOnline
                                 C43_CI.Visible = true;
                                 C43_CI.HRef = "~/Views/C4/IndexC4_3.aspx";
                                 break;
+
+                            case "ENTRENADORES":
+                                PAT.Visible = true;
+                                PARTE_4.Visible = true;
+                                ENTRENADOR.Visible = true;
+                                ENTRENADOR.HRef = "~/Views/A-Entrenadores/Index_Entrenador.aspx";
+                                break;
+                            case "ARBITROS":
+                                PAT.Visible = true;
+                                PARTE_4.Visible = true;
+                                ARBITRO.Visible = true;
+                                ARBITRO.HRef = "~/Views/A-Arbitros/Index_Arbitros.aspx";
+                                break;
                         }
                     }
                 }
@@ -350,7 +363,6 @@ namespace PATOnline
             P1_INGRESOS.Visible = false;
             P2_EGRESOS_POR_RENGLÓN.Visible = false;
             P3_EGRESOS_POR_ACTIVIDAD.Visible = false;
-            P3_EGRESOS_POR_ACTIVIDAD.HRef = "~/Views/P3/IndexP3.aspx";
 
             PARTE_3.Visible = false;
             CPEINDEX.Visible = false;
@@ -374,6 +386,10 @@ namespace PATOnline
             C41_CEAPD.Visible = false;
             C42_CP.Visible = false;
             C43_CI.Visible = false;
+
+            PARTE_4.Visible = false;
+            ENTRENADOR.Visible = false;
+            ARBITRO.Visible = false;
         }
 
         public void countarInformacion()

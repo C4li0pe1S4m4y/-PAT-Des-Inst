@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using PATOnline.Models;
+using PATOnline.DataSet;
 
 namespace PATOnline.Controller.ClasesBD
 {
@@ -185,5 +186,34 @@ namespace PATOnline.Controller.ClasesBD
                 return false;
             }
         }
+
+        public DataTable IntroduccionBaseLegalExiste(string fadn, string ano, int estado)
+        {
+            DataTable dt = new DataTable();
+            var mysql = new DBConnection.ConexionMysql();
+            query = String.Format("SELECT idinformacion " +
+            "FROM pat_informacion WHERE fadn = '{0}' AND ano = '{1}' AND fkestado != '{2}' OR fkestado != '13'", fadn, ano, estado);
+
+            mysql.AbrirConexion();
+            MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
+            consulta.Fill(dt);
+            mysql.CerrarConexion();
+            return dt;
+        }
+
+        public System.Data.DataSet imprimirIntroducionBaseLegal(string fadn, string anio)
+        {
+            var mysql = new DBConnection.ConexionMysql();
+            dataSIntroduccion ds = new dataSIntroduccion();
+            query = String.Format("SELECT idinformacion, introduccion, marco_juridico, afiliacion_organizacion " +
+            "FROM pat_informacion WHERE fadn = '{0}' AND ano = '{1}' AND fkestado = '13';", fadn, anio);
+
+            mysql.AbrirConexion();
+            MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
+            consulta.Fill(ds, "Reporte");
+            mysql.CerrarConexion();
+
+            return ds;
+        } 
     }
 }

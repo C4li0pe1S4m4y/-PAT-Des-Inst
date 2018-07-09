@@ -25,7 +25,7 @@
           <h4>
             <asp:Label runat="server" ForeColor="Black" Text="FADN:"></asp:Label></h4>
         </div>
-        <div class="col-md-7" style="border: solid; border-color: #99CCCC">
+        <div class="col-md-10" style="border: solid; border-color: #99CCCC">
           <h4>
             <asp:Label runat="server" ForeColor="Black" ID="fadn"></asp:Label></h4>
         </div>
@@ -35,7 +35,7 @@
           <h4>
             <asp:Label runat="server" ForeColor="Black" Text="AÑO:"></asp:Label></h4>
         </div>
-        <div class="col-md-7" style="border: solid; border-color: #99CCCC">
+        <div class="col-md-10" style="border: solid; border-color: #99CCCC">
           <h4>
             <asp:Label runat="server" ForeColor="Black" ID="anio"></asp:Label></h4>
         </div>
@@ -150,17 +150,17 @@
               </asp:UpdatePanel>
             </div>
 
-          <div class="card-footer">
-            <asp:LinkButton runat="server" ID="cancelCrearP1Ingreso" type="button" class="btn btn-info btn-outline-danger btn-lg" CausesValidation="false" OnClick="cancelCrearP1Ingreso_Click">
+            <div class="card-footer">
+              <asp:LinkButton runat="server" ID="cancelCrearP1Ingreso" type="button" class="btn btn-info btn-outline-danger btn-lg" CausesValidation="false" OnClick="cancelCrearP1Ingreso_Click">
                 <span class="fa fa-close"></span>
-            </asp:LinkButton>
-            <asp:LinkButton runat="server" ValidationGroup="validarCrearP1Ingreso" ID="crearP1Ingreso" type="button" class="btn btn-info btn-outline-primary btn-lg float-right" OnClick="crearP1Ingreso_Click">
+              </asp:LinkButton>
+              <asp:LinkButton runat="server" ValidationGroup="validarCrearP1Ingreso" ID="crearP1Ingreso" type="button" class="btn btn-info btn-outline-primary btn-lg float-right" OnClick="crearP1Ingreso_Click">
                 <span class="fa fa-save"></span>
-            </asp:LinkButton>
-            <asp:LinkButton runat="server" CausesValidation="false" ID="agregarCodigo" type="button" class="btn btn-info btn-outline-primary btn-lg float-right" OnClick="agregarCodigo_Click">
+              </asp:LinkButton>
+              <asp:LinkButton runat="server" CausesValidation="false" ID="agregarCodigo" type="button" class="btn btn-info btn-outline-primary btn-lg float-right" OnClick="agregarCodigo_Click">
                 AGREGAR CÓDIGO
-            </asp:LinkButton>
-          </div>
+              </asp:LinkButton>
+            </div>
           </div>
         </div>
       </div>
@@ -176,10 +176,9 @@
               </div>
             </div>
 
-            <asp:UpdatePanel runat="server" ID="updateEditP1Ingreso">
-              <ContentTemplate>
-
-                <div class="card-body pad" style="display: block;">
+            <div class="card-body pad" style="display: block;">
+              <asp:UpdatePanel runat="server" ID="updateEditP1Ingreso">
+                <ContentTemplate>
                   <div class="row">
                     <div class="col-md-12" style="text-align: center;">
                       <h3>
@@ -228,10 +227,9 @@
                         CssClass="text-danger" ErrorMessage="* El Monto de la Columna No. 3 es obligatorio" />
                     </div>
                   </div>
-                </div>
-
-              </ContentTemplate>
-            </asp:UpdatePanel>
+                </ContentTemplate>
+              </asp:UpdatePanel>
+            </div>
 
             <div class="card-footer">
               <asp:LinkButton runat="server" ID="cancelEditP1Ingreso" type="button" class="btn btn-info btn-outline-danger btn-lg" CausesValidation="false" OnClick="cancelEditP1Ingreso_Click">
@@ -297,7 +295,7 @@
             </div>
 
             <div class="card-footer">
-              <asp:LinkButton runat="server" ID="cancelCrearCodigo" type="button" class="btn btn-info btn-outline-danger btn-lg" OnClick="cancelCrearCodigo_Click" CausesValidation="false">
+              <asp:LinkButton runat="server" ID="cancelCrearCodigo" type="button" class="btn btn-info btn-outline-danger btn-lg" CausesValidation="false" OnClick="cancelCrearCodigo_Click">
                 <span class="fa fa-close"></span>
               </asp:LinkButton>
               <asp:LinkButton runat="server" ValidationGroup="validarObservacion" ID="crearCodigo" type="button" class="btn btn-info btn-outline-primary btn-lg float-right" OnClick="crearCodigo_Click">
@@ -414,66 +412,58 @@
             </div>
             <div class="card-body" style="overflow-x: auto;">
               <div class="col-md-12">
-                <asp:GridView ID="gridFADN" runat="server" AutoGenerateColumns="False" DataKeyNames="idnumero1" OnRowDataBound="gridFADN_RowDataBound" Width="1000%"
-                  CssClass="table table-bordered dataTable" HeaderStyle-BackColor="#e8f2fc" ShowHeader="false">
+                <asp:GridView ID="gridFADN2" runat="server" AutoGenerateColumns="False" DataKeyNames="idnumero2" Width="1000%" OnRowDataBound="gridFADN2_RowDataBound" OnRowCommand="gridFADN2_RowCommand"
+                  CssClass="table table-bordered dataTable" GridLines="None" HeaderStyle-BackColor="#e8f2fc" ShowHeader="false">
+                  <HeaderStyle CssClass="gradiant" />
                   <Columns>
-                    <asp:TemplateField>
+                    <asp:BoundField DataField="idnumero2" />
+                    <asp:BoundField DataField="codigo">
+                      <ItemStyle Width="100px" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="nombre">
+                      <ItemStyle Width="500px" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="monto1" SortExpression="monto1" DataFormatString="{0:c}">
+                      <ItemStyle Width="126px" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="monto2" SortExpression="monto2" DataFormatString="{0:c}">
+                      <ItemStyle Width="125px" />
+                    </asp:BoundField>
+                    <asp:BoundField DataField="monto3" SortExpression="monto3" DataFormatString="{0:c}">
+                      <ItemStyle Width="146px" />
+                    </asp:BoundField>
+                    <asp:TemplateField HeaderText="OPCIONES">
                       <ItemTemplate>
-                        <asp:GridView ID="gridFADN2" runat="server" AutoGenerateColumns="False" DataKeyNames="idnumero2" Width="1000%"
-                          CssClass="table table-bordered dataTable" GridLines="None" HeaderStyle-BackColor="#e8f2fc" OnRowCommand="gridFADN2_RowCommand" ShowHeader="false">
-                          <HeaderStyle CssClass="gradiant" />
-                          <Columns>
-                            <asp:BoundField DataField="idnumero2" />
-                            <asp:BoundField DataField="codigo">
-                              <ItemStyle Width="100px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="nombre">
-                              <ItemStyle Width="500px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="monto1" SortExpression="monto1" DataFormatString="{0:c}">
-                              <ItemStyle Width="126px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="monto2" SortExpression="monto2" DataFormatString="{0:c}">
-                              <ItemStyle Width="125px" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="monto3" SortExpression="monto3" DataFormatString="{0:c}">
-                              <ItemStyle Width="146px" />
-                            </asp:BoundField>
-                            <asp:TemplateField>
-                              <ItemTemplate>
-                                <asp:LinkButton ID="btEditar" runat="server" type="button" class="btn btn-block btn-warning btn-sm" CausesValidation="false"
-                                  CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
-                                          <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-edit"></span>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="btVer" runat="server" type="button" class="btn btn-block btn-success btn-sm" CausesValidation="false"
-                                  CommandName="Mostrar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
-                                          <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-eye"></span>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="btEliminar" runat="server" type="button" class="btn btn-block btn-danger btn-sm"
-                                  CommandName="Eliminar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
-                                    <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-trash-o"></span>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="btObservacion" runat="server" type="button" class="btn btn-block btn-warning btn-sm" CausesValidation="false"
-                                  CommandName="Observacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
-                                          <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-comment"></span>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="btAprobar" runat="server" type="button" class="btn btn-block btn-success btn-sm" CausesValidation="false"
-                                  CommandName="Aprobar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
-                                          <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-thumbs-up"></span>
-                                </asp:LinkButton>
-                                <asp:LinkButton ID="btEnviar" runat="server" type="button" class="btn btn-block btn-info btn-sm" CausesValidation="false"
-                                  CommandName="Enviar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
-                                          <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-send"></span>
-                                </asp:LinkButton>
-                              </ItemTemplate>
-                            </asp:TemplateField>
-                          </Columns>
-                        </asp:GridView>
+                        <asp:LinkButton ID="btEditar" runat="server" type="button" class="btn btn-block btn-warning btn-sm" CausesValidation="false"
+                          CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
+                                  <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-edit"></span>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="btVer" runat="server" type="button" class="btn btn-block btn-success btn-sm" CausesValidation="false"
+                          CommandName="Mostrar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
+                                  <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-eye"></span>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="btEliminar" runat="server" type="button" class="btn btn-block btn-danger btn-sm"
+                          CommandName="Eliminar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
+                            <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-trash-o"></span>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="btObservacion" runat="server" type="button" class="btn btn-block btn-warning btn-sm" CausesValidation="false"
+                          CommandName="Observacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
+                                  <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-comment"></span>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="btAprobar" runat="server" type="button" class="btn btn-block btn-success btn-sm" CausesValidation="false"
+                          CommandName="Aprobar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
+                                  <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-thumbs-up"></span>
+                        </asp:LinkButton>
+                        <asp:LinkButton ID="btEnviar" runat="server" type="button" class="btn btn-block btn-info btn-sm" CausesValidation="false"
+                          CommandName="Enviar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
+                                  <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-send"></span>
+                        </asp:LinkButton>
                       </ItemTemplate>
                     </asp:TemplateField>
                   </Columns>
                 </asp:GridView>
               </div>
+
               <div class="col-md-12">
                 <asp:GridView ID="gridFADN3" runat="server" AutoGenerateColumns="False" DataKeyNames="idnumero2" Width="1000%"
                   CssClass="table table-bordered dataTable" HeaderStyle-BackColor="#e8f2fc" GridLines="None" ShowHeader="false">

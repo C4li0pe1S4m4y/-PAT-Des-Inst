@@ -13,94 +13,130 @@ namespace PATOnline.Views.CPE {
     public partial class IndexPE1 {
         
         /// <summary>
-        /// lblTitulo2 control.
+        /// btPDF control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTitulo2;
+        protected global::System.Web.UI.WebControls.LinkButton btPDF;
         
         /// <summary>
-        /// Message control.
+        /// btExcel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Message;
+        protected global::System.Web.UI.WebControls.LinkButton btExcel;
         
         /// <summary>
-        /// TxtCodigo control.
+        /// crearPE1New control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtCodigo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl crearPE1New;
         
         /// <summary>
-        /// DropActividad control.
+        /// nuevoPE1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropActividad;
+        protected global::System.Web.UI.WebControls.LinkButton nuevoPE1;
         
         /// <summary>
-        /// TxtResultado control.
+        /// mostrarCrearPE1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtResultado;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mostrarCrearPE1;
         
         /// <summary>
-        /// TxtRegistro control.
+        /// txtCrearCodigo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtRegistro;
+        protected global::System.Web.UI.WebControls.TextBox txtCrearCodigo;
         
         /// <summary>
-        /// DropIDia control.
+        /// dropCrearActividad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropIDia;
+        protected global::System.Web.UI.WebControls.DropDownList dropCrearActividad;
         
         /// <summary>
-        /// DropIMes control.
+        /// txtCrearPresupuesto control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropIMes;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCrearPresupuesto;
         
         /// <summary>
-        /// DropFDia control.
+        /// txtCrearResultado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropFDia;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtCrearResultado;
         
         /// <summary>
-        /// DropFMes control.
+        /// txtCrearRegistro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropFMes;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtCrearRegistro;
+        
+        /// <summary>
+        /// dropCrearDiaInicio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropCrearDiaInicio;
+        
+        /// <summary>
+        /// dropCrearMesInicio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropCrearMesInicio;
+        
+        /// <summary>
+        /// dropCrearDiaFin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropCrearDiaFin;
+        
+        /// <summary>
+        /// dropCrearMesFin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropCrearMesFin;
         
         /// <summary>
         /// UpdatePanelPais control.
@@ -112,66 +148,372 @@ namespace PATOnline.Views.CPE {
         protected global::System.Web.UI.UpdatePanel UpdatePanelPais;
         
         /// <summary>
-        /// DropPais control.
+        /// dropCrearPais control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropPais;
+        protected global::System.Web.UI.WebControls.DropDownList dropCrearPais;
         
         /// <summary>
-        /// DropDepartamento control.
+        /// dropCrearDepartamento control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDepartamento;
+        protected global::System.Web.UI.WebControls.DropDownList dropCrearDepartamento;
         
         /// <summary>
-        /// TxtLugar control.
+        /// txtCrearLugar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtLugar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCrearLugar;
         
         /// <summary>
-        /// TxtPresupuesto control.
+        /// cancelCrearPE1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtPresupuesto;
+        protected global::System.Web.UI.WebControls.LinkButton cancelCrearPE1;
         
         /// <summary>
-        /// SaveIngreso control.
+        /// crearPE1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton SaveIngreso;
+        protected global::System.Web.UI.WebControls.LinkButton crearPE1;
         
         /// <summary>
-        /// gvP2 control.
+        /// mostrarEditPE1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvP2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mostrarEditPE1;
         
         /// <summary>
-        /// gvP3 control.
+        /// idEditPE1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvP3;
+        protected global::System.Web.UI.WebControls.Label idEditPE1;
+        
+        /// <summary>
+        /// txtEditCodigo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEditCodigo;
+        
+        /// <summary>
+        /// dropEditActividad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropEditActividad;
+        
+        /// <summary>
+        /// txtEditPresupuesto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEditPresupuesto;
+        
+        /// <summary>
+        /// txtEditResultado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtEditResultado;
+        
+        /// <summary>
+        /// txtEditRegistro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtEditRegistro;
+        
+        /// <summary>
+        /// dropEditDiaInicio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropEditDiaInicio;
+        
+        /// <summary>
+        /// dropEditMesInicio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropEditMesInicio;
+        
+        /// <summary>
+        /// dropEditDiaFin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropEditDiaFin;
+        
+        /// <summary>
+        /// dropEditMesFin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropEditMesFin;
+        
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// dropEditPais control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropEditPais;
+        
+        /// <summary>
+        /// dropEditDepartamento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropEditDepartamento;
+        
+        /// <summary>
+        /// txtEditLugar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEditLugar;
+        
+        /// <summary>
+        /// cancelEditPE1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cancelEditPE1;
+        
+        /// <summary>
+        /// editPE1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton editPE1;
+        
+        /// <summary>
+        /// crearObservacionRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl crearObservacionRechazo;
+        
+        /// <summary>
+        /// idIntroObservacionRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label idIntroObservacionRechazo;
+        
+        /// <summary>
+        /// txtCrearObservacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtCrearObservacion;
+        
+        /// <summary>
+        /// cancelarObservacionRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cancelarObservacionRechazo;
+        
+        /// <summary>
+        /// guardarObservacionRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton guardarObservacionRechazo;
+        
+        /// <summary>
+        /// btcrearObservacionRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btcrearObservacionRechazo;
+        
+        /// <summary>
+        /// crearObservacionSinRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl crearObservacionSinRechazo;
+        
+        /// <summary>
+        /// idIntroObservacionSinRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label idIntroObservacionSinRechazo;
+        
+        /// <summary>
+        /// txtCrearObservacionSinRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtCrearObservacionSinRechazo;
+        
+        /// <summary>
+        /// cancelObservacionSinRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cancelObservacionSinRechazo;
+        
+        /// <summary>
+        /// btObservacionSinRechazo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btObservacionSinRechazo;
+        
+        /// <summary>
+        /// btObservacionSinRechazoUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btObservacionSinRechazoUpdate;
+        
+        /// <summary>
+        /// gridFADN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridFADN;
+        
+        /// <summary>
+        /// gridFADNTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridFADNTotal;
+        
+        /// <summary>
+        /// mostrarObservacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mostrarObservacion;
+        
+        /// <summary>
+        /// listObservacionesFADN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView listObservacionesFADN;
+        
+        /// <summary>
+        /// listObservacionesAcompaniamiento control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView listObservacionesAcompaniamiento;
+        
+        /// <summary>
+        /// listObservacionesEvaluacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView listObservacionesEvaluacion;
+        
+        /// <summary>
+        /// cancelMostrarObservacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cancelMostrarObservacion;
     }
 }

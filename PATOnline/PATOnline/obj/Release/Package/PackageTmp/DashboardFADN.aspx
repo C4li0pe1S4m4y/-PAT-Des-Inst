@@ -2,6 +2,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
   <script src="Content/Highcharts-6.1.0/code/highcharts.js"></script>
+  <script src="Content/Highcharts-6.1.0/code/highcharts-3d.js"></script>
+  <script src="Content/Highcharts-6.1.0/code/modules/xrange.js"></script>
+  <script src="Content/Highcharts-6.1.0/code/modules/export-data.js"></script>
+  <script src="Content/Highcharts-6.1.0/code/modules/exporting.js"></script>
 
   <div class="content-header">
     <div class="container-fluid">
@@ -13,13 +17,13 @@
     </div>
   </div>
 
-  <section class="content">
+  <section class="content" runat="server" id="mostrarAsignados">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
           <div class="card card-success">
             <div class="card-header" style="text-align: center;">
-              <h3 class="card-title"><span class="info-box-number">MOSTRAR INFORMACIÓN</span></h3>
+              <h3 class="card-title"><span class="info-box-number">FEDERACIONES / ASOCIACIONES ASIGNADAS</span></h3>
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-widget="collapse">
                   <i class="fa fa-minus"></i>
@@ -50,57 +54,253 @@
   <section class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12" style="width: 800px; height: 500px;">
-          <div id="container" class="chart"></div>
+        <div class="col-md-12">
+          <div class="card card-outline card-warning">
+            <div class="card-header">
+              <h3 class="card-title"><span class="info-box-number">GRÁFICAS DE PORCENTAJE DE IMPRESIÓN PAT</span></h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body pad" style="display: block;">
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="graficaPorcentajeEstado"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-<script type="text/javascript">
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-outline card-info">
+            <div class="card-header">
+              <h3 class="card-title"><span class="info-box-number">GRÁFICAS DE CANTIDAD DE DOCUMENTOS APROBADOS O RECHAZADOS</span></h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
 
-  Highcharts.chart('container', {
-    chart: {
-      type: 'column'
-    },
-    title: {
-      text: 'Documentos del PAT'
-    },
-    subtitle: {
-      text: 'Aprovados / Rechazados'
-    },
-    xAxis: {
-      categories: [
-        'INTRODUCCIÓN',
-        'ORGANIGRAMA',
-        'DIRIGENTES DEPORTIVOS',
-        'LOGROS Y BRECHAS',
-        'RESULTADOS Y POTENCIAS',
-        'FODA Y BASE LEGAL'
-      ],
-      crosshair: true
-    },
-    yAxis: {
-      min: 0,
+            <div class="card-body pad" style="display: block;">
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="graficaComite"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <hr />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="graficaAcompaniamiento"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <hr />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div id="graficaEvaluador"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="text/javascript">
+
+    Highcharts.chart('graficaComite', {
+      chart: {
+        type: 'column'
+      },
       title: {
-        text: 'cantidad'
-      }
-    },
-    tooltip: {
-      headerFormat: '<span style="font-size:10px">{point.key} </span><table>',
-      pointFormat: '<tr><td style="color:{series.color};padding:0"> {series.name}: </td>' +
-        '<td style="padding:0"><b> {point.y:.f} total</b></td></tr>',
-      footerFormat: '</table>',
-      shared: true,
-      useHTML: true
-    },
-    plotOptions: {
-      column: {
-        pointPadding: 0.2,
-        borderWidth: 0
-      }
-    },
-    series: [<%=graficasAprobadoRechazadoIntroduccion()%>]
-  });
-		</script>
+        text: 'Comite Ejecutivo'
+      },
+      subtitle: {
+        text: 'Aprovados / Rechazados'
+      },
+      xAxis: {
+        categories: [
+          'INTRODUCCIÓN',
+          'ORGANIGRAMA',
+          'DIRIGENTES DEPORTIVOS',
+          'LOGROS',
+          'BRECHAS',
+          'RESULTADOS',
+          'POTENCIAS',
+          'FODA Y BASE LEGAL'
+        ],
+        crosshair: true
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'cantidad'
+        }
+      },
+      tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key} </span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0"> {series.name}: </td>' +
+          '<td style="padding:0"><b> {point.y:.f} total</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+      },
+      plotOptions: {
+        column: {
+          pointPadding: 0.2,
+          borderWidth: 0
+        }
+      },
+      series: [<%=graficasAprobadoRechazadoComite()%>]
+    });
+
+    Highcharts.chart('graficaAcompaniamiento', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Acompañamiento'
+      },
+      subtitle: {
+        text: 'Aprovados / Rechazados'
+      },
+      xAxis: {
+        categories: [
+          'INTRODUCCIÓN',
+          'ORGANIGRAMA',
+          'DIRIGENTES DEPORTIVOS',
+          'LOGROS',
+          'BRECHAS',
+          'RESULTADOS',
+          'POTENCIAS',
+          'FODA Y BASE LEGAL'
+        ],
+        crosshair: true
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'cantidad'
+        }
+      },
+      tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key} </span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0"> {series.name}: </td>' +
+          '<td style="padding:0"><b> {point.y:.f} total</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+      },
+      plotOptions: {
+        column: {
+          pointPadding: 0.2,
+          borderWidth: 0
+        }
+      },
+      series: [<%=graficasAprobadoRechazadoAcompaniamiento()%>]
+    });
+
+    Highcharts.chart('graficaEvaluador', {
+      chart: {
+        type: 'column'
+      },
+      title: {
+        text: 'Evaluador'
+      },
+      subtitle: {
+        text: 'Aprovados / Rechazados'
+      },
+      xAxis: {
+        categories: [
+          'INTRODUCCIÓN',
+          'ORGANIGRAMA',
+          'DIRIGENTES DEPORTIVOS',
+          'LOGROS',
+          'BRECHAS',
+          'RESULTADOS',
+          'POTENCIAS',
+          'FODA Y BASE LEGAL'
+        ],
+        crosshair: true
+      },
+      yAxis: {
+        min: 0,
+        title: {
+          text: 'cantidad'
+        }
+      },
+      tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key} </span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0"> {series.name}: </td>' +
+          '<td style="padding:0"><b> {point.y:.f} total</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+      },
+      plotOptions: {
+        column: {
+          pointPadding: 0.2,
+          borderWidth: 0
+        }
+      },
+      series: [<%=graficasAprobadoRechazadoEvaluador()%>]
+    });
+
+    Highcharts.chart('graficaPorcentajeEstado', {
+      chart: {
+        type: 'xrange'
+      },
+      title: {
+        text: 'Estado de Impresión'
+      },
+      xAxis: {
+        crosshair: true,
+        type: 'column'
+      },
+      yAxis: {
+        title: {
+          text: ''
+        },
+        categories: [
+          'INTRODUCCIÓN',
+          'ORGANIGRAMA',
+          'DIRIGENTES DEPORTIVOS',
+          'LOGROS',
+          'BRECHAS',
+          'RESULTADOS',
+          'POTENCIAS',
+          'FODA Y BASE LEGAL'
+        ],
+        reversed: true
+      },
+      series: [{
+        name: 'Imprimir',
+        pointWidth: 16,
+        data: [<%=graficasPorcentajeEstado()%>],
+        dataLabels: {
+          enabled: true
+        }
+      }]
+
+    });
+  </script>
 </asp:Content>

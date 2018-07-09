@@ -626,18 +626,6 @@ namespace PATOnline.Views.LogroBrecha
                             }
 
                             break;
-
-                        case "PDF":
-                            break;
-
-                        case "Excel":
-                            break;
-
-                        case "Rechazar":
-                            break;
-
-                        case "Crear":
-                            break;
                     }
                 }
             }
@@ -678,7 +666,7 @@ namespace PATOnline.Views.LogroBrecha
                         for (int i = 0; i < data.Rows.Count; i++)
                         {
                             idIntroObservacionSinRechazoPuesto.Text = data.Rows[i][0].ToString();
-                            txtCrearObservacionSinRechazo.Value = data.Rows[i][0].ToString();
+                            txtCrearObservacionSinRechazo.Value = data.Rows[i][1].ToString();
                         }
 
                         idIntroObservacionSinRechazoPuesto.Visible = false;
@@ -782,6 +770,11 @@ namespace PATOnline.Views.LogroBrecha
 
                 CargarGrid();
             }
+            if (e.CommandName == "Eliminar")
+            {
+                pat.PuestoLogroUpdate(modelop, int.Parse(row.Cells[0].Text), 12);
+                CargarGrid();
+            }
             gridPuestoLogrado.Columns[0].Visible = false;
         }
 
@@ -857,18 +850,6 @@ namespace PATOnline.Views.LogroBrecha
                             }
 
                             break;
-
-                        case "PDF":
-                            break;
-
-                        case "Excel":
-                            break;
-
-                        case "Rechazar":
-                            break;
-
-                        case "Crear":
-                            break;
                     }
                 }
             }
@@ -910,7 +891,7 @@ namespace PATOnline.Views.LogroBrecha
                         for (int i = 0; i < data.Rows.Count; i++)
                         {
                             idIntroObservacionSinRechazoBrecha.Text = data.Rows[i][0].ToString();
-                            txtCrearObservacionSinRechazo.Value = data.Rows[i][0].ToString();
+                            txtCrearObservacionSinRechazo.Value = data.Rows[i][1].ToString();
                         }
 
                         idIntroObservacionSinRechazoBrecha.Visible = false;
@@ -1012,6 +993,11 @@ namespace PATOnline.Views.LogroBrecha
                         break;
                 }
 
+                CargarGrid();
+            }
+            if (e.CommandName == "Eliminar")
+            {
+                pat.BrechaUpdate(modelob, int.Parse(row.Cells[0].Text), 12);
                 CargarGrid();
             }
             gridAnalisisBrecha.Columns[0].Visible = false;

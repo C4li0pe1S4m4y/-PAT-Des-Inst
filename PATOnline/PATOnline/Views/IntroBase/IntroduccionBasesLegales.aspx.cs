@@ -5,6 +5,9 @@ using PATOnline.Controller.Read;
 using PATOnline.Models;
 using System.Web.UI;
 using System.Data;
+using PATOnline.imprimirPAT;
+using CrystalDecisions.Shared;
+using System.IO;
 
 namespace PATOnline.Views.IntroBase
 {
@@ -22,6 +25,7 @@ namespace PATOnline.Views.IntroBase
 
         ReadRolPermiso rol = new ReadRolPermiso();
         ReadBoton boton = new ReadBoton();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -55,8 +59,10 @@ namespace PATOnline.Views.IntroBase
             //Boton
             nuevaIntroBaseLegal.Visible = false;
             crearIntroBaseLegal.Visible = false;
-            btPDF.Visible = false;
-            btExcel.Visible = false;
+            btPDFIntroduccion.Visible = false;
+            btPDFBaseLegal.Visible = false;
+            btExcelIntroduccion.Visible = false;
+            btExcelBaseLegal.Visible = false;
             guardarObservacionRechazo.Visible = false;
             btcrearObservacionRechazo.Visible = false;
             btObservacionSinRechazoUpdate.Visible = false;
@@ -71,7 +77,7 @@ namespace PATOnline.Views.IntroBase
                     gridFADN.Columns[0].Visible = true;
                     gridFADN.DataSource = clase.IBLRead(federacion, anio, 1);
                     gridFADN.DataBind();
-                    
+
                     foreach (GridViewRow row in gridFADN.Rows)
                     {
                         if (row.RowType == DataControlRowType.DataRow)
@@ -171,11 +177,13 @@ namespace PATOnline.Views.IntroBase
                                 break;
 
                             case "PDF":
-                                btPDF.Visible = true;
+                                btPDFIntroduccion.Visible = true;
+                                btPDFBaseLegal.Visible = true;
                                 break;
 
                             case "Excel":
-                                btExcel.Visible = true;
+                                btExcelIntroduccion.Visible = true;
+                                btExcelBaseLegal.Visible = true;
                                 break;
 
                             case "Rechazar":
@@ -301,11 +309,13 @@ namespace PATOnline.Views.IntroBase
                                 break;
 
                             case "PDF":
-                                btPDF.Visible = true;
+                                btPDFIntroduccion.Visible = true;
+                                btPDFBaseLegal.Visible = true;
                                 break;
 
                             case "Excel":
-                                btExcel.Visible = true;
+                                btExcelIntroduccion.Visible = true;
+                                btExcelBaseLegal.Visible = true;
                                 break;
 
                             case "Rechazar":
@@ -438,11 +448,13 @@ namespace PATOnline.Views.IntroBase
                                 break;
 
                             case "PDF":
-                                btPDF.Visible = true;
+                                btPDFIntroduccion.Visible = true;
+                                btPDFBaseLegal.Visible = true;
                                 break;
 
                             case "Excel":
-                                btExcel.Visible = true;
+                                btExcelIntroduccion.Visible = true;
+                                btExcelBaseLegal.Visible = true;
                                 break;
 
                             case "Rechazar":
@@ -576,11 +588,13 @@ namespace PATOnline.Views.IntroBase
                                 break;
 
                             case "PDF":
-                                btPDF.Visible = true;
+                                btPDFIntroduccion.Visible = true;
+                                btPDFBaseLegal.Visible = true;
                                 break;
 
                             case "Excel":
-                                btExcel.Visible = true;
+                                btExcelIntroduccion.Visible = true;
+                                btExcelBaseLegal.Visible = true;
                                 break;
 
                             case "Rechazar":
@@ -620,13 +634,26 @@ namespace PATOnline.Views.IntroBase
                 modelo.fadn = Convert.ToString(Session["Federacion"]);
                 modelo.ano = year;
 
-                clase.InfoCreate(modelo, Session["Usuario"].ToString());
-                mostrarIntroBaseLegal.Visible = false;
-                mostrarInformacionUsuario(Session["Usuario"].ToString(), Session["Federacion"].ToString(), year);
-                TxtIntroduccion.Value = null;
-                TxtMarco.Value = null;
-                TxtAfiliacion.Value = null;
-                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue creada', 'success');", true);
+                DataTable data = new DataTable();
+                data = clase.IntroduccionBaseLegalExiste(Session["Federacion"].ToString(), year, 12);
+
+                if (data.Rows.Count > 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Advertencia!', 'La información ya existe', 'warning');", true);
+                    TxtIntroduccion.Value = null;
+                    TxtMarco.Value = null;
+                    TxtAfiliacion.Value = null;
+                }
+                else
+                {
+                    clase.InfoCreate(modelo, Session["Usuario"].ToString());
+                    mostrarIntroBaseLegal.Visible = false;
+                    mostrarInformacionUsuario(Session["Usuario"].ToString(), Session["Federacion"].ToString(), year);
+                    TxtIntroduccion.Value = null;
+                    TxtMarco.Value = null;
+                    TxtAfiliacion.Value = null;
+                    ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue creada', 'success');", true);
+                }
             }
             catch
             {
@@ -1043,6 +1070,170 @@ namespace PATOnline.Views.IntroBase
         protected void cancelVistaPrevia_Click(object sender, EventArgs e)
         {
             vistaPreviaFODABE.Visible = false;
+        }
+
+        protected void btPDFIntroduccion_Click(object sender, EventArgs e)
+        {
+            string archivo = "Introduccion";
+            string extension = ".pdf";
+            string formato = "pdf";
+
+            ExportOptions CrExportOptions;
+            DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+            PdfFormatOptions CrFormatTypeOptions = new PdfFormatOptions();
+            imprimirIntroduccion objRpt = new imprimirIntroduccion();
+            objRpt.SetDataSource(clase.imprimirIntroducionBaseLegal(Session["Federacion"].ToString(), year));
+
+            CrDiskFileDestinationOptions.DiskFileName = "C:\\inetpub\\wwwroot\\PATOnline\\FileTemp\\" + archivo + year + extension;
+
+            CrExportOptions = objRpt.ExportOptions;
+            {
+                CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                CrExportOptions.FormatOptions = CrFormatTypeOptions;
+            }
+            objRpt.Export();
+            FileInfo file = new FileInfo("C:\\inetpub\\wwwroot\\PATOnline\\FileTemp\\" + archivo + year + extension);
+            if (file.Exists)
+            {
+                Response.Clear();
+                Response.ClearHeaders();
+                Response.ClearContent();
+                Response.AddHeader("content-disposition", "attachment; filename=" + archivo + year + extension);
+                Response.AddHeader("Content-Type", "application/" + formato);
+                Response.ContentType = "application/vnd." + extension;
+                Response.AddHeader("Content-Length", file.Length.ToString());
+                Response.WriteFile(file.FullName);
+                Response.End();
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Adevertencia!', 'No se pudo descargar el Archivo', 'warning');", true);
+            }
+        }
+
+        protected void btExcelIntroduccion_Click(object sender, EventArgs e)
+        {
+            string archivo = "Introduccion";
+            string extension = ".xls";
+            string formato = "Excel";
+
+            ExportOptions CrExportOptions;
+            DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+            ExcelFormatOptions CrFormatTypeOptions = new ExcelFormatOptions();
+            imprimirIntroduccion objRpt = new imprimirIntroduccion();
+            objRpt.SetDataSource(clase.imprimirIntroducionBaseLegal(Session["Federacion"].ToString(), year));
+
+            CrDiskFileDestinationOptions.DiskFileName = "C:\\inetpub\\wwwroot\\PATOnline\\FileTemp\\" + archivo + year + extension;
+
+            CrExportOptions = objRpt.ExportOptions;
+            {
+                CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                CrExportOptions.ExportFormatType = ExportFormatType.Excel;
+                CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                CrExportOptions.FormatOptions = CrFormatTypeOptions;
+            }
+            objRpt.Export();
+            FileInfo file = new FileInfo("C:\\inetpub\\wwwroot\\PATOnline\\FileTemp\\" + archivo + year + extension);
+            if (file.Exists)
+            {
+                Response.Clear();
+                Response.ClearHeaders();
+                Response.ClearContent();
+                Response.AddHeader("content-disposition", "attachment; filename=" + archivo + year + extension);
+                Response.AddHeader("Content-Type", "application/" + formato);
+                Response.ContentType = "application/vnd." + extension;
+                Response.AddHeader("Content-Length", file.Length.ToString());
+                Response.WriteFile(file.FullName);
+                Response.End();
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Adevertencia!', 'No se pudo descargar el Archivo', 'warning');", true);
+            }
+        }
+
+        protected void btPDFBaseLegal_Click(object sender, EventArgs e)
+        {
+            string archivo = "BaseLegal";
+            string extension = ".pdf";
+            string formato = "pdf";
+
+            ExportOptions CrExportOptions;
+            DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+            PdfFormatOptions CrFormatTypeOptions = new PdfFormatOptions();
+            imprimirBaseLegal objRpt = new imprimirBaseLegal();
+            objRpt.SetDataSource(clase.imprimirIntroducionBaseLegal(Session["Federacion"].ToString(), year));
+
+            CrDiskFileDestinationOptions.DiskFileName = "C:\\inetpub\\wwwroot\\PATOnline\\FileTemp\\" + archivo + year + extension;
+
+            CrExportOptions = objRpt.ExportOptions;
+            {
+                CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                CrExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                CrExportOptions.FormatOptions = CrFormatTypeOptions;
+            }
+            objRpt.Export();
+            FileInfo file = new FileInfo("C:\\inetpub\\wwwroot\\PATOnline\\FileTemp\\" + archivo + year + extension);
+            if (file.Exists)
+            {
+                Response.Clear();
+                Response.ClearHeaders();
+                Response.ClearContent();
+                Response.AddHeader("content-disposition", "attachment; filename=" + archivo + year + extension);
+                Response.AddHeader("Content-Type", "application/" + formato);
+                Response.ContentType = "application/vnd." + extension;
+                Response.AddHeader("Content-Length", file.Length.ToString());
+                Response.WriteFile(file.FullName);
+                Response.End();
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Adevertencia!', 'No se pudo descargar el Archivo', 'warning');", true);
+            }
+        }
+
+        protected void btExcelBaseLegal_Click(object sender, EventArgs e)
+        {
+            string archivo = "BaseLegal";
+            string extension = ".xls";
+            string formato = "Excel";
+
+            ExportOptions CrExportOptions;
+            DiskFileDestinationOptions CrDiskFileDestinationOptions = new DiskFileDestinationOptions();
+            ExcelFormatOptions CrFormatTypeOptions = new ExcelFormatOptions();
+            imprimirBaseLegal objRpt = new imprimirBaseLegal();
+            objRpt.SetDataSource(clase.imprimirIntroducionBaseLegal(Session["Federacion"].ToString(), year));
+
+            CrDiskFileDestinationOptions.DiskFileName = "C:\\inetpub\\wwwroot\\PATOnline\\FileTemp\\" + archivo + year + extension;
+
+            CrExportOptions = objRpt.ExportOptions;
+            {
+                CrExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                CrExportOptions.ExportFormatType = ExportFormatType.Excel;
+                CrExportOptions.DestinationOptions = CrDiskFileDestinationOptions;
+                CrExportOptions.FormatOptions = CrFormatTypeOptions;
+            }
+            objRpt.Export();
+            FileInfo file = new FileInfo("C:\\inetpub\\wwwroot\\PATOnline\\FileTemp\\" + archivo + year + extension);
+            if (file.Exists)
+            {
+                Response.Clear();
+                Response.ClearHeaders();
+                Response.ClearContent();
+                Response.AddHeader("content-disposition", "attachment; filename=" + archivo + year + extension);
+                Response.AddHeader("Content-Type", "application/" + formato);
+                Response.ContentType = "application/vnd." + extension;
+                Response.AddHeader("Content-Length", file.Length.ToString());
+                Response.WriteFile(file.FullName);
+                Response.End();
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Adevertencia!', 'No se pudo descargar el Archivo', 'warning');", true);
+            }
         }
     }
 }

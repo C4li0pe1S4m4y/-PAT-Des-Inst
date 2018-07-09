@@ -1,236 +1,701 @@
 ﻿<%@ Page Title="C2.3: ACTIVIDAD FÍSICA Y DEPORTE PARA PERSONAS CON DISCAPACIDAD" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IndexC2_3.aspx.cs" Inherits="PATOnline.Views.C2.IndexC2_3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
-  <div class="container">
-    <div class="row">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header gradiant">
-          <h4 class="modal-title">
-            <asp:Label runat="server" ID="lblTitulo2"></asp:Label></h4>
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark"><%: Title %></h1>
         </div>
-        <div class="modal-body">
-          <div class="row" style="text-align: center">
-            <h3><b>
-              <asp:Label runat="server" ID="Message" BackColor="Red">Error al ingresar C2.1</asp:Label>
-            </b></h3>
-          </div>
-          <div class="row">
-            <div class="col-md-2">
-              <asp:Label runat="server" AssociatedControlID="TxtCodigo" CssClass="control-label">CÓDIGO</asp:Label>
-              <asp:TextBox runat="server" ID="TxtCodigo" CssClass="form-control" />
-            </div>
-            <div class="col-md-4">
-              <asp:Label runat="server" AssociatedControlID="DropActividad" CssClass="control-label">NOMBRE DE LA ACTIVIDAD</asp:Label>
-              <asp:DropDownList runat="server" ID="DropActividad" CssClass="form-control"></asp:DropDownList>
-              <asp:RequiredFieldValidator ValidationGroup="validar" runat="server" ControlToValidate="DropActividad"
-                CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar una actividad" />
-            </div>
-            <div class="col-md-3">
-              <asp:Label runat="server" AssociatedControlID="TxtResultado" CssClass="control-label">RESULTADOS ESPERADOS</asp:Label>
-              <asp:TextBox runat="server" ID="TxtResultado" CssClass="form-control" />
-              <asp:RequiredFieldValidator ValidationGroup="validar" runat="server" ControlToValidate="TxtResultado"
-                CssClass="text-danger" ErrorMessage="* Es obligatorio ingresar un resultado" />
-            </div>
-            <div class="col-md-3">
-              <asp:Label runat="server" AssociatedControlID="TxtRegistro" CssClass="control-label">REGISTRO</asp:Label>
-              <asp:TextBox runat="server" ID="TxtRegistro" CssClass="form-control" />
-              <asp:RequiredFieldValidator ValidationGroup="validar" runat="server" ControlToValidate="TxtRegistro"
-                CssClass="text-danger" ErrorMessage="* Es obligatorio ingresar un registro" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <p style="text-align: center;">
-                <asp:Label runat="server" CssClass="control-label">FECHA INICIA</asp:Label>
-              </p>
-              <div class="col-md-6">
-                <asp:Label runat="server" AssociatedControlID="DropIDia" CssClass="control-label">DÍA</asp:Label>
-                <asp:DropDownList runat="server" ID="DropIDia" CssClass="form-control"></asp:DropDownList>
-                <asp:RequiredFieldValidator ValidationGroup="validar" runat="server" ControlToValidate="DropIDia"
-                  CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un día" />
-              </div>
-              <div class="col-md-6">
-                <asp:Label runat="server" AssociatedControlID="DropIMes" CssClass="control-label">MES</asp:Label>
-                <asp:DropDownList runat="server" ID="DropIMes" CssClass="form-control"></asp:DropDownList>
-                <asp:RequiredFieldValidator ValidationGroup="validar" runat="server" ControlToValidate="DropIMes"
-                  CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un mes" />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <p style="text-align: center;">
-                <asp:Label runat="server" CssClass="control-label">FECHA FINALIZA</asp:Label>
-              </p>
-              <div class="col-md-6">
-                <asp:Label runat="server" AssociatedControlID="DropFDia" CssClass="control-label">DÍA</asp:Label>
-                <asp:DropDownList runat="server" ID="DropFDia" CssClass="form-control"></asp:DropDownList>
-                <asp:RequiredFieldValidator ValidationGroup="validar" runat="server" ControlToValidate="DropFDia"
-                  CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un día" />
-              </div>
-              <div class="col-md-6">
-                <asp:Label runat="server" AssociatedControlID="DropFMes" CssClass="control-label">MES</asp:Label>
-                <asp:DropDownList runat="server" ID="DropFMes" CssClass="form-control"></asp:DropDownList>
-                <asp:RequiredFieldValidator ValidationGroup="validar" runat="server" ControlToValidate="DropFMes"
-                  CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un mes" />
-              </div>
-            </div>
-          </div>
-          <asp:UpdatePanel ID="UpdatePanelPais" runat="server">
-            <ContentTemplate>
-              <div class="row">
-                <div class="col-md-12">
-                  <p style="text-align: center;">
-                    <asp:Label runat="server" CssClass="control-label">UBICACIÓN</asp:Label>
-                  </p>
-                  <div class="col-md-4">
-                    <asp:Label runat="server" AssociatedControlID="DropPais" CssClass="control-label">PAÍS</asp:Label>
-                    <asp:DropDownList runat="server" ID="DropPais" CssClass="form-control" OnSelectedIndexChanged="DropPais_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
-                    <asp:RequiredFieldValidator ValidationGroup="validar" runat="server" ControlToValidate="DropPais"
-                      CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un país" />
-                  </div>
-                  <div class="col-md-5">
-                    <asp:Label runat="server" AssociatedControlID="DropDepartamento" CssClass="control-label">DEPARTAMENTO</asp:Label>
-                    <asp:DropDownList runat="server" ID="DropDepartamento" CssClass="form-control"></asp:DropDownList>
-                    <asp:RequiredFieldValidator ValidationGroup="validar" runat="server" ControlToValidate="DropDepartamento"
-                      CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un país" />
-                  </div>
-                  <div class="col-md-3">
-                    <asp:Label runat="server" AssociatedControlID="TxtLugar" CssClass="control-label">LUGAR</asp:Label>
-                    <asp:TextBox runat="server" ID="TxtLugar" CssClass="form-control" />
-                    <asp:RequiredFieldValidator ValidationGroup="validar" runat="server" ControlToValidate="TxtLugar"
-                      CssClass="text-danger" ErrorMessage="* Es obligatorio ingresar un lugar" />
-                  </div>
-                </div>
-              </div>
-            </ContentTemplate>
-          </asp:UpdatePanel>
-          <div class="row">
-            <div class="col-md-3">
-              <asp:Label runat="server" AssociatedControlID="TxtPresupuesto" CssClass="control-label">PRESUPUESTO</asp:Label>
-              <asp:TextBox runat="server" ID="TxtPresupuesto" CssClass="form-control" />
-              <asp:RequiredFieldValidator ValidationGroup="validar" runat="server" ControlToValidate="TxtPresupuesto"
-                CssClass="text-danger" ErrorMessage="* Es obligatorio ingresar un presupuesto" />
-            </div>
-            <div class="col-md-9">
-              <asp:Label runat="server" AssociatedControlID="TxtDecripcion" CssClass="control-label">DESCRIPCIÓN</asp:Label>
-              <asp:TextBox runat="server" ID="TxtDecripcion" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
-              <asp:RequiredFieldValidator runat="server" ControlToValidate="TxtDecripcion"
-                CssClass="text-danger" ErrorMessage="* La descripcion es obligatoria" />
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer gradiant-inver">
-          <asp:LinkButton runat="server" ValidationGroup="validar" ID="SaveIngreso" type="button" class="btn btn-save" data-toggle="tooltip" data-placement="bottom" title="¡Guardar!" OnClick="SaveIngreso_Click">
-              <span class="glyphicon glyphicon-floppy-disk"></span>
-          </asp:LinkButton>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item">Dashboard</li>
+            <li class="breadcrumb-item active">C2.3</li>
+          </ol>
         </div>
       </div>
     </div>
   </div>
-  <br />
-  <div class="container">
-    <div class="row">
-      <table id="tableTitulo" class="table-bordered gradiant" style="color: white; width: 100%">
-        <tr>
-          <th style="width: 67px; text-align: center; font-size: 10px;" rowspan="3"><b>CÓDIGO</b></th>
-          <th style="width: 84px; text-align: center; font-size: 10px;" rowspan="3"><b>NOMBRE DE LA ACTIVIDAD</b></th>
-          <th style="width: 80px; text-align: center; font-size: 10px;" rowspan="3"><b>DESCRIPCIÓN</b></th>
-          <th style="width: 90px; text-align: center; font-size: 10px;" rowspan="3"><b>RESULTADOS ESPERADOS</b></th>
-          <th style="width: 83px; text-align: center; font-size: 10px;" rowspan="3"><b>REGISTRO</b></th>
-          <th style="text-align: center; font-size: 10px;" colspan="4"><b>FECHA</b></th>
-          <th style="text-align: center; font-size: 10px;" rowspan="2" colspan="3"><b>UBICACIÓN</b></th>
-          <th style="width: 147px; text-align: center; font-size: 10px;" rowspan="3"><b>PRESUPUESTO</b></th>
-        </tr>
-        <tr>
-          <td style="text-align: center; font-size: 10px;" colspan="2"><b>INICIA</b></td>
-          <td style="text-align: center; font-size: 10px;" colspan="2"><b>FINALIZA</b></td>
-        </tr>
-        <tr>
-          <td style="width: 44px; text-align: center; font-size: 10px;"><b>DÍA</b></td>
-          <td style="width: 45px; text-align: center; font-size: 10px;"><b>MES</b></td>
-          <td style="width: 44px; text-align: center; font-size: 10px;"><b>DÍA</b></td>
-          <td style="width: 45px; text-align: center; font-size: 10px;"><b>MES</b></td>
-          <td style="width: 126px; text-align: center; font-size: 10px;"><b>DEPARTAMENTO</b></td>
-          <td style="width: 79px; text-align: center; font-size: 10px;"><b>PAÍS</b></td>
-          <td style="width: 115px; text-align: center; font-size: 10px;"><b>LUGAR</b></td>
-        </tr>
-      </table>
+
+  <section class="content" runat="server">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="info-box">
+            <asp:LinkButton runat="server" ID="btPDF" CausesValidation="false">
+            <span class="btn btn-block btn-info btn-lg"><i class="fa  fa-file-pdf-o"></i></span>
+            </asp:LinkButton>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="info-box">
+            <asp:LinkButton runat="server" ID="btExcel" CausesValidation="false">
+            <span class="btn btn-block btn-info btn-lg"><i class="fa  fa-file-excel-o"></i></span>
+            </asp:LinkButton>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <asp:GridView ID="gvP2" runat="server" AllowPaging="false" AutoGenerateColumns="False" DataKeyNames="numero" ShowHeader="false"
-        CssClass="footable" BackColor="white" AllowCustomPaging="False" GridLines="None" AllowSorting="True" Width="100%">
-        <Columns>
-          <asp:BoundField DataField="codigo">
-            <ItemStyle Font-Size="X-Small" Font-Underline="true" />
-          </asp:BoundField>
-          <asp:BoundField DataField="actividad">
-            <ItemStyle Width="91px" Font-Size="X-Small" />
-          </asp:BoundField>
-          <asp:BoundField DataField="descripcion">
-            <ItemStyle Width="87px" Font-Size="X-Small" />
-          </asp:BoundField>
-          <asp:BoundField DataField="resultado">
-            <ItemStyle Width="98px" Font-Size="X-Small" />
-          </asp:BoundField>
-          <asp:BoundField DataField="registro">
-            <ItemStyle Width="90px" Font-Size="X-Small" />
-          </asp:BoundField>
-          <asp:BoundField DataField="inicio_dia">
-            <ItemStyle Width="48px" Font-Size="X-Small" />
-          </asp:BoundField>
-          <asp:BoundField DataField="inicio_mes">
-            <ItemStyle Width="49px" Font-Size="X-Small" />
-          </asp:BoundField>
-          <asp:BoundField DataField="fin_dia">
-            <ItemStyle Width="48px" Font-Size="X-Small" />
-          </asp:BoundField>
-          <asp:BoundField DataField="fin_mes">
-            <ItemStyle Width="48px" Font-Size="X-Small" />
-          </asp:BoundField>
-          <asp:BoundField DataField="departamento">
-            <ItemStyle Width="137px" Font-Size="X-Small" />
-          </asp:BoundField>
-          <asp:BoundField DataField="pais">
-            <ItemStyle Width="86px" Font-Size="X-Small" />
-          </asp:BoundField>
-          <asp:BoundField DataField="lugar">
-            <ItemStyle Width="125px" Font-Size="X-Small" />
-          </asp:BoundField>
-          <asp:TemplateField>
-            <ItemStyle Width="160px" Font-Size="X-Small" />
-            <ItemTemplate>
-              <span>Q
-                        <asp:Label ID="remarks" runat="server" Text='<%# Eval("presupuesto") %>'></asp:Label></span>
-            </ItemTemplate>
-          </asp:TemplateField>
-        </Columns>
-      </asp:GridView>
+  </section>
+
+  <section class="content" runat="server" id="crearC23New">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="info-box">
+            <div class="info-box-content">
+              <span class="info-box-text">CREAR</span>
+              <span class="info-box-number">C2.3</span>
+            </div>
+            <asp:LinkButton runat="server" ID="nuevoC23" CausesValidation="false" OnClick="nuevoC23_Click">
+              <span class="info-box-icon bg-info elevation-1"><i class="fa fa-plus-circle"></i></span>
+            </asp:LinkButton>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="row">
-      <asp:GridView ID="gvP3" runat="server" AllowPaging="false" AutoGenerateColumns="False" DataKeyNames="numero" ShowHeader="false" OnRowDataBound="gvP3_RowDataBound"
-        CssClass="footable" BackColor="white" AllowCustomPaging="False" GridLines="None" AllowSorting="True">
-        <Columns>
-          <asp:TemplateField>
-            <ItemTemplate>
-              <p style="text-align: right; color: black;">
-                <b>
-                  <asp:Label ID="remarks" runat="server" Text="TOTALES"></asp:Label></b>
-              </p>
-            </ItemTemplate>
-          </asp:TemplateField>
-          <asp:TemplateField>
-            <ItemStyle Width="160px" />
-            <ItemTemplate>
-              <p style="text-align: center;">
-                <b>Q
-                <asp:Label ID="lblPresupuesto" runat="server" Text='<%# Eval("total") %>'></asp:Label></b>
-              </p>
-            </ItemTemplate>
-          </asp:TemplateField>
-        </Columns>
-      </asp:GridView>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-outline card-info" runat="server" id="mostrarCrearC23">
+            <div class="card-header">
+              <h3 class="card-title"><span class="info-box-number">CREAR NUEVO C2.3</span></h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body pad" style="display: block;">
+              <div class="row">
+                <div class="col-md-2">
+                  <asp:Label runat="server" AssociatedControlID="txtCrearCodigo" CssClass="control-label"><span style="color:red">*</span> CÓDIGO</asp:Label>
+                  <asp:TextBox runat="server" ID="txtCrearCodigo" CssClass="form-control" />
+                </div>
+                <div class="col-md-8">
+                  <asp:Label runat="server" AssociatedControlID="dropCrearActividad" CssClass="control-label"><span style="color:red">*</span> NOMBRE DE LA ACTIVIDAD</asp:Label>
+                  <asp:DropDownList runat="server" ID="dropCrearActividad" CssClass="form-control"></asp:DropDownList>
+                  <asp:RequiredFieldValidator ValidationGroup="validarCrearC" runat="server" ControlToValidate="dropCrearActividad"
+                    CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar una actividad" />
+                </div>
+                <div class="col-md-2">
+                  <asp:Label runat="server" AssociatedControlID="txtCrearPresupuesto" CssClass="control-label"><span style="color:red">*</span> PRESUPUESTO</asp:Label>
+                  <input runat="server" id="txtCrearPresupuesto" class="form-control" type="text" onkeypress="return numerosypunto(event)" placeholder="0,000,000.00" maxlength="12" autofocus required />
+                  <asp:RequiredFieldValidator ValidationGroup="validarCrearC" runat="server" ControlToValidate="txtCrearPresupuesto"
+                    CssClass="text-danger" ErrorMessage="* Es obligatorio ingresar un presupuesto" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <asp:Label runat="server" AssociatedControlID="txtCrearResultado" CssClass="control-label"><span style="color:red">*</span> RESULTADOS ESPERADOS</asp:Label>
+                  <textarea runat="server" id="txtCrearResultado" class="form-control" type="text" onkeypress="return descripcion(event)" placeholder="escribir un resultado" maxlength="125" autofocus required></textarea>
+                  <asp:RequiredFieldValidator ValidationGroup="validarCrearC" runat="server" ControlToValidate="txtCrearResultado"
+                    CssClass="text-danger" ErrorMessage="* Es obligatorio ingresar un resultado" />
+                </div>
+                <div class="col-md-6">
+                  <asp:Label runat="server" AssociatedControlID="txtCrearRegistro" CssClass="control-label"><span style="color:red">*</span> REGISTRO</asp:Label>
+                  <textarea runat="server" id="txtCrearRegistro" class="form-control" type="text" onkeypress="return descripcion(event)" placeholder="escribir un registro" maxlength="125" autofocus required></textarea>
+                  <asp:RequiredFieldValidator ValidationGroup="validarCrearC" runat="server" ControlToValidate="txtCrearRegistro"
+                    CssClass="text-danger" ErrorMessage="* Es obligatorio ingresar un registro" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="row" style="text-align: center;">
+                    <div class="col-md-12" style="background-color: darkturquoise; color: black;">
+                      <h5>
+                        <asp:Label runat="server" ForeColor="Black" Text="FECHA INICIO"></asp:Label></h5>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <asp:Label runat="server" AssociatedControlID="dropCrearDiaInicio" CssClass="control-label"><span style="color:red">*</span> DÍA</asp:Label>
+                      <asp:DropDownList runat="server" ID="dropCrearDiaInicio" CssClass="form-control"></asp:DropDownList>
+                      <asp:RequiredFieldValidator ValidationGroup="validarCrearC" runat="server" ControlToValidate="dropCrearDiaInicio"
+                        CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un día" />
+                    </div>
+                    <div class="col-md-6">
+                      <asp:Label runat="server" AssociatedControlID="dropCrearMesInicio" CssClass="control-label"><span style="color:red">*</span> MES</asp:Label>
+                      <asp:DropDownList runat="server" ID="dropCrearMesInicio" CssClass="form-control"></asp:DropDownList>
+                      <asp:RequiredFieldValidator ValidationGroup="validarCrearC" runat="server" ControlToValidate="dropCrearMesInicio"
+                        CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un mes" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row" style="text-align: center;">
+                    <div class="col-md-12" style="background-color: darkturquoise; color: black;">
+                      <h5>
+                        <asp:Label runat="server" ForeColor="Black" Text="FECHA FINALIZA"></asp:Label></h5>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <asp:Label runat="server" AssociatedControlID="dropCrearDiaFin" CssClass="control-label"><span style="color:red">*</span> DÍA</asp:Label>
+                      <asp:DropDownList runat="server" ID="dropCrearDiaFin" CssClass="form-control"></asp:DropDownList>
+                      <asp:RequiredFieldValidator ValidationGroup="validarCrearC" runat="server" ControlToValidate="dropCrearDiaFin"
+                        CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un día" />
+                    </div>
+                    <div class="col-md-6">
+                      <asp:Label runat="server" AssociatedControlID="dropCrearMesFin" CssClass="control-label"><span style="color:red">*</span> MES</asp:Label>
+                      <asp:DropDownList runat="server" ID="dropCrearMesFin" CssClass="form-control"></asp:DropDownList>
+                      <asp:RequiredFieldValidator ValidationGroup="validarCrearC" runat="server" ControlToValidate="dropCrearMesFin"
+                        CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un mes" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row" style="text-align: center;">
+                        <div class="col-md-12" style="background-color: darkturquoise; color: black;">
+                          <h5>
+                            <asp:Label runat="server" ForeColor="Black" Text="UBICACION"></asp:Label></h5>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <asp:Label runat="server" AssociatedControlID="dropCrearPais" CssClass="control-label"><span style="color:red">*</span> PAÍS</asp:Label>
+                          <asp:DropDownList runat="server" ID="dropCrearPais" CssClass="form-control" OnSelectedIndexChanged="dropCrearPais_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                          <asp:RequiredFieldValidator ValidationGroup="validarCrearC" runat="server" ControlToValidate="dropCrearPais"
+                            CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un país" />
+                        </div>
+                        <div class="col-md-4">
+                          <asp:Label runat="server" AssociatedControlID="dropCrearDepartamento" CssClass="control-label"><span style="color:red">*</span> DEPARTAMENTO</asp:Label>
+                          <asp:DropDownList runat="server" ID="dropCrearDepartamento" CssClass="form-control"></asp:DropDownList>
+                          <asp:RequiredFieldValidator ValidationGroup="validarCrearC" runat="server" ControlToValidate="dropCrearDepartamento"
+                            CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un país" />
+                        </div>
+                        <div class="col-md-5">
+                          <asp:Label runat="server" AssociatedControlID="txtCrearLugar" CssClass="control-label"><span style="color:red">*</span> LUGAR</asp:Label>
+                          <input runat="server" id="txtCrearLugar" class="form-control" type="text" onkeypress="return descripcion(event)" placeholder="escribir un lugar" maxlength="125" autofocus required />
+                          <asp:RequiredFieldValidator ValidationGroup="validarCrearC" runat="server" ControlToValidate="txtCrearLugar"
+                            CssClass="text-danger" ErrorMessage="* Es obligatorio ingresar un lugar" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ContentTemplate>
+              </asp:UpdatePanel>
+              <div class="row">
+                <div class="col-md-12">
+                  <asp:Label runat="server" AssociatedControlID="txtCrearDescripcion" CssClass="control-label"><span style="color:red">*</span> DESCRIPCIÓN</asp:Label>
+                  <textarea runat="server" style="height: 125px;" id="txtCrearDescripcion" class="form-control" type="text" onkeypress="return descripcion(event)" placeholder="escribir la observacion" maxlength="1500" autofocus></textarea>
+                  <asp:RequiredFieldValidator ValidationGroup="validarCrearC" runat="server" ControlToValidate="txtCrearDescripcion"
+                    CssClass="text-danger" ErrorMessage="* Es obligatorio ingresar un descripcion" />
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <asp:LinkButton runat="server" ID="cancelCrearC23" type="button" class="btn btn-info btn-outline-danger btn-lg" CausesValidation="false" OnClick="cancelCrearC23_Click">
+                <span class="fa fa-close"></span>
+              </asp:LinkButton>
+              <asp:LinkButton runat="server" ValidationGroup="validarCrearC" ID="crearC23" type="button" class="btn btn-info btn-outline-primary btn-lg float-right" OnClick="crearC23_Click">
+                <span class="fa fa-save"></span>
+              </asp:LinkButton>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-outline card-warning" runat="server" id="mostrarEditC23">
+            <div class="card-header">
+              <h3 class="card-title"><span class="info-box-number">MODIFICAR C2.3</span></h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body pad" style="display: block;">
+              <div class="row">
+                <div class="col-md-2">
+                  <asp:Label runat="server" ID="idEdit"></asp:Label>
+                  <asp:Label runat="server" AssociatedControlID="txtEditCodigo" CssClass="control-label"><span style="color:red">*</span> CÓDIGO</asp:Label>
+                  <asp:TextBox runat="server" ID="txtEditCodigo" CssClass="form-control" />
+                </div>
+                <div class="col-md-8">
+                  <asp:Label runat="server" AssociatedControlID="dropEditActividad" CssClass="control-label"><span style="color:red">*</span> NOMBRE DE LA ACTIVIDAD</asp:Label>
+                  <asp:DropDownList runat="server" ID="dropEditActividad" CssClass="form-control"></asp:DropDownList>
+                  <asp:RequiredFieldValidator ValidationGroup="validarEditC" runat="server" ControlToValidate="dropEditActividad"
+                    CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar una actividad" />
+                </div>
+                <div class="col-md-2">
+                  <asp:Label runat="server" AssociatedControlID="txtEditPresupuesto" CssClass="control-label"><span style="color:red">*</span> PRESUPUESTO</asp:Label>
+                  <input runat="server" id="txtEditPresupuesto" class="form-control" type="text" onkeypress="return numerosypunto(event)" placeholder="0,000,000.00" maxlength="12" autofocus required />
+                  <asp:RequiredFieldValidator ValidationGroup="validarEditC" runat="server" ControlToValidate="txtEditPresupuesto"
+                    CssClass="text-danger" ErrorMessage="* Es obligatorio ingresar un presupuesto" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <asp:Label runat="server" AssociatedControlID="txtEditResultado" CssClass="control-label"><span style="color:red">*</span> RESULTADOS ESPERADOS</asp:Label>
+                  <textarea runat="server" id="txtEditResultado" class="form-control" type="text" onkeypress="return descripcion(event)" placeholder="escribir un resultado" maxlength="125" autofocus required></textarea>
+                  <asp:RequiredFieldValidator ValidationGroup="validarEditC" runat="server" ControlToValidate="txtEditResultado"
+                    CssClass="text-danger" ErrorMessage="* Es obligatorio ingresar un resultado" />
+                </div>
+                <div class="col-md-6">
+                  <asp:Label runat="server" AssociatedControlID="txtEditRegistro" CssClass="control-label"><span style="color:red">*</span> REGISTRO</asp:Label>
+                  <textarea runat="server" id="txtEditRegistro" class="form-control" type="text" onkeypress="return descripcion(event)" placeholder="escribir un registro" maxlength="125" autofocus required></textarea>
+                  <asp:RequiredFieldValidator ValidationGroup="validarEditC" runat="server" ControlToValidate="txtEditRegistro"
+                    CssClass="text-danger" ErrorMessage="* Es obligatorio ingresar un registro" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="row" style="text-align: center;">
+                    <div class="col-md-12" style="background-color: darkturquoise; color: black;">
+                      <h5>
+                        <asp:Label runat="server" ForeColor="Black" Text="FECHA INICIO"></asp:Label></h5>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <asp:Label runat="server" AssociatedControlID="dropEditDiaInicio" CssClass="control-label"><span style="color:red">*</span> DÍA</asp:Label>
+                      <asp:DropDownList runat="server" ID="dropEditDiaInicio" CssClass="form-control"></asp:DropDownList>
+                      <asp:RequiredFieldValidator ValidationGroup="validarEditC" runat="server" ControlToValidate="dropEditDiaInicio"
+                        CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un día" />
+                    </div>
+                    <div class="col-md-6">
+                      <asp:Label runat="server" AssociatedControlID="dropEditMesInicio" CssClass="control-label"><span style="color:red">*</span> MES</asp:Label>
+                      <asp:DropDownList runat="server" ID="dropEditMesInicio" CssClass="form-control"></asp:DropDownList>
+                      <asp:RequiredFieldValidator ValidationGroup="validarEditC" runat="server" ControlToValidate="dropEditMesInicio"
+                        CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un mes" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row" style="text-align: center;">
+                    <div class="col-md-12" style="background-color: darkturquoise; color: black;">
+                      <h5>
+                        <asp:Label runat="server" ForeColor="Black" Text="FECHA FINALIZA"></asp:Label></h5>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <asp:Label runat="server" AssociatedControlID="dropEditDiaFin" CssClass="control-label"><span style="color:red">*</span> DÍA</asp:Label>
+                      <asp:DropDownList runat="server" ID="dropEditDiaFin" CssClass="form-control"></asp:DropDownList>
+                      <asp:RequiredFieldValidator ValidationGroup="validarEditC" runat="server" ControlToValidate="dropEditDiaFin"
+                        CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un día" />
+                    </div>
+                    <div class="col-md-6">
+                      <asp:Label runat="server" AssociatedControlID="dropEditMesFin" CssClass="control-label"><span style="color:red">*</span> MES</asp:Label>
+                      <asp:DropDownList runat="server" ID="dropEditMesFin" CssClass="form-control"></asp:DropDownList>
+                      <asp:RequiredFieldValidator ValidationGroup="validarEditC" runat="server" ControlToValidate="dropEditMesFin"
+                        CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un mes" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                <ContentTemplate>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="row" style="text-align: center;">
+                        <div class="col-md-12" style="background-color: darkturquoise; color: black;">
+                          <h5>
+                            <asp:Label runat="server" ForeColor="Black" Text="UBICACION"></asp:Label></h5>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3">
+                          <asp:Label runat="server" AssociatedControlID="dropEditPais" CssClass="control-label"><span style="color:red">*</span> PAÍS</asp:Label>
+                          <asp:DropDownList runat="server" ID="dropEditPais" CssClass="form-control" OnSelectedIndexChanged="dropEditPais_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                          <asp:RequiredFieldValidator ValidationGroup="validarEditC" runat="server" ControlToValidate="dropEditPais"
+                            CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un país" />
+                        </div>
+                        <div class="col-md-4">
+                          <asp:Label runat="server" AssociatedControlID="dropEditDepartamento" CssClass="control-label"><span style="color:red">*</span> DEPARTAMENTO</asp:Label>
+                          <asp:DropDownList runat="server" ID="dropEditDepartamento" CssClass="form-control"></asp:DropDownList>
+                          <asp:RequiredFieldValidator ValidationGroup="validarEditC" runat="server" ControlToValidate="dropEditDepartamento"
+                            CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un país" />
+                        </div>
+                        <div class="col-md-5">
+                          <asp:Label runat="server" AssociatedControlID="txtEditLugar" CssClass="control-label"><span style="color:red">*</span> LUGAR</asp:Label>
+                          <input runat="server" id="txtEditLugar" class="form-control" type="text" onkeypress="return descripcion(event)" placeholder="escribir un lugar" maxlength="125" autofocus required />
+                          <asp:RequiredFieldValidator ValidationGroup="validarEditC" runat="server" ControlToValidate="txtEditLugar"
+                            CssClass="text-danger" ErrorMessage="* Es obligatorio ingresar un lugar" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ContentTemplate>
+              </asp:UpdatePanel>
+              <div class="row">
+                <div class="col-md-12">
+                  <asp:Label runat="server" AssociatedControlID="txtEditDescripcion" CssClass="control-label"><span style="color:red">*</span> DESCRIPCIÓN</asp:Label>
+                  <textarea runat="server" style="height: 125px;" id="txtEditDescripcion" class="form-control" type="text" onkeypress="return descripcion(event)" placeholder="escribir la observacion" maxlength="1500" autofocus></textarea>
+                  <asp:RequiredFieldValidator ValidationGroup="validarEditC" runat="server" ControlToValidate="txtEditDescripcion"
+                    CssClass="text-danger" ErrorMessage="* Es obligatorio ingresar un descripcion" />
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <asp:LinkButton runat="server" ID="cancelEditC23" type="button" class="btn btn-info btn-outline-danger btn-lg" CausesValidation="false" OnClick="cancelEditC23_Click">
+                <span class="fa fa-close"></span>
+              </asp:LinkButton>
+              <asp:LinkButton runat="server" ValidationGroup="validarEditC" ID="editC23" type="button" class="btn btn-info btn-outline-primary btn-lg float-right" OnClick="editC23_Click">
+                <span class="fa fa-save"></span>
+              </asp:LinkButton>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="content" runat="server" id="crearObservacionRechazo">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-outline card-warning">
+            <div class="card-header">
+              <h3 class="card-title"><span class="info-box-number">OBSERVACIÓN</span></h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body pad">
+              <div class="row">
+                <div class="col-md-12">
+                  <asp:Label runat="server" ID="idIntroObservacionRechazo"></asp:Label>
+                  <asp:Label runat="server" AssociatedControlID="txtCrearObservacion" CssClass="control-label"><span style="color:red">*</span> OBSERVACIÓN</asp:Label>
+                  <textarea runat="server" id="txtCrearObservacion" class="form-control" type="text" onkeypress="return descripcion(event)" minlength="4" placeholder="observación" maxlength="1000" autofocus required></textarea>
+                  <asp:RequiredFieldValidator runat="server" ValidationGroup="validarObservacion" ControlToValidate="txtCrearObservacion"
+                    CssClass="text-danger" ErrorMessage="* La observación es obligatoria" />
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <asp:LinkButton runat="server" ID="cancelarObservacionRechazo" type="button" class="btn btn-info btn-outline-danger btn-lg" CausesValidation="false" OnClick="cancelarObservacionRechazo_Click">
+                <span class="fa fa-close"></span>
+              </asp:LinkButton>
+              <asp:LinkButton runat="server" ValidationGroup="validarObservacion" ID="guardarObservacionRechazo" type="button" class="btn btn-info btn-outline-primary btn-lg float-right" OnClick="guardarObservacionRechazo_Click">
+                <span class="fa fa-save"></span>
+              </asp:LinkButton>
+              <asp:LinkButton ID="btcrearObservacionRechazo" runat="server" type="button" class="btn btn-danger btn-outline-danger btn-lg float-right" OnClick="btcrearObservacionRechazo_Click"
+                ValidationGroup="validarObservacion">
+                <span class="fa fa-thumbs-down"></span>
+              </asp:LinkButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content" runat="server" id="crearObservacionSinRechazo">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-outline card-warning">
+            <div class="card-header">
+              <h3 class="card-title"><span class="info-box-number">OBSERVACIÓN</span></h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body pad">
+              <div class="row">
+                <div class="col-md-12">
+                  <asp:Label runat="server" ID="idIntroObservacionSinRechazo"></asp:Label>
+                  <asp:Label runat="server" AssociatedControlID="txtCrearObservacionSinRechazo" CssClass="control-label"><span style="color:red">*</span> OBSERVACIÓN</asp:Label>
+                  <textarea runat="server" id="txtCrearObservacionSinRechazo" class="form-control" type="text" onkeypress="return descripcion(event)" minlength="4" placeholder="observación" maxlength="1000" autofocus required></textarea>
+                  <asp:RequiredFieldValidator runat="server" ValidationGroup="validarObservacionS" ControlToValidate="txtCrearObservacionSinRechazo"
+                    CssClass="text-danger" ErrorMessage="* La observación es obligatoria" />
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <asp:LinkButton runat="server" ID="cancelObservacionSinRechazo" type="button" class="btn btn-info btn-outline-danger btn-lg" CausesValidation="false" OnClick="cancelObservacionSinRechazo_Click">
+                <span class="fa fa-close"></span>
+              </asp:LinkButton>
+              <asp:LinkButton ID="btObservacionSinRechazo" runat="server" type="button" class="btn btn-primary btn-outline-primary btn-lg float-right" OnClick="btObservacionSinRechazo_Click"
+                ValidationGroup="validarObservacionS">
+                <span class="fa fa-save"></span>
+              </asp:LinkButton>
+              <asp:LinkButton ID="btObservacionSinRechazoUpdate" runat="server" type="button" class="btn btn-primary btn-outline-primary btn-lg float-right" OnClick="btObservacionSinRechazoUpdate_Click">
+                <span class="fa fa-save"></span>
+              </asp:LinkButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-success">
+            <div class="card-header" style="text-align: center;">
+              <h3 class="card-title"><span class="info-box-number">MOSTRAR INFORMACIÓN</span></h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-widget="collapse">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row" style="overflow-x: auto;">
+                <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-12">
+                    <table class="table table-bordered dataTable">
+                      <tr>
+                        <th style="width: 67px; text-align: center; font-size: 10px;" rowspan="3"><b>CÓDIGO</b></th>
+                        <th style="width: 84px; text-align: center; font-size: 10px;" rowspan="3"><b>NOMBRE DE LA ACTIVIDAD</b></th>
+                        <th style="width: 80px; text-align: center; font-size: 10px;" rowspan="3"><b>DESCRIPCIÓN</b></th>
+                        <th style="width: 90px; text-align: center; font-size: 10px;" rowspan="3"><b>RESULTADOS ESPERADOS</b></th>
+                        <th style="width: 83px; text-align: center; font-size: 10px;" rowspan="3"><b>REGISTRO</b></th>
+                        <th style="text-align: center; font-size: 10px;" colspan="4"><b>FECHA</b></th>
+                        <th style="text-align: center; font-size: 10px;" rowspan="2" colspan="3"><b>UBICACIÓN</b></th>
+                        <th style="width: 147px; text-align: center; font-size: 10px;" rowspan="3"><b>PRESUPUESTO</b></th>
+                      </tr>
+                      <tr>
+                        <td style="text-align: center; font-size: 10px;" colspan="2"><b>INICIA</b></td>
+                        <td style="text-align: center; font-size: 10px;" colspan="2"><b>FINALIZA</b></td>
+                      </tr>
+                      <tr>
+                        <td style="width: 44px; text-align: center; font-size: 10px;"><b>DÍA</b></td>
+                        <td style="width: 45px; text-align: center; font-size: 10px;"><b>MES</b></td>
+                        <td style="width: 44px; text-align: center; font-size: 10px;"><b>DÍA</b></td>
+                        <td style="width: 45px; text-align: center; font-size: 10px;"><b>MES</b></td>
+                        <td style="width: 126px; text-align: center; font-size: 10px;"><b>DEPARTAMENTO</b></td>
+                        <td style="width: 79px; text-align: center; font-size: 10px;"><b>PAÍS</b></td>
+                        <td style="width: 115px; text-align: center; font-size: 10px;"><b>LUGAR</b></td>
+                      </tr>
+                    </table>
+                  </div>
+                </div> 
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <asp:GridView ID="gridFADN" runat="server" AutoGenerateColumns="False" DataKeyNames="numero" OnRowDataBound="gridFADN_RowDataBound"
+                      CssClass="table table-bordered dataTable" HeaderStyle-BackColor="#e8f2fc" OnRowCommand="gridFADN_RowCommand" ShowHeader="false">
+                      <Columns>
+                        <asp:BoundField DataField="numero" />
+                        <asp:BoundField DataField="codigo" ItemStyle-Width="" ItemStyle-HorizontalAlign="Center" ItemStyle-Font-Size="X-Small" />
+                        <asp:BoundField DataField="actividad" ItemStyle-Width="91px" ItemStyle-Font-Size="X-Small" />
+                        <asp:BoundField DataField="descripcion" ItemStyle-Width="87px" ItemStyle-Font-Size="X-Small" />
+                        <asp:BoundField DataField="resultado" ItemStyle-Width="98px" ItemStyle-Font-Size="X-Small" />
+                        <asp:BoundField DataField="registro" ItemStyle-Width="90px" ItemStyle-Font-Size="X-Small" />
+                        <asp:BoundField DataField="inicio_dia" ItemStyle-Width="48px" ItemStyle-HorizontalAlign="Center" ItemStyle-Font-Size="X-Small" />
+                        <asp:BoundField DataField="inicio_mes" ItemStyle-Width="49px" ItemStyle-HorizontalAlign="Center" ItemStyle-Font-Size="X-Small" />
+                        <asp:BoundField DataField="fin_dia" ItemStyle-Width="48px" ItemStyle-HorizontalAlign="Center" ItemStyle-Font-Size="X-Small" />
+                        <asp:BoundField DataField="fin_mes" ItemStyle-Width="48px" ItemStyle-HorizontalAlign="Center" ItemStyle-Font-Size="X-Small" />
+                        <asp:BoundField DataField="departamento" ItemStyle-Width="137px" ItemStyle-HorizontalAlign="Center" ItemStyle-Font-Size="X-Small" />
+                        <asp:BoundField DataField="pais" ItemStyle-Width="86px" ItemStyle-HorizontalAlign="Center" ItemStyle-Font-Size="X-Small" />
+                        <asp:BoundField DataField="lugar" ItemStyle-Width="125px" ItemStyle-Font-Size="X-Small" />
+                        <asp:BoundField DataField="presupuesto" ItemStyle-Width="160px" ItemStyle-HorizontalAlign="Center" SortExpression="presupuesto" DataFormatString="{0:c}" ItemStyle-Font-Size="Small" />
+                        <asp:TemplateField HeaderText="OPCIONES">
+                          <ItemTemplate>
+                            <asp:LinkButton ID="btEditar" runat="server" type="button" class="btn btn-block btn-warning btn-sm" CausesValidation="false"
+                              CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
+                                  <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-edit"></span>
+                            </asp:LinkButton>
+                            <asp:LinkButton ID="btVer" runat="server" type="button" class="btn btn-block btn-success btn-sm" CausesValidation="false"
+                              CommandName="Mostrar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
+                                  <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-eye"></span>
+                            </asp:LinkButton>
+                            <asp:LinkButton ID="btEliminar" runat="server" type="button" class="btn btn-block btn-danger btn-sm"
+                              CommandName="Eliminar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
+                            <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-trash-o"></span>
+                            </asp:LinkButton>
+                            <asp:LinkButton ID="btObservacion" runat="server" type="button" class="btn btn-block btn-warning btn-sm" CausesValidation="false"
+                              CommandName="Observacion" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
+                                  <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-comment"></span>
+                            </asp:LinkButton>
+                            <asp:LinkButton ID="btAprobar" runat="server" type="button" class="btn btn-block btn-success btn-sm" CausesValidation="false"
+                              CommandName="Aprobar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
+                                  <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-thumbs-up"></span>
+                            </asp:LinkButton>
+                            <asp:LinkButton ID="btEnviar" runat="server" type="button" class="btn btn-block btn-info btn-sm" CausesValidation="false"
+                              CommandName="Enviar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>">
+                                  <ItemStyle Width="1%" HorizontalAlign="Center"/><span class="fa fa-send"></span>
+                            </asp:LinkButton>
+                          </ItemTemplate>
+                        </asp:TemplateField>
+                      </Columns>
+                    </asp:GridView>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <asp:GridView ID="gridFADNTotal" runat="server" AutoGenerateColumns="False" DataKeyNames="numero" OnRowDataBound="gridFADNTotal_RowDataBound"
+                      CssClass="table table-bordered dataTable" HeaderStyle-BackColor="#e8f2fc" ShowHeader="false">
+                      <Columns>
+                        <asp:TemplateField>
+                          <ItemStyle Width="90%" />
+                          <ItemTemplate>
+                            <asp:Label runat="server" Text="TOTALES" ForeColor="Black" CssClass="text-center"></asp:Label></b>
+                          </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                          <ItemStyle Width="14%" />
+                          <ItemTemplate>
+                            <p style="text-align: center; color: black;"><b>Q<asp:Label ID="lblPresupuesto" runat="server" Text='<%# Eval("total") %>'></asp:Label></b></p>
+                          </ItemTemplate>
+                        </asp:TemplateField>
+                      </Columns>
+                    </asp:GridView>
+                  </div>
+                </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content" runat="server" id="mostrarObservacion">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-outline card-warning">
+            <div class="card-header">
+              <h3 class="card-title"><span class="info-box-number">OBSERVACIONES REALIZADAS</span></h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove">
+                  <i class="fa fa-times"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body pad">
+              <div class="row">
+                <div class="col-md-12">
+                  <h3 class="card-title" style="text-align: right;"><span class="info-box-number">Federación / Asociación</span></h3>
+                  <asp:GridView ID="listObservacionesFADN" runat="server" AutoGenerateColumns="False" BorderStyle="None"
+                    CssClass="table" HeaderStyle-BackColor="#e8f2fc" ShowHeader="false">
+                    <Columns>
+                      <asp:TemplateField ItemStyle-Width="8%" ItemStyle-BorderColor="White">
+                        <ItemTemplate>
+                          <span class="info-box-number">Fecha:</span><p>
+                            <asp:Label runat="server" Text='<%# Eval("fecha") %>'></asp:Label>
+                          </p>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                      <asp:TemplateField ItemStyle-Width="25%" ItemStyle-BorderColor="White">
+                        <ItemTemplate>
+                          <span class="info-box-number">Observación realizada por:</span><p>
+                            <asp:Label runat="server" Text='<%# Eval("usuario") %>'></asp:Label>
+                          </p>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                      <asp:TemplateField ItemStyle-BorderColor="White">
+                        <ItemTemplate>
+                          <span class="info-box-number">Descripción:</span><p>
+                            <asp:Label runat="server" Text='<%# Eval("observacion") %>'></asp:Label>
+                          </p>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                    </Columns>
+                  </asp:GridView>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h3 class="card-title" style="text-align: right;"><span class="info-box-number">Acompañamiento</span></h3>
+                  <asp:GridView ID="listObservacionesAcompaniamiento" runat="server" AutoGenerateColumns="False"
+                    CssClass="table" HeaderStyle-BackColor="#e8f2fc" ShowHeader="false">
+                    <Columns>
+                      <asp:TemplateField ItemStyle-Width="8%" ItemStyle-BorderColor="White">
+                        <ItemTemplate>
+                          <span class="info-box-number">Fecha:</span><p>
+                            <asp:Label runat="server" Text='<%# Eval("fecha") %>'></asp:Label>
+                          </p>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                      <asp:TemplateField ItemStyle-Width="25%" ItemStyle-BorderColor="White">
+                        <ItemTemplate>
+                          <span class="info-box-number">Observación realizada por:</span><p>
+                            <asp:Label runat="server" Text='<%# Eval("usuario") %>'></asp:Label>
+                          </p>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                      <asp:TemplateField ItemStyle-BorderColor="White">
+                        <ItemTemplate>
+                          <span class="info-box-number">Descripción:</span><p>
+                            <asp:Label runat="server" Text='<%# Eval("observacion") %>'></asp:Label>
+                          </p>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                    </Columns>
+                  </asp:GridView>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12" style="overflow-x: auto;">
+                  <h3 class="card-title" style="text-align: right;"><span class="info-box-number">Evaluador</span></h3>
+                  <asp:GridView ID="listObservacionesEvaluacion" runat="server" AutoGenerateColumns="False"
+                    CssClass="table" HeaderStyle-BackColor="#e8f2fc" ShowHeader="false">
+                    <Columns>
+                      <asp:TemplateField ItemStyle-Width="8%" ItemStyle-BorderColor="White">
+                        <ItemTemplate>
+                          <span class="info-box-number">Fecha:</span><p>
+                            <asp:Label runat="server" Text='<%# Eval("fecha") %>'></asp:Label>
+                          </p>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                      <asp:TemplateField ItemStyle-Width="25%" ItemStyle-BorderColor="White">
+                        <ItemTemplate>
+                          <span class="info-box-number">Observación realizada por:</span><p>
+                            <asp:Label runat="server" Text='<%# Eval("usuario") %>'></asp:Label>
+                          </p>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                      <asp:TemplateField ItemStyle-BorderColor="White">
+                        <ItemTemplate>
+                          <span class="info-box-number">Descripción:</span><p>
+                            <asp:Label runat="server" Text='<%# Eval("observacion") %>'></asp:Label>
+                          </p>
+                        </ItemTemplate>
+                      </asp:TemplateField>
+                    </Columns>
+                  </asp:GridView>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <asp:LinkButton runat="server" ID="cancelMostrarObservacion" type="button" class="btn btn-info btn-outline-danger btn-lg" CausesValidation="false" OnClick="cancelMostrarObservacion_Click">
+                <span class="fa fa-close"></span>
+              </asp:LinkButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </asp:Content>
 
 

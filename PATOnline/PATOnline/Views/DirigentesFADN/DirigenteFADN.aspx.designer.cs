@@ -94,31 +94,13 @@ namespace PATOnline.Views.DirigentesFADN {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl mostrarCrearAsamblea;
         
         /// <summary>
-        /// dropCrearCargoAsamblea control.
+        /// dropCrearDepartamentoAsamblea control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropCrearCargoAsamblea;
-        
-        /// <summary>
-        /// txtCrearFechaAsamblea control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCrearFechaAsamblea;
-        
-        /// <summary>
-        /// txtCrearPeriodoAsamblea control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCrearPeriodoAsamblea;
+        protected global::System.Web.UI.WebControls.DropDownList dropCrearDepartamentoAsamblea;
         
         /// <summary>
         /// txtCrearNombre1Asamblea control.
@@ -193,24 +175,6 @@ namespace PATOnline.Views.DirigentesFADN {
         protected global::System.Web.UI.WebControls.DropDownList dropCrearCargoOrgano;
         
         /// <summary>
-        /// txtCrearFechaOrgano control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCrearFechaOrgano;
-        
-        /// <summary>
-        /// txtCrearPeriodoOrgano control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCrearPeriodoOrgano;
-        
-        /// <summary>
         /// txtCrearNombre1Organo control.
         /// </summary>
         /// <remarks>
@@ -281,24 +245,6 @@ namespace PATOnline.Views.DirigentesFADN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dropCrearCargoComision;
-        
-        /// <summary>
-        /// txtCrearFechaComision control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCrearFechaComision;
-        
-        /// <summary>
-        /// txtCrearPeriodoComision control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCrearPeriodoComision;
         
         /// <summary>
         /// txtCrearNombre1Comision control.
@@ -373,24 +319,6 @@ namespace PATOnline.Views.DirigentesFADN {
         protected global::System.Web.UI.WebControls.DropDownList dropCrearCargoPersonal;
         
         /// <summary>
-        /// txtCrearFechaPersonal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCrearFechaPersonal;
-        
-        /// <summary>
-        /// txtCrearPeriodoPersonal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCrearPeriodoPersonal;
-        
-        /// <summary>
         /// txtCrearNombre1Personal control.
         /// </summary>
         /// <remarks>
@@ -461,24 +389,6 @@ namespace PATOnline.Views.DirigentesFADN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dropCrearCargoDirigente;
-        
-        /// <summary>
-        /// txtCrearFechaDirigente control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCrearFechaDirigente;
-        
-        /// <summary>
-        /// txtCrearPeriodoDirigente control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCrearPeriodoDirigente;
         
         /// <summary>
         /// txtCrearNombre1Dirigente control.
@@ -553,31 +463,13 @@ namespace PATOnline.Views.DirigentesFADN {
         protected global::System.Web.UI.WebControls.Label idEditAsamblea;
         
         /// <summary>
-        /// dropEditCargoAsamblea control.
+        /// dropEditDepartamentoAsamblea control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropEditCargoAsamblea;
-        
-        /// <summary>
-        /// txtEditFechaAsamblea control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditFechaAsamblea;
-        
-        /// <summary>
-        /// txtEditPeriodoAsamblea control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEditPeriodoAsamblea;
+        protected global::System.Web.UI.WebControls.DropDownList dropEditDepartamentoAsamblea;
         
         /// <summary>
         /// txtEditNombre1Asamblea control.
@@ -661,24 +553,6 @@ namespace PATOnline.Views.DirigentesFADN {
         protected global::System.Web.UI.WebControls.DropDownList dropEditCargoOrgano;
         
         /// <summary>
-        /// txtEditFechaOrgano control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditFechaOrgano;
-        
-        /// <summary>
-        /// txtEditPeriodoOrgano control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEditPeriodoOrgano;
-        
-        /// <summary>
         /// txtEditNombre1Organo control.
         /// </summary>
         /// <remarks>
@@ -758,24 +632,6 @@ namespace PATOnline.Views.DirigentesFADN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dropEditCargoComision;
-        
-        /// <summary>
-        /// txtEditFechaComision control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditFechaComision;
-        
-        /// <summary>
-        /// txtEditPeriodoComision control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEditPeriodoComision;
         
         /// <summary>
         /// txtEditNombre1Comision control.
@@ -859,24 +715,6 @@ namespace PATOnline.Views.DirigentesFADN {
         protected global::System.Web.UI.WebControls.DropDownList dropEditCargoPersonal;
         
         /// <summary>
-        /// txtEditFechaPersonal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditFechaPersonal;
-        
-        /// <summary>
-        /// txtEditPeriodoPersonal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEditPeriodoPersonal;
-        
-        /// <summary>
         /// txtEditNombre1Personal control.
         /// </summary>
         /// <remarks>
@@ -956,24 +794,6 @@ namespace PATOnline.Views.DirigentesFADN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dropEditCargoDirigente;
-        
-        /// <summary>
-        /// txtEditFechaDirigente control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditFechaDirigente;
-        
-        /// <summary>
-        /// txtEditPeriodoDirigente control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEditPeriodoDirigente;
         
         /// <summary>
         /// txtEditNombre1Dirigente control.

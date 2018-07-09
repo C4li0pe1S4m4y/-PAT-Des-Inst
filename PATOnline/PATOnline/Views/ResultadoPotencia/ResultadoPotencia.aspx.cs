@@ -579,9 +579,6 @@ namespace PATOnline.Views.ResultadoPotencia
                 {
                     switch (mostra.Rows[j][0].ToString())
                     {
-                        case "Guardar":
-                            break;
-
                         case "Editar":
                             if (pat.ResultadoSearch(int.Parse(e.Row.Cells[0].Text)) == 2)
                             {
@@ -631,18 +628,6 @@ namespace PATOnline.Views.ResultadoPotencia
                             }
 
                             break;
-
-                        case "PDF":
-                            break;
-
-                        case "Excel":
-                            break;
-
-                        case "Rechazar":
-                            break;
-
-                        case "Crear":
-                            break;
                     }
                 }
             }
@@ -687,7 +672,7 @@ namespace PATOnline.Views.ResultadoPotencia
                         for (int i = 0; i < data.Rows.Count; i++)
                         {
                             idIntroObservacionSinRechazoResultado.Text = data.Rows[i][0].ToString();
-                            txtCrearObservacionSinRechazo.Value = data.Rows[i][0].ToString();
+                            txtCrearObservacionSinRechazo.Value = data.Rows[i][1].ToString();
                         }
 
                         idIntroObservacionSinRechazoResultado.Visible = false;
@@ -789,6 +774,12 @@ namespace PATOnline.Views.ResultadoPotencia
                         break;
                 }
 
+                CargarGrid();
+            }
+
+            if (e.CommandName == "Eliminar")
+            {
+                pat.ResultadoUpdate(modelor, int.Parse(row.Cells[0].Text), 12);
                 CargarGrid();
             }
             gridResultado.Columns[0].Visible = false;
@@ -1021,6 +1012,12 @@ namespace PATOnline.Views.ResultadoPotencia
                         break;
                 }
 
+                CargarGrid();
+            }
+
+            if (e.CommandName == "Eliminar")
+            {
+                pat.PotenciaUpdate(modelop, int.Parse(row.Cells[0].Text), 12);
                 CargarGrid();
             }
             gridPotencia.Columns[0].Visible = false;

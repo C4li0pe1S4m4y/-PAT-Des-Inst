@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="adodb, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="AjaxControlToolkit, Version=17.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
       <HintPath>..\packages\AjaxControlToolkit.17.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
       <Private>True</Private>
@@ -51,6 +54,7 @@
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Mvvm, Version=17.1.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpressMvvm.17.1.6.0\lib\net40-client\DevExpress.Mvvm.dll</HintPath>
       <Private>True</Private>
@@ -97,6 +101,7 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -1268,16 +1273,16 @@
     <Content Include="Content\Highcharts-6.1.0\code\themes\sand-signika.js.map" />
     <Content Include="Content\Highcharts-6.1.0\code\themes\skies.js.map" />
     <Content Include="Content\Highcharts-6.1.0\code\themes\sunset.js.map" />
-    <Content Include="DataSet\dataSetIntroduccion.xsc">
-      <DependentUpon>dataSetIntroduccion.xsd</DependentUpon>
+    <Content Include="DataSet\dataSIntroduccion.xsc">
+      <DependentUpon>dataSIntroduccion.xsd</DependentUpon>
     </Content>
-    <None Include="DataSet\dataSetIntroduccion.xsd">
+    <None Include="DataSet\dataSIntroduccion.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dataSetIntroduccion.Designer.cs</LastGenOutput>
+      <LastGenOutput>dataSIntroduccion.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="DataSet\dataSetIntroduccion.xss">
-      <DependentUpon>dataSetIntroduccion.xsd</DependentUpon>
+    <Content Include="DataSet\dataSIntroduccion.xss">
+      <DependentUpon>dataSIntroduccion.xsd</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\PATOnline.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -1988,6 +1993,8 @@
     <Content Include="starter.html" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Login.aspx" />
+    <Content Include="Views\A-Arbitros\Index_Arbitros.aspx" />
+    <Content Include="Views\A-Entrenadores\Index_Entrenador.aspx" />
     <Content Include="Views\AdministracionPAT\AdministracionParte3.aspx" />
     <Content Include="Views\AdministracionPAT\AdministracionPAT.aspx" />
     <Content Include="Views\AsignarFADN\AsignarUsuarioFADN.aspx" />
@@ -2017,6 +2024,7 @@
     <Content Include="Views\P2\IndexP2.aspx" />
     <Content Include="Views\P3\IndexP3.aspx" />
     <Content Include="Views\Portada\PortadaPAT.aspx" />
+    <Content Include="Views\Reporte.aspx" />
     <Content Include="Views\ResultadoPotencia\ResultadoPotencia.aspx" />
     <Content Include="Views\RolPermiso\RolPermiso.aspx" />
     <Content Include="Views\Usuarios\Create.aspx" />
@@ -2165,6 +2173,7 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controller\ClasesBD\AdministracionPATFormato3.cs" />
+    <Compile Include="Controller\ClasesBD\Arbitro.cs" />
     <Compile Include="Controller\ClasesBD\AsiganarFADN.cs" />
     <Compile Include="Controller\ClasesBD\Bitacora.cs" />
     <Compile Include="Controller\ClasesBD\C1Accion.cs" />
@@ -2182,6 +2191,7 @@
     <Compile Include="Controller\ClasesBD\C4_3.cs" />
     <Compile Include="Controller\ClasesBD\CPEAccion.cs" />
     <Compile Include="Controller\ClasesBD\DirigenciaDeportivas.cs" />
+    <Compile Include="Controller\ClasesBD\Entrenador.cs" />
     <Compile Include="Controller\ClasesBD\FederacionAsiganada.cs" />
     <Compile Include="Controller\ClasesBD\FODABE.cs" />
     <Compile Include="Controller\ClasesBD\graficasPAT.cs" />
@@ -2239,7 +2249,6 @@
     <Compile Include="Controller\Delete\DeleteInfoBaseLegal.cs" />
     <Compile Include="Controller\Delete\DeleteUsuario.cs" />
     <Compile Include="Controller\DropdownList\DropDown.cs" />
-    <Compile Include="Controller\Herramientas\InformacionUsuario.cs" />
     <Compile Include="Controller\Herramientas\Correo.cs" />
     <Compile Include="Controller\Read\ReadActividadPAT.cs" />
     <Compile Include="Controller\Read\ReadAdministracionPAT.cs" />
@@ -2333,10 +2342,10 @@
     <Compile Include="DashboardFADN.aspx.designer.cs">
       <DependentUpon>DashboardFADN.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\dataSetIntroduccion.Designer.cs">
+    <Compile Include="DataSet\dataSIntroduccion.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dataSetIntroduccion.xsd</DependentUpon>
+      <DependentUpon>dataSIntroduccion.xsd</DependentUpon>
     </Compile>
     <Compile Include="DBConnection\ConexionMysql.cs" />
     <Compile Include="Default.aspx.cs">
@@ -2349,8 +2358,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="imprimirPAT\imprimirBaseLegal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>imprimirBaseLegal.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="imprimirPAT\imprimirIntroduccion.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>imprimirIntroduccion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ModeloActividadPAT.cs" />
+    <Compile Include="Models\ModeloArbitro.cs" />
     <Compile Include="Models\ModeloAsignarFADN.cs" />
     <Compile Include="Models\ModeloBitacora.cs" />
     <Compile Include="Models\ModeloBoton.cs" />
@@ -2363,6 +2386,7 @@
     <Compile Include="Models\ModeloCategoria.cs" />
     <Compile Include="Models\ModeloCPE.cs" />
     <Compile Include="Models\ModeloDirigencia.cs" />
+    <Compile Include="Models\ModeloEntrenador.cs" />
     <Compile Include="Models\ModeloFADN.cs" />
     <Compile Include="Models\ModeloFodaBEstrategica.cs" />
     <Compile Include="Models\ModeloFormatoC.cs" />
@@ -2385,12 +2409,6 @@
     <Compile Include="Models\ModeloUsuario.cs" />
     <Compile Include="Models\ModeloObservacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reportes\reportIntroduccion.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>reportIntroduccion.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Reset.aspx.cs">
       <DependentUpon>Reset.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2420,6 +2438,20 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\A-Arbitros\Index_Arbitros.aspx.cs">
+      <DependentUpon>Index_Arbitros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\A-Arbitros\Index_Arbitros.aspx.designer.cs">
+      <DependentUpon>Index_Arbitros.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\A-Entrenadores\Index_Entrenador.aspx.cs">
+      <DependentUpon>Index_Entrenador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\A-Entrenadores\Index_Entrenador.aspx.designer.cs">
+      <DependentUpon>Index_Entrenador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\AdministracionPAT\AdministracionParte3.aspx.cs">
       <DependentUpon>AdministracionParte3.aspx</DependentUpon>
@@ -2624,6 +2656,13 @@
     <Compile Include="Views\Portada\PortadaPAT.aspx.designer.cs">
       <DependentUpon>PortadaPAT.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Reporte.aspx.cs">
+      <DependentUpon>Reporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Reporte.aspx.designer.cs">
+      <DependentUpon>Reporte.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\ResultadoPotencia\ResultadoPotencia.aspx.cs">
       <DependentUpon>ResultadoPotencia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2654,17 +2693,23 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FileTemp\" />
     <Folder Include="pages\" />
     <Folder Include="Views\Content\img\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reportes\reportIntroduccion.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>reportIntroduccion.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+    <EmbeddedResource Include="imprimirPAT\imprimirBaseLegal.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>imprimirBaseLegal.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="imprimirPAT\imprimirIntroduccion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>imprimirIntroduccion.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

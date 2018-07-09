@@ -20,11 +20,11 @@ namespace PATOnline.Controller.ClasesBD
             "fkc1_1, fkc2, fkc2_1, fkc2_2, fkc2_3, fkc3, fkc3_1, fkc3_2, fkc4, " +
             "fkc4_1, fkc4_2, fkc4_3, fkcpe, fkdirigencia_deportiva_fadn, " +
             "fkfoda_baestrategica, fkorganigrama, fkp1, fkp2, fkp3, fkpe1, fkpe2, " +
-            "fkpotencia_ag, fkresultado_dih, fkusuario, observacion) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', " +
+            "fkpotencia_ag, fkresultado_dih, fkusuario, observacion, fkentrenador, fkarbitro) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', " +
             "'{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', '{15}', '{16}', '{17}', '{18}', '{19}', '{20}', " +
-            "'{21}', '{22}', '{23}', '{24}', '{25}', '{26}', '{27}', '{28}')", o.id0, o.id1, o.id2, o.id3, o.id4, o.id5, 
+            "'{21}', '{22}', '{23}', '{24}', '{25}', '{26}', '{27}', '{28}', '{29}', '{30}')", o.id0, o.id1, o.id2, o.id3, o.id4, o.id5, 
             o.id6, o.id7, o.id8, o.id9, o.id10, o.id11, o.id12, o.id13, o.id14, o.id15, o.id16, o.id17, o.id18, o.id19, o.id20,
-            o.id21, o.id22, o.id23, o.id24, o.id25, o.id26, o.usuario, o.observacion);
+            o.id21, o.id22, o.id23, o.id24, o.id25, o.id26, o.usuario, o.observacion, o.id27, o.id28);
             mysql.AbrirConexion();
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
             consulta.Fill(dt);
@@ -41,11 +41,11 @@ namespace PATOnline.Controller.ClasesBD
             "fkc1_1, fkc2, fkc2_1, fkc2_2, fkc2_3, fkc3, fkc3_1, fkc3_2, fkc4, " +
             "fkc4_1, fkc4_2, fkc4_3, fkcpe, fkdirigencia_deportiva_fadn, " +
             "fkfoda_baestrategica, fkorganigrama, fkp1, fkp2, fkp3, fkpe1, fkpe2, " +
-            "fkpotencia_ag, fkresultado_dih, fkusuario, observacion) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', " +
+            "fkpotencia_ag, fkresultado_dih, fkusuario, observacion, fkentrenador, fkarbitro) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', " +
             "'{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', '{15}', '{16}', '{17}', '{18}', '{19}', '{20}', " +
-            "'{21}', '{22}', '{23}', '{24}', '{25}', '{26}', '{27}', '{28}')", o.id0, o.id1, o.id2, o.id3, o.id4, o.id5,
+            "'{21}', '{22}', '{23}', '{24}', '{25}', '{26}', '{27}', '{28}', '{29}', '{30}')", o.id0, o.id1, o.id2, o.id3, o.id4, o.id5,
             o.id6, o.id7, o.id8, o.id9, o.id10, o.id11, o.id12, o.id13, o.id14, o.id15, o.id16, o.id17, o.id18, o.id19, o.id20,
-            o.id21, o.id22, o.id23, o.id24, o.id25, o.id26, o.usuario, o.observacion);
+            o.id21, o.id22, o.id23, o.id24, o.id25, o.id26, o.usuario, o.observacion, o.id27, o.id28);
             mysql.AbrirConexion();
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
             consulta.Fill(dt);
@@ -59,7 +59,7 @@ namespace PATOnline.Controller.ClasesBD
              fkinformacion - 0, fkanalisis_brecha - 1, fkanalisis_puesto - 2, fkc1 - 3, fkc1_1 - 4, fkc2 - 5, fkc2_1 - 6, fkc2_2 - 7, fkc2_3 - 8
              fkc3 - 9, fkc3_1 - 10, fkc3_2 - 11, fkc4 - 12, fkc4_1 - 13, fkc4_2 - 14, fkc4_3 - 15, fkcpe - 16, fkdirigencia_deportiva_fadn - 17,
              fkfoda_baestrategica - 18, fkorganigrama - 19, fkp1 - 20, fkp2 - 21, fkp3 - 22, fkpe1 - 23, fkpe2 - 24, fkpotencia_ag - 25,
-             fkresultado_dih - 26,                  
+             fkresultado_dih - 26, fkentrenador - 27, fkarbitro - 28                  
             */
             var mysql = new DBConnection.ConexionMysql();
             DataTable dt = new DataTable();
@@ -68,11 +68,11 @@ namespace PATOnline.Controller.ClasesBD
             "fkc1_1, fkc2, fkc2_1, fkc2_2, fkc2_3, fkc3, fkc3_1, fkc3_2, fkc4, " +
             "fkc4_1, fkc4_2, fkc4_3, fkcpe, fkdirigencia_deportiva_fadn, " +
             "fkfoda_baestrategica, fkorganigrama, fkp1, fkp2, fkp3, fkpe1, fkpe2, " +
-            "fkpotencia_ag, fkresultado_dih, fkusuario, observacion) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', " +
+            "fkpotencia_ag, fkresultado_dih, fkusuario, observacion, fkentrenador, fkarbitro) VALUES('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', " +
             "'{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}', '{13}', '{14}', '{15}', '{16}', '{17}', '{18}', '{19}', '{20}', " +
-            "'{21}', '{22}', '{23}', '{24}', '{25}', '{26}', '{27}', '{28}')", o.id0, o.id1, o.id2, o.id3, o.id4, o.id5,
+            "'{21}', '{22}', '{23}', '{24}', '{25}', '{26}', '{27}', '{28}', '{29}', '{30}')", o.id0, o.id1, o.id2, o.id3, o.id4, o.id5,
             o.id6, o.id7, o.id8, o.id9, o.id10, o.id11, o.id12, o.id13, o.id14, o.id15, o.id16, o.id17, o.id18, o.id19, o.id20,
-            o.id21, o.id22, o.id23, o.id24, o.id25, o.id26, o.usuario, o.observacion);
+            o.id21, o.id22, o.id23, o.id24, o.id25, o.id26, o.usuario, o.observacion, o.id27, o.id28);
             mysql.AbrirConexion();
             MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
             consulta.Fill(dt);
@@ -170,6 +170,12 @@ namespace PATOnline.Controller.ClasesBD
                     break;
                 case 27:
                     where = "oe.fkresultado_dih";
+                    break;
+                case 28:
+                    where = "oe.fkentrenador";
+                    break;
+                case 29:
+                    where = "oe.fkarbitro";
                     break;
             }
 
@@ -276,6 +282,12 @@ namespace PATOnline.Controller.ClasesBD
                 case 27:
                     where = "oe.fkresultado_dih";
                     break;
+                case 28:
+                    where = "oe.fkentrenador";
+                    break;
+                case 29:
+                    where = "oe.fkarbitro";
+                    break;
             }
 
             query = String.Format("SELECT oe.idobservacion_acompaniamiento AS numero, oe.observacion AS observacion, oe.fecha AS fecha,  " +
@@ -381,6 +393,12 @@ namespace PATOnline.Controller.ClasesBD
                 case 27:
                     where = "oe.fkresultado_dih";
                     break;
+                case 28:
+                    where = "oe.fkentrenador";
+                    break;
+                case 29:
+                    where = "oe.fkarbitro";
+                    break;
             }
 
             query = String.Format("SELECT oe.idobservacion_evaluador AS numero, oe.observacion AS observacion, oe.fecha AS fecha, " +
@@ -483,6 +501,12 @@ namespace PATOnline.Controller.ClasesBD
                     break;
                 case 27:
                     where = "oe.fkresultado_dih";
+                    break;
+                case 28:
+                    where = "oe.fkentrenador";
+                    break;
+                case 29:
+                    where = "oe.fkarbitro";
                     break;
             }
 
@@ -595,6 +619,12 @@ namespace PATOnline.Controller.ClasesBD
                 case 27:
                     where = "oe.fkresultado_dih";
                     break;
+                case 28:
+                    where = "oe.fkentrenador";
+                    break;
+                case 29:
+                    where = "oe.fkarbitro";
+                    break;
             }
 
             query = String.Format("SELECT oe.observacion AS observacion " +
@@ -705,6 +735,12 @@ namespace PATOnline.Controller.ClasesBD
                     break;
                 case 27:
                     where = "oe.fkresultado_dih";
+                    break;
+                case 28:
+                    where = "oe.fkentrenador";
+                    break;
+                case 29:
+                    where = "oe.fkarbitro";
                     break;
             }
 

@@ -120,24 +120,10 @@
             <div class="card-body pad" style="display: block;">
               <div class="row">
                 <div class="col-md-12">
-                  <asp:Label runat="server" AssociatedControlID="dropCrearCargoAsamblea" CssClass="control-label"><span style="color:red">*</span> CARGO</asp:Label>
-                  <asp:DropDownList runat="server" ID="dropCrearCargoAsamblea" CssClass="form-control"></asp:DropDownList>
-                  <asp:RequiredFieldValidator ValidationGroup="validarCrearAsamblea" runat="server" ControlToValidate="dropCrearCargoAsamblea"
-                    CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un Cargo" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtCrearFechaAsamblea" CssClass="control-label"><span style="color:red">*</span> FECHA DE INICIO</asp:Label>
-                  <asp:TextBox runat="server" ID="txtCrearFechaAsamblea" CssClass="form-control" TextMode="Date" />
-                  <asp:RequiredFieldValidator ValidationGroup="validarCrearAsamblea" runat="server" ControlToValidate="txtCrearFechaAsamblea"
-                    CssClass="text-danger" ErrorMessage="* La Fecha de Inicio es obligatorio" />
-                </div>
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtCrearPeriodoAsamblea" CssClass="control-label"><span style="color:red">*</span> PERIODO</asp:Label>
-                  <input runat="server" id="txtCrearPeriodoAsamblea" class="form-control" type="text" onkeypress="return numeros(event)" placeholder="ingresar numero" maxlength="2" autofocus required />
-                  <asp:RequiredFieldValidator ValidationGroup="validarCrearAsamblea" runat="server" ControlToValidate="txtCrearPeriodoAsamblea"
-                    CssClass="text-danger" ErrorMessage="* Es Periodo es obligatorio" />
+                  <asp:Label runat="server" AssociatedControlID="dropCrearDepartamentoAsamblea" CssClass="control-label"><span style="color:red">*</span> DEPARTAMENTO</asp:Label>
+                  <asp:DropDownList runat="server" ID="dropCrearDepartamentoAsamblea" CssClass="form-control"></asp:DropDownList>
+                  <asp:RequiredFieldValidator ValidationGroup="validarCrearAsamblea" runat="server" ControlToValidate="dropCrearDepartamentoAsamblea"
+                    CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un Departamento" />
                 </div>
               </div>
               <div class="row">
@@ -197,20 +183,6 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtCrearFechaOrgano" CssClass="control-label"><span style="color:red">*</span> FECHA DE INICIO</asp:Label>
-                  <asp:TextBox runat="server" ID="txtCrearFechaOrgano" CssClass="form-control" TextMode="Date" />
-                  <asp:RequiredFieldValidator ValidationGroup="validarCrearOrgano" runat="server" ControlToValidate="txtCrearFechaOrgano"
-                    CssClass="text-danger" ErrorMessage="* La Fecha de Inicio es obligatorio" />
-                </div>
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtCrearPeriodoOrgano" CssClass="control-label"><span style="color:red">*</span> PERIODO</asp:Label>
-                  <input runat="server" id="txtCrearPeriodoOrgano" class="form-control" type="text" onkeypress="return numeros(event)" placeholder="ingresar numero" maxlength="2" autofocus required />
-                  <asp:RequiredFieldValidator ValidationGroup="validarCrearOrgano" runat="server" ControlToValidate="txtCrearPeriodoOrgano"
-                    CssClass="text-danger" ErrorMessage="* Es Periodo es obligatorio" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
                   <asp:Label runat="server" AssociatedControlID="txtCrearNombre1Organo" CssClass="control-label"><span style="color:red">*</span> PRIMER NOMBRE</asp:Label>
                   <input runat="server" id="txtCrearNombre1Organo" class="form-control" type="text" onkeypress="return letras(event)" placeholder="ingresar primer nombre" maxlength="25" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarCrearOrgano" runat="server" ControlToValidate="txtCrearNombre1Organo"
@@ -262,20 +234,6 @@
                   <asp:DropDownList runat="server" ID="dropCrearCargoComision" CssClass="form-control"></asp:DropDownList>
                   <asp:RequiredFieldValidator ValidationGroup="validarCrearComision" runat="server" ControlToValidate="dropCrearCargoComision"
                     CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un Cargo" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtCrearFechaComision" CssClass="control-label"><span style="color:red">*</span> FECHA DE INICIO</asp:Label>
-                  <asp:TextBox runat="server" ID="txtCrearFechaComision" CssClass="form-control" TextMode="Date" />
-                  <asp:RequiredFieldValidator ValidationGroup="validarCrearComision" runat="server" ControlToValidate="txtCrearFechaComision"
-                    CssClass="text-danger" ErrorMessage="* La Fecha de Inicio es obligatorio" />
-                </div>
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtCrearPeriodoComision" CssClass="control-label"><span style="color:red">*</span> PERIODO</asp:Label>
-                  <input runat="server" id="txtCrearPeriodoComision" class="form-control" type="text" onkeypress="return numeros(event)" placeholder="ingresar numero" maxlength="2" autofocus required />
-                  <asp:RequiredFieldValidator ValidationGroup="validarCrearComision" runat="server" ControlToValidate="txtCrearPeriodoComision"
-                    CssClass="text-danger" ErrorMessage="* Es Periodo es obligatorio" />
                 </div>
               </div>
               <div class="row">
@@ -335,20 +293,6 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtCrearFechaPersonal" CssClass="control-label"><span style="color:red">*</span> FECHA DE INICIO</asp:Label>
-                  <asp:TextBox runat="server" ID="txtCrearFechaPersonal" CssClass="form-control" TextMode="Date" />
-                  <asp:RequiredFieldValidator ValidationGroup="validarCrearPersonal" runat="server" ControlToValidate="txtCrearFechaPersonal"
-                    CssClass="text-danger" ErrorMessage="* La Fecha de Inicio es obligatorio" />
-                </div>
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtCrearPeriodoPersonal" CssClass="control-label"><span style="color:red">*</span> PERIODO</asp:Label>
-                  <input runat="server" id="txtCrearPeriodoPersonal" class="form-control" type="text" onkeypress="return numeros(event)" placeholder="ingresar numero" maxlength="2" autofocus required />
-                  <asp:RequiredFieldValidator ValidationGroup="validarCrearPersonal" runat="server" ControlToValidate="txtCrearPeriodoPersonal"
-                    CssClass="text-danger" ErrorMessage="* Es Periodo es obligatorio" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
                   <asp:Label runat="server" AssociatedControlID="txtCrearNombre1Personal" CssClass="control-label"><span style="color:red">*</span> PRIMER NOMBRE</asp:Label>
                   <input runat="server" id="txtCrearNombre1Personal" class="form-control" type="text" onkeypress="return letras(event)" placeholder="ingresar primer nombre" maxlength="25" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarCrearPersonal" runat="server" ControlToValidate="txtCrearNombre1Personal"
@@ -404,20 +348,6 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtCrearFechaDirigente" CssClass="control-label"><span style="color:red">*</span> FECHA DE INICIO</asp:Label>
-                  <asp:TextBox runat="server" ID="txtCrearFechaDirigente" CssClass="form-control" TextMode="Date" />
-                  <asp:RequiredFieldValidator ValidationGroup="validarCrearDirigente" runat="server" ControlToValidate="txtCrearFechaDirigente"
-                    CssClass="text-danger" ErrorMessage="* La Fecha de Inicio es obligatorio" />
-                </div>
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtCrearPeriodoDirigente" CssClass="control-label"><span style="color:red">*</span> PERIODO</asp:Label>
-                  <input runat="server" id="txtCrearPeriodoDirigente" class="form-control" type="text" onkeypress="return numeros(event)" placeholder="ingresar numero" maxlength="2" autofocus required />
-                  <asp:RequiredFieldValidator ValidationGroup="validarCrearDirigente" runat="server" ControlToValidate="txtCrearPeriodoDirigente"
-                    CssClass="text-danger" ErrorMessage="* Es Periodo es obligatorio" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
                   <asp:Label runat="server" AssociatedControlID="txtCrearNombre1Dirigente" CssClass="control-label"><span style="color:red">*</span> PRIMER NOMBRE</asp:Label>
                   <input runat="server" id="txtCrearNombre1Dirigente" class="form-control" type="text" onkeypress="return letras(event)" placeholder="ingresar primer nombre" maxlength="25" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarCrearDirigente" runat="server" ControlToValidate="txtCrearNombre1Dirigente"
@@ -468,24 +398,10 @@
               <div class="row">
                 <div class="col-md-12">
                   <asp:Label runat="server" ID="idEditAsamblea"></asp:Label>
-                  <asp:Label runat="server" AssociatedControlID="dropEditCargoAsamblea" CssClass="control-label"><span style="color:red">*</span> CARGO</asp:Label>
-                  <asp:DropDownList runat="server" ID="dropEditCargoAsamblea" CssClass="form-control"></asp:DropDownList>
-                  <asp:RequiredFieldValidator ValidationGroup="validarEditAsamblea" runat="server" ControlToValidate="dropEditCargoAsamblea"
-                    CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un Cargo" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtEditFechaAsamblea" CssClass="control-label"><span style="color:red">*</span> FECHA DE INICIO</asp:Label>
-                  <asp:TextBox runat="server" ID="txtEditFechaAsamblea" CssClass="form-control" TextMode="Date" />
-                  <asp:RequiredFieldValidator ValidationGroup="validarEditAsamblea" runat="server" ControlToValidate="txtEditFechaAsamblea"
-                    CssClass="text-danger" ErrorMessage="* La Fecha de Inicio es obligatorio" />
-                </div>
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtEditPeriodoAsamblea" CssClass="control-label"><span style="color:red">*</span> PERIODO</asp:Label>
-                  <input runat="server" id="txtEditPeriodoAsamblea" class="form-control" type="text" onkeypress="return numeros(event)" placeholder="ingresar numero" maxlength="2" autofocus required />
-                  <asp:RequiredFieldValidator ValidationGroup="validarEditAsamblea" runat="server" ControlToValidate="txtEditPeriodoAsamblea"
-                    CssClass="text-danger" ErrorMessage="* Es Periodo es obligatorio" />
+                  <asp:Label runat="server" AssociatedControlID="dropEditDepartamentoAsamblea" CssClass="control-label"><span style="color:red">*</span> DEPARTAMENTO</asp:Label>
+                  <asp:DropDownList runat="server" ID="dropEditDepartamentoAsamblea" CssClass="form-control"></asp:DropDownList>
+                  <asp:RequiredFieldValidator ValidationGroup="validarEditAsamblea" runat="server" ControlToValidate="dropEditDepartamentoAsamblea"
+                    CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un Departamento" />
                 </div>
               </div>
               <div class="row">
@@ -546,20 +462,6 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtEditFechaOrgano" CssClass="control-label"><span style="color:red">*</span> FECHA DE INICIO</asp:Label>
-                  <asp:TextBox runat="server" ID="txtEditFechaOrgano" CssClass="form-control" TextMode="Date" />
-                  <asp:RequiredFieldValidator ValidationGroup="validarEditOrgano" runat="server" ControlToValidate="txtEditFechaOrgano"
-                    CssClass="text-danger" ErrorMessage="* La Fecha de Inicio es obligatorio" />
-                </div>
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtEditPeriodoOrgano" CssClass="control-label"><span style="color:red">*</span> PERIODO</asp:Label>
-                  <input runat="server" id="txtEditPeriodoOrgano" class="form-control" type="text" onkeypress="return numeros(event)" placeholder="ingresar numero" maxlength="2" autofocus required />
-                  <asp:RequiredFieldValidator ValidationGroup="validarEditOrgano" runat="server" ControlToValidate="txtEditPeriodoOrgano"
-                    CssClass="text-danger" ErrorMessage="* Es Periodo es obligatorio" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
                   <asp:Label runat="server" AssociatedControlID="txtEditNombre1Organo" CssClass="control-label"><span style="color:red">*</span> PRIMER NOMBRE</asp:Label>
                   <input runat="server" id="txtEditNombre1Organo" class="form-control" type="text" onkeypress="return letras(event)" placeholder="ingresar primer nombre" maxlength="25" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarEditOrgano" runat="server" ControlToValidate="txtEditNombre1Organo"
@@ -612,20 +514,6 @@
                   <asp:DropDownList runat="server" ID="dropEditCargoComision" CssClass="form-control"></asp:DropDownList>
                   <asp:RequiredFieldValidator ValidationGroup="validarEditComision" runat="server" ControlToValidate="dropEditCargoComision"
                     CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un Cargo" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtEditFechaComision" CssClass="control-label"><span style="color:red">*</span> FECHA DE INICIO</asp:Label>
-                  <asp:TextBox runat="server" ID="txtEditFechaComision" CssClass="form-control" TextMode="Date" />
-                  <asp:RequiredFieldValidator ValidationGroup="validarEditComision" runat="server" ControlToValidate="txtEditFechaComision"
-                    CssClass="text-danger" ErrorMessage="* La Fecha de Inicio es obligatorio" />
-                </div>
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtEditPeriodoComision" CssClass="control-label"><span style="color:red">*</span> PERIODO</asp:Label>
-                  <input runat="server" id="txtEditPeriodoComision" class="form-control" type="text" onkeypress="return numeros(event)" placeholder="ingresar numero" maxlength="2" autofocus required />
-                  <asp:RequiredFieldValidator ValidationGroup="validarEditComision" runat="server" ControlToValidate="txtEditPeriodoComision"
-                    CssClass="text-danger" ErrorMessage="* Es Periodo es obligatorio" />
                 </div>
               </div>
               <div class="row">
@@ -686,20 +574,6 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtEditFechaPersonal" CssClass="control-label"><span style="color:red">*</span> FECHA DE INICIO</asp:Label>
-                  <asp:TextBox runat="server" ID="txtEditFechaPersonal" CssClass="form-control" TextMode="Date" />
-                  <asp:RequiredFieldValidator ValidationGroup="validarEditPersonal" runat="server" ControlToValidate="txtEditFechaPersonal"
-                    CssClass="text-danger" ErrorMessage="* La Fecha de Inicio es obligatorio" />
-                </div>
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtEditPeriodoPersonal" CssClass="control-label"><span style="color:red">*</span> PERIODO</asp:Label>
-                  <input runat="server" id="txtEditPeriodoPersonal" class="form-control" type="text" onkeypress="return numeros(event)" placeholder="ingresar numero" maxlength="2" autofocus required />
-                  <asp:RequiredFieldValidator ValidationGroup="validarEditPersonal" runat="server" ControlToValidate="txtEditPeriodoPersonal"
-                    CssClass="text-danger" ErrorMessage="* Es Periodo es obligatorio" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
                   <asp:Label runat="server" AssociatedControlID="txtEditNombre1Personal" CssClass="control-label"><span style="color:red">*</span> PRIMER NOMBRE</asp:Label>
                   <input runat="server" id="txtEditNombre1Personal" class="form-control" type="text" onkeypress="return letras(event)" placeholder="ingresar primer nombre" maxlength="25" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarEditPersonal" runat="server" ControlToValidate="txtEditNombre1Personal"
@@ -752,20 +626,6 @@
                   <asp:DropDownList runat="server" ID="dropEditCargoDirigente" CssClass="form-control"></asp:DropDownList>
                   <asp:RequiredFieldValidator ValidationGroup="validarEditDirigente" runat="server" ControlToValidate="dropEditCargoDirigente"
                     CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un Cargo" />
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtEditFechaDirigente" CssClass="control-label"><span style="color:red">*</span> FECHA DE INICIO</asp:Label>
-                  <asp:TextBox runat="server" ID="txtEditFechaDirigente" CssClass="form-control" TextMode="Date" />
-                  <asp:RequiredFieldValidator ValidationGroup="validarEditDirigente" runat="server" ControlToValidate="txtEditFechaDirigente"
-                    CssClass="text-danger" ErrorMessage="* La Fecha de Inicio es obligatorio" />
-                </div>
-                <div class="col-md-6">
-                  <asp:Label runat="server" AssociatedControlID="txtEditPeriodoDirigente" CssClass="control-label"><span style="color:red">*</span> PERIODO</asp:Label>
-                  <input runat="server" id="txtEditPeriodoDirigente" class="form-control" type="text" onkeypress="return numeros(event)" placeholder="ingresar numero" maxlength="2" autofocus required />
-                  <asp:RequiredFieldValidator ValidationGroup="validarEditDirigente" runat="server" ControlToValidate="txtEditPeriodoDirigente"
-                    CssClass="text-danger" ErrorMessage="* Es Periodo es obligatorio" />
                 </div>
               </div>
               <div class="row">
@@ -918,7 +778,7 @@
                     CssClass="table table-bordered dataTable" HeaderStyle-BackColor="#e8f2fc" OnRowCommand="gridAsamblea_RowCommand">
                     <Columns>
                       <asp:BoundField DataField="numero" ShowHeader="false" />
-                      <asp:BoundField DataField="cargo" HeaderText="CARGO" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center" />
+                      <asp:BoundField DataField="departamento" HeaderText="REPRESENTANTE DE:" ItemStyle-Width="10%" ItemStyle-HorizontalAlign="Center" />
                       <asp:BoundField DataField="nombre" HeaderText="NOMBRE" ItemStyle-Width="70%" ItemStyle-HorizontalAlign="Center" />
                       <asp:TemplateField HeaderText="OPCIONES">
                         <ItemTemplate>

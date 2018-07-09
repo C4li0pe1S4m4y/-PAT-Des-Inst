@@ -51,11 +51,16 @@ namespace PATOnline.Views.FADN
 
         protected void CargarGrid()
         {
-            if(all.FADNRead(this.Session["Usuario"].ToString()).Rows.Count != 0)
+            if(Session["FederacionAsignada"] == null)
             {
-                gvListadoInfo.DataSource = all.FADNRead(this.Session["Usuario"].ToString());
-                gvListadoInfo.DataBind();
+                gvListadoInfo.DataSource = all.FADNRead(Session["Usuario"].ToString(), Session["Federacion"].ToString());
             }
+            else
+            {
+                gvListadoInfo.DataSource = all.FADNRead(Session["Usuario"].ToString(), Session["FederacionAsignada"].ToString());
+            }
+
+            gvListadoInfo.DataBind();
         }
 
         protected void gvListadoInfo_PageIndexChanging(object sender, GridViewPageEventArgs e)

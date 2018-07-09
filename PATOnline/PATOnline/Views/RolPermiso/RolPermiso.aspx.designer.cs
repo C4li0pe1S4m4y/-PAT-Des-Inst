@@ -40,6 +40,15 @@ namespace PATOnline.Views.RolPermiso {
         protected global::System.Web.UI.WebControls.LinkButton btEditar;
         
         /// <summary>
+        /// btDelete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btDelete;
+        
+        /// <summary>
         /// mostrarCrearRol control.
         /// </summary>
         /// <remarks>
@@ -254,6 +263,51 @@ namespace PATOnline.Views.RolPermiso {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton editarPermiso;
+        
+        /// <summary>
+        /// mostrarEliminarPermisoRol control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mostrarEliminarPermisoRol;
+        
+        /// <summary>
+        /// DropEliminarPermisoRol control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropEliminarPermisoRol;
+        
+        /// <summary>
+        /// DropEliminarPermisoMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropEliminarPermisoMenu;
+        
+        /// <summary>
+        /// cancelarEliminarPermisoRol control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cancelarEliminarPermisoRol;
+        
+        /// <summary>
+        /// eliminarPermisoRol control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton eliminarPermisoRol;
         
         /// <summary>
         /// gvListadoInfo control.

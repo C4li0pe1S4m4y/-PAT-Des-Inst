@@ -21,7 +21,7 @@
   <section class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-3">
           <div class="info-box">
             <div class="info-box-content">
               <span class="info-box-text">Agregar</span>
@@ -51,6 +51,17 @@
             </div>
             <asp:LinkButton ID="btEditar" runat="server" type="button" CausesValidation="false" OnClick="btEditar_Click">
               <span class="info-box-icon bg-warning elevation-1"><i class="fa fa-edit"></i></span>
+            </asp:LinkButton>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="info-box">
+            <div class="info-box-content">
+              <span class="info-box-text">Eliminar</span>
+              <span class="info-box-number">Permisos al Rol</span>
+            </div>
+            <asp:LinkButton ID="btDelete" runat="server" type="button" CausesValidation="false" OnClick="btDelete_Click">
+              <span class="info-box-icon bg-danger elevation-1"><i class="fa fa-trash-o"></i></span>
             </asp:LinkButton>
           </div>
         </div>
@@ -252,6 +263,45 @@
             </div>
           </div>
         </div>
+
+        <div class="col-md-6">
+          <div class="card card-outline card-danger" runat="server" id="mostrarEliminarPermisoRol">
+            <div class="card-header">
+              <h3 class="card-title"><span class="info-box-number">ELIMINAR PERMISO AL ROL</span></h3>
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body pad" style="display: block;">
+              <div class="row">
+                <div class="col-md-6">
+                  <asp:Label runat="server" AssociatedControlID="DropEliminarPermisoRol" CssClass="control-label"><span style="color:red">*</span> ROL</asp:Label>
+                  <asp:DropDownList runat="server" ID="DropEliminarPermisoRol" CssClass="form-control"></asp:DropDownList>
+                  <asp:RequiredFieldValidator runat="server" ControlToValidate="DropEliminarPermisoRol" ValidationGroup="validarEliminarPermiso"
+                    CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un Rol" />
+                </div>
+                <div class="col-md-6">
+                  <asp:Label runat="server" AssociatedControlID="DropEliminarPermisoMenu" CssClass="control-label"><span style="color:red">*</span> MENÚ</asp:Label>
+                  <asp:DropDownList runat="server" ID="DropEliminarPermisoMenu" CssClass="form-control"></asp:DropDownList>
+                  <asp:RequiredFieldValidator runat="server" ControlToValidate="DropEditarPermisoMenu" ValidationGroup="validarEliminarPermiso"
+                    CssClass="text-danger" ErrorMessage="* Es obligatorio seleccionar un Menu" />
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <asp:LinkButton runat="server" ID="cancelarEliminarPermisoRol" type="button" class="btn btn-info btn-outline-danger btn-lg" CausesValidation="false" OnClick="cancelarEliminarPermisoRol_Click">
+                <span class="fa fa-close"></span>
+              </asp:LinkButton>
+              <asp:LinkButton runat="server" ValidationGroup="validarEliminarPermiso" ID="eliminarPermisoRol" type="button" class="btn btn-info btn-outline-primary btn-lg float-right" OnClick="eliminarPermisoRol_Click">
+                <span class="fa fa-save"></span>
+              </asp:LinkButton>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -283,8 +333,7 @@
                           <asp:GridView ID="gvListSub" runat="server" AutoGenerateColumns="False" DataKeyNames="numero" OnRowDataBound="gvListSub_RowDataBound"
                             ShowHeader="false" BorderStyle="None">
                             <Columns>
-                              <asp:BoundField DataField="numero">
-                              </asp:BoundField>
+                              <asp:BoundField DataField="numero"></asp:BoundField>
                               <asp:BoundField DataField="pantalla" HeaderText="PANTALLA" HeaderStyle-Font-Size="Medium">
                                 <ItemStyle Width="80%" />
                               </asp:BoundField>
@@ -318,29 +367,29 @@
           <section class="content" id="popup">
             <div class="container-fluid">
               <div class="popup-contenedor">
-              <div class="card card-outline card-info">
-                <div class="card-header">
-                  <h3 class="card-title">MODIFICAR INFORMACIÓN</h3>
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                      <i class="fa fa-minus"></i>
-                    </button>
+                <div class="card card-outline card-info">
+                  <div class="card-header">
+                    <h3 class="card-title">MODIFICAR INFORMACIÓN</h3>
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fa fa-minus"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="card-body pad">
+                  </div>
+
+                  <div class="card-footer">
+                    <asp:LinkButton runat="server" ID="LinkButton1" type="button" class="btn btn-info btn-outline-danger btn-lg" CausesValidation="false">
+                    <span class="fa fa-close"></span>
+                    </asp:LinkButton>
+                    <asp:LinkButton runat="server" ValidationGroup="validarEditarPermiso" ID="LinkButton2" type="button" class="btn btn-info btn-outline-primary btn-lg float-right">
+                    <span class="fa fa-save"></span>
+                    </asp:LinkButton>
                   </div>
                 </div>
-
-                <div class="card-body pad">
-                </div>
-
-                <div class="card-footer">
-                  <asp:LinkButton runat="server" ID="LinkButton1" type="button" class="btn btn-info btn-outline-danger btn-lg" CausesValidation="false">
-                    <span class="fa fa-close"></span>
-                  </asp:LinkButton>
-                  <asp:LinkButton runat="server" ValidationGroup="validarEditarPermiso" ID="LinkButton2" type="button" class="btn btn-info btn-outline-primary btn-lg float-right">
-                    <span class="fa fa-save"></span>
-                  </asp:LinkButton>
-                </div>
               </div>
-            </div>
             </div>
           </section>
 

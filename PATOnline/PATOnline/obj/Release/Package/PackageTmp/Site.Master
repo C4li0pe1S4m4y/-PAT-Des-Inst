@@ -197,17 +197,17 @@
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a id="P1_INGRESOS" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                        <p>P1: INGRESOS</p>
+                        <p style="font-size: 12px">P1: INGRESOS <span class="badge badge-info right"><asp:label runat="server" ID="countP1"></asp:label></span></p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a id="P2_EGRESOS_POR_RENGLÓN" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                        <p>P2: EGRESOS POR RENGLÓN</p>
+                        <p style="font-size: 12px">P2: EGRESOS POR RENGLÓN <span class="badge badge-info right"><asp:label runat="server" ID="countP2"></asp:label></span></p>
                       </a>
                     </li>
                     <li class="nav-item">
                       <a id="P3_EGRESOS_POR_ACTIVIDAD" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                        <p>P3: EGRESOS POR ACTIVIDAD</p>
+                        <p style="font-size: 12px">P3: EGRESOS POR ACTIVIDAD <span class="badge badge-info right"><asp:label runat="server" ID="countP3"></asp:label></span></p>
                       </a>
                     </li>
                   </ul>
@@ -218,91 +218,116 @@
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item has-treeview">
-                      <a id="CPE" runat="server" class="nav-link"><i class="nav-icon fa fa-file"></i>
+                      <a id="CPEINDEX" runat="server" class="nav-link"><i class="nav-icon fa fa-file"></i>
                         <p>CPE<i class="right fa fa-angle-left"></i></p>
                       </a>
                       <ul class="nav nav-treeview">
                         <li class="nav-item">
+                          <a id="CPE" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
+                            <p style="font-size: 12px">CPE <span class="badge badge-info right"><asp:label runat="server" ID="countCPE"></asp:label></span></p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
                           <a id="PE1_GAD" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                            <p>PE1: GAD</p>
+                            <p style="font-size: 12px">PE1: GAD <span class="badge badge-info right"><asp:label runat="server" ID="countPE1"></asp:label></span></p>
                           </a>
                         </li>
                         <li class="nav-item">
                           <a id="PE2_AGP" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                            <p>PE2: AGP</p>
+                            <p style="font-size: 12px">PE2: AGP <span class="badge badge-info right"><asp:label runat="server" ID="countPE2"></asp:label></span></p>
                           </a>
                         </li>
                       </ul>
                     </li>
                     <li class="nav-item has-treeview">
-                      <a id="C1" runat="server" class="nav-link"><i class="nav-icon fa fa-file"></i>
+                      <a id="C1INDEX" runat="server" class="nav-link"><i class="nav-icon fa fa-file"></i>
                         <p>C1<i class="right fa fa-angle-left"></i></p>
                       </a>
                       <ul class="nav nav-treeview">
                         <li class="nav-item">
+                          <a id="C1" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
+                            <p style="font-size: 12px">C1 <span class="badge badge-info right"><asp:label runat="server" ID="countC1"></asp:label></span></p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
                           <a id="C11_DCH" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                            <p>C1.1: DCH</p>
+                            <p style="font-size: 12px">C1.1: DCH <span class="badge badge-info right"><asp:label runat="server" ID="countC11"></asp:label></span></p>
                           </a>
                         </li>
                       </ul>
                     </li>
                     <li class="nav-item has-treeview">
-                      <a id="C2" runat="server" class="nav-link"><i class="nav-icon fa fa-file"></i>
+                      <a id="C2INDEX" runat="server" class="nav-link"><i class="nav-icon fa fa-file"></i>
                         <p>C2<i class="right fa fa-angle-left"></i></p>
                       </a>
                       <ul class="nav nav-treeview">
                         <li class="nav-item">
+                          <a id="C2" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
+                            <p style="font-size: 12px">C2 <span class="badge badge-info right"><asp:label runat="server" ID="countC2"></asp:label></span></p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
                           <a id="C21_AFDF" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                            <p>C2.1: AFDF</p>
+                            <p style="font-size: 12px">C2.1: AFDF <span class="badge badge-info right"><asp:label runat="server" ID="countC21"></asp:label></span></p>
                           </a>
                         </li>
                         <li class="nav-item">
                           <a id="C22_PAD" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                            <p>C2.2: PAD</p>
+                            <p style="font-size: 12px">C2.2: PAD <span class="badge badge-info right"><asp:label runat="server" ID="countC22"></asp:label></span></p>
                           </a>
                         </li>
                         <li class="nav-item">
                           <a id="C23_AFDPD" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                            <p>C2.3: AFDPD</p>
+                            <p style="font-size: 12px">C2.3: AFDPD <span class="badge badge-info right"><asp:label runat="server" ID="countC23"></asp:label></span></p>
                           </a>
                         </li>
                       </ul>
                     </li>
                     <li class="nav-item has-treeview">
-                      <a id="C3" runat="server" class="nav-link"><i class="nav-icon fa fa-file"></i>
+                      <a id="C3INDEX" runat="server" class="nav-link"><i class="nav-icon fa fa-file"></i>
                         <p>C3<i class="right fa fa-angle-left"></i></p>
                       </a>
                       <ul class="nav nav-treeview">
                         <li class="nav-item">
+                          <a id="C3" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
+                            <p style="font-size: 12px">C3 <span class="badge badge-info right"><asp:label runat="server" ID="countC3"></asp:label></span></p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
                           <a id="C31_SCN" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                            <p>C3.1: SCN</p>
+                            <p style="font-size: 12px">C3.1: SCN <span class="badge badge-info right"><asp:label runat="server" ID="countC31"></asp:label></span></p>
                           </a>
                         </li>
                         <li class="nav-item">
                           <a id="C32_SJDN" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                            <p>C3.2: SJDN</p>
+                            <p style="font-size: 12px">C3.2: SJDN <span class="badge badge-info right"><asp:label runat="server" ID="countC32"></asp:label></span></p>
                           </a>
                         </li>
                       </ul>
                     </li>
                     <li class="nav-item has-treeview">
-                      <a id="C4" runat="server" class="nav-link"><i class="nav-icon fa fa-file"></i>
+                      <a id="C4INDEX" runat="server" class="nav-link"><i class="nav-icon fa fa-file"></i>
                         <p>C4<i class="right fa fa-angle-left"></i></p>
                       </a>
                       <ul class="nav nav-treeview">
                         <li class="nav-item">
+                          <a id="C4" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
+                            <p style="font-size: 12px">C4 <span class="badge badge-info right"><asp:label runat="server" ID="countC4"></asp:label></span></p>
+                          </a>
+                        </li>
+                        <li class="nav-item">
                           <a id="C41_CEAPD" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                            <p>C4.1: CEAPD</p>
+                            <p style="font-size: 12px">C4.1: CEAPD <span class="badge badge-info right"><asp:label runat="server" ID="countC41"></asp:label></span></p>
                           </a>
                         </li>
                         <li class="nav-item">
                           <a id="C42_CP" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                            <p>C4.2: CP</p>
+                            <p style="font-size: 12px">C4.2: CP <span class="badge badge-info right"><asp:label runat="server" ID="countC42"></asp:label></span></p>
                           </a>
                         </li>
                         <li class="nav-item">
                           <a id="C43_CI" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
-                            <p>C4.3: CI</p>
+                            <p style="font-size: 12px">C4.3: CI <span class="badge badge-info right"><asp:label runat="server" ID="countC43"></asp:label></span></p>
                           </a>
                         </li>
                       </ul>

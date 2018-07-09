@@ -463,13 +463,13 @@ namespace PATOnline.Views.P1 {
         protected global::System.Web.UI.WebControls.LinkButton btObservacionSinRechazoUpdate;
         
         /// <summary>
-        /// gridFADN control.
+        /// gridFADN2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridFADN;
+        protected global::System.Web.UI.WebControls.GridView gridFADN2;
         
         /// <summary>
         /// gridFADN3 control.

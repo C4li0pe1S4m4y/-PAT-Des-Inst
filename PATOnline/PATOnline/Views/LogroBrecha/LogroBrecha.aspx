@@ -152,14 +152,16 @@
                   <asp:RequiredFieldValidator ValidationGroup="validarCrearBrecha" runat="server" ControlToValidate="txtCrearPuntosBrecha"
                     CssClass="text-danger" ErrorMessage="* El Punteo es obligatorio" />
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-8">
                   <asp:Label runat="server" AssociatedControlID="txtCrearPuntosObtenidosBrecha" CssClass="control-label"><span style="color:red">*</span> PUNTOS OBTENIDOS POR FADN</asp:Label>
                   <input runat="server" id="txtCrearPuntosObtenidosBrecha" class="form-control" type="text" onkeypress="return numerosypunto(event)" placeholder="0000.00" maxlength="8" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarCrearBrecha" runat="server" ControlToValidate="txtCrearPuntosObtenidosBrecha"
                     CssClass="text-danger" ErrorMessage="* El Punteo Obtenido por FADN es obligatorio" />
                 </div>
-                <div class="col-md-4">
-                  <asp:Label runat="server" AssociatedControlID="txtCrearComparacionBrecha" CssClass="control-label"><span style="color:red">*</span> COMPRACIÓN</asp:Label>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <asp:Label runat="server" AssociatedControlID="txtCrearComparacionBrecha" CssClass="control-label"><span style="color:red">*</span> COMPARACIÓN</asp:Label>
                   <input runat="server" id="txtCrearComparacionBrecha" class="form-control" type="text" onkeypress="return numerosypuntomenos(event)" placeholder="ingresar numero" maxlength="12" autofocus required />
                   <asp:RequiredFieldValidator ValidationGroup="validarCrearBrecha" runat="server" ControlToValidate="txtCrearComparacionBrecha"
                     CssClass="text-danger" ErrorMessage="* La Comparacion es obligatoria" />

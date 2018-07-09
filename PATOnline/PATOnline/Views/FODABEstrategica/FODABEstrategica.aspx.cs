@@ -522,7 +522,7 @@ namespace PATOnline.Views.FODA
                         for (int i = 0; i < data.Rows.Count; i++)
                         {
                             idIntroObservacionSinRechazo.Text = data.Rows[i][0].ToString();
-                            txtCrearObservacionSinRechazo.Text = data.Rows[i][0].ToString();
+                            txtCrearObservacionSinRechazo.Text = data.Rows[i][1].ToString();
                         }
 
                         idIntroObservacionSinRechazo.Visible = false;
@@ -624,6 +624,12 @@ namespace PATOnline.Views.FODA
                         break;
                 }
 
+                CargarGrid();
+            }
+
+            if (e.CommandName == "Eliminar")
+            {
+                pat.FODABEUpdate(modelo, int.Parse(row.Cells[0].Text), 12);
                 CargarGrid();
             }
             gridFODABE.Columns[0].Visible = false;

@@ -481,33 +481,6 @@ namespace PATOnline.Views.AdministracionPAT {
         protected global::System.Web.UI.WebControls.LinkButton editTipoPersona;
         
         /// <summary>
-        /// gvListBrecha control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvListBrecha;
-        
-        /// <summary>
-        /// gvListCargo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvListCargo;
-        
-        /// <summary>
-        /// gvListCategoria control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvListCategoria;
-        
-        /// <summary>
         /// mostrarGridNivel control.
         /// </summary>
         /// <remarks>
@@ -533,6 +506,33 @@ namespace PATOnline.Views.AdministracionPAT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvListNivel;
+        
+        /// <summary>
+        /// gvListBrecha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvListBrecha;
+        
+        /// <summary>
+        /// gvListCargo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvListCargo;
+        
+        /// <summary>
+        /// gvListCategoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvListCategoria;
         
         /// <summary>
         /// gvListTipoPersonal control.

@@ -679,6 +679,51 @@ namespace PATOnline {
         protected global::System.Web.UI.WebControls.Label countC43;
         
         /// <summary>
+        /// PARTE_4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor PARTE_4;
+        
+        /// <summary>
+        /// ENTRENADOR control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor ENTRENADOR;
+        
+        /// <summary>
+        /// countEntrenador control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countEntrenador;
+        
+        /// <summary>
+        /// ARBITRO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor ARBITRO;
+        
+        /// <summary>
+        /// countArbitro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label countArbitro;
+        
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>

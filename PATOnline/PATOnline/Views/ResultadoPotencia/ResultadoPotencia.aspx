@@ -108,7 +108,7 @@
                 </div>
                 <div class="col-md-6">
                   <asp:Label runat="server" AssociatedControlID="txtCrearFechaResultado" CssClass="control-label"><span style="color:red">*</span> FECHA</asp:Label>
-                  <asp:TextBox runat="server" ID="txtCrearFechaResultado" CssClass="form-control" TextMode="Number" MaxLength="4" />
+                  <asp:TextBox runat="server" ID="txtCrearFechaResultado" CssClass="form-control" TextMode="Number" onkeypress="return numeros(event)" MaxLength="4" />
                   <asp:RequiredFieldValidator ValidationGroup="validarCrearResultado" runat="server" ControlToValidate="txtCrearFechaResultado"
                     CssClass="text-danger" ErrorMessage="* La Fecha es obligatoria" />
                 </div>

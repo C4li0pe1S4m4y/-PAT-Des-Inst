@@ -85,96 +85,6 @@ namespace PATOnline.Views.AdministracionPAT {
         protected global::System.Web.UI.WebControls.LinkButton crearFormatoC;
         
         /// <summary>
-        /// mostrarCrearCategoria control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mostrarCrearCategoria;
-        
-        /// <summary>
-        /// DropIDPadreCategoria control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropIDPadreCategoria;
-        
-        /// <summary>
-        /// TxtCategoria control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TxtCategoria;
-        
-        /// <summary>
-        /// cancelCrearCategoria control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton cancelCrearCategoria;
-        
-        /// <summary>
-        /// crearCategoria control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton crearCategoria;
-        
-        /// <summary>
-        /// mostrarCrearActividad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mostrarCrearActividad;
-        
-        /// <summary>
-        /// DropActividad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropActividad;
-        
-        /// <summary>
-        /// TxtActividad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea TxtActividad;
-        
-        /// <summary>
-        /// cancelCrearActividad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton cancelCrearActividad;
-        
-        /// <summary>
-        /// crearActividad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton crearActividad;
-        
-        /// <summary>
         /// mostrarEditFormatoC control.
         /// </summary>
         /// <remarks>
@@ -229,6 +139,51 @@ namespace PATOnline.Views.AdministracionPAT {
         protected global::System.Web.UI.WebControls.LinkButton editFormatoC;
         
         /// <summary>
+        /// mostrarCrearCategoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mostrarCrearCategoria;
+        
+        /// <summary>
+        /// DropIDPadreCategoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropIDPadreCategoria;
+        
+        /// <summary>
+        /// TxtCategoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea TxtCategoria;
+        
+        /// <summary>
+        /// cancelCrearCategoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cancelCrearCategoria;
+        
+        /// <summary>
+        /// crearCategoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton crearCategoria;
+        
+        /// <summary>
         /// mostrarEditCategoria control.
         /// </summary>
         /// <remarks>
@@ -281,6 +236,51 @@ namespace PATOnline.Views.AdministracionPAT {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton editCategoria;
+        
+        /// <summary>
+        /// mostrarCrearActividad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mostrarCrearActividad;
+        
+        /// <summary>
+        /// DropActividad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropActividad;
+        
+        /// <summary>
+        /// TxtActividad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea TxtActividad;
+        
+        /// <summary>
+        /// cancelCrearActividad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton cancelCrearActividad;
+        
+        /// <summary>
+        /// crearActividad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton crearActividad;
         
         /// <summary>
         /// mostrarEditActividad control.

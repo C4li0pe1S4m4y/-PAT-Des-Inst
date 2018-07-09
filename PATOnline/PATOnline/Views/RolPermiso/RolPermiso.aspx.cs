@@ -34,6 +34,7 @@ namespace PATOnline.Views.RolPermiso
                 mostrarEditarRol.Visible = false;
                 mostrarCrearPermiso.Visible = false;
                 mostrarEditarPermiso.Visible = false;
+                mostrarEliminarPermisoRol.Visible = false;
                 CargarGrid();
             }
         }
@@ -313,6 +314,34 @@ namespace PATOnline.Views.RolPermiso
         protected void cancelEditPermiso_Click(object sender, EventArgs e)
         {
             mostrarEditarPermiso.Visible = false;
+        }
+
+        protected void btDelete_Click(object sender, EventArgs e)
+        {
+            drop.Drop_Rol(DropEliminarPermisoRol);
+            drop.Drop_Menu(DropEliminarPermisoMenu);
+            mostrarEliminarPermisoRol.Visible = true;
+        }
+
+        protected void cancelarEliminarPermisoRol_Click(object sender, EventArgs e)
+        {
+            mostrarEliminarPermisoRol.Visible = false;
+        }
+
+        protected void eliminarPermisoRol_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                nuevo_rol.PermisoRolDelete(int.Parse(DropEliminarPermisoRol.SelectedValue), int.Parse(DropEliminarPermisoMenu.SelectedValue));
+                CargarGrid();
+                mostrarEliminarPermisoRol.Visible = false;
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'El Permiso fue eliminado', 'success');", true);
+                this.Session["Menu"] = null;
+            }
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Error!', 'El Permiso no fue eliminado', 'error');", true);
+            }
         }
     }
 }

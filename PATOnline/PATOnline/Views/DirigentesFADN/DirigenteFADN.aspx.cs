@@ -331,25 +331,13 @@ namespace PATOnline.Views.DirigentesFADN
                             break;
 
                         case "Observación":
-                            if (obs.ObservacionCEFADNExiste(int.Parse(e.Row.Cells[0].Text), 18) == true
-                                        || obs.ObservacionAcompaniamientoExiste(int.Parse(e.Row.Cells[0].Text), 18) == true
-                                        || obs.ObservacionEvaluadorExiste(int.Parse(e.Row.Cells[0].Text), 18) == true)
+                            if (dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 3
+                                        || dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 6
+                                        || dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 9)
                             {
                                 (e.Row.FindControl("btObservacion") as LinkButton).Visible = true;
                             }
 
-                            break;
-
-                        case "PDF":
-                            break;
-
-                        case "Excel":
-                            break;
-
-                        case "Rechazar":
-                            break;
-
-                        case "Crear":
                             break;
                     }
                 }
@@ -369,19 +357,17 @@ namespace PATOnline.Views.DirigentesFADN
                 switch (Session["Rol"].ToString())
                 {
                     case "Usuario Interno de FADN":
-                        drop.Drop_Cargo(dropEditCargoAsamblea);
+                        drop.Drop_Departamento(dropEditDepartamentoAsamblea, 2);
                         data = dirigencia.SeleccionarDirigenciaDeportiva(int.Parse(row.Cells[0].Text));
 
                         for (int i = 0; i < data.Rows.Count; i++)
                         {
                             idEditAsamblea.Text = data.Rows[i][0].ToString();
-                            dropEditCargoAsamblea.SelectedValue = data.Rows[i][1].ToString();
                             txtEditNombre1Asamblea.Value = data.Rows[i][2].ToString();
                             txtEditNombre2Asamblea.Value = data.Rows[i][3].ToString();
                             txtEditApellido1Asamblea.Value = data.Rows[i][4].ToString();
                             txtEditApellido2Asamblea.Value = data.Rows[i][5].ToString();
-                            txtEditFechaAsamblea.Text = data.Rows[i][6].ToString();
-                            txtEditPeriodoAsamblea.Value = data.Rows[i][8].ToString();
+                            dropEditDepartamentoAsamblea.SelectedValue = data.Rows[i][7].ToString();
                         }
 
                         idEditAsamblea.Visible = false;
@@ -394,7 +380,7 @@ namespace PATOnline.Views.DirigentesFADN
                         for (int i = 0; i < data.Rows.Count; i++)
                         {
                             idIntroObservacionSinRechazo.Text = data.Rows[i][0].ToString();
-                            txtCrearObservacionSinRechazo.Value = data.Rows[i][0].ToString();
+                            txtCrearObservacionSinRechazo.Value = data.Rows[i][1].ToString();
                         }
 
                         idIntroObservacionSinRechazo.Visible = false;
@@ -495,6 +481,13 @@ namespace PATOnline.Views.DirigentesFADN
                         dirigencia.DirigenciaDeportivaUpdate(modelo, int.Parse(row.Cells[0].Text), 9);
                         break;
                 }
+
+                CargarGrid();
+            }
+
+            if (e.CommandName == "Eliminar")
+            {
+                dirigencia.DirigenciaDeportivaUpdate(modelo, int.Parse(row.Cells[0].Text), 12);
 
                 CargarGrid();
             }
@@ -565,25 +558,13 @@ namespace PATOnline.Views.DirigentesFADN
                             break;
 
                         case "Observación":
-                            if (obs.ObservacionCEFADNExiste(int.Parse(e.Row.Cells[0].Text), 18) == true
-                                        || obs.ObservacionAcompaniamientoExiste(int.Parse(e.Row.Cells[0].Text), 18) == true
-                                        || obs.ObservacionEvaluadorExiste(int.Parse(e.Row.Cells[0].Text), 18) == true)
+                            if (dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 3
+                                        || dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 6
+                                        || dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 9)
                             {
                                 (e.Row.FindControl("btObservacion") as LinkButton).Visible = true;
                             }
 
-                            break;
-
-                        case "PDF":
-                            break;
-
-                        case "Excel":
-                            break;
-
-                        case "Rechazar":
-                            break;
-
-                        case "Crear":
                             break;
                     }
                 }
@@ -614,8 +595,6 @@ namespace PATOnline.Views.DirigentesFADN
                             txtEditNombre2Organo.Value = data.Rows[i][3].ToString();
                             txtEditApellido1Organo.Value = data.Rows[i][4].ToString();
                             txtEditApellido2Organo.Value = data.Rows[i][5].ToString();
-                            txtEditFechaOrgano.Text = data.Rows[i][6].ToString();
-                            txtEditPeriodoOrgano.Value = data.Rows[i][8].ToString();
                         }
 
                         idEditDisciplina.Visible = false;
@@ -628,7 +607,7 @@ namespace PATOnline.Views.DirigentesFADN
                         for (int i = 0; i < data.Rows.Count; i++)
                         {
                             idIntroObservacionSinRechazo.Text = data.Rows[i][0].ToString();
-                            txtCrearObservacionSinRechazo.Value = data.Rows[i][0].ToString();
+                            txtCrearObservacionSinRechazo.Value = data.Rows[i][1].ToString();
                         }
 
                         idIntroObservacionSinRechazo.Visible = false;
@@ -732,6 +711,14 @@ namespace PATOnline.Views.DirigentesFADN
 
                 CargarGrid();
             }
+
+            if (e.CommandName == "Eliminar")
+            {
+                dirigencia.DirigenciaDeportivaUpdate(modelo, int.Parse(row.Cells[0].Text), 12);
+
+                CargarGrid();
+            }
+            gridAsamblea.Columns[0].Visible = false;
         }
 
         protected void gridComision_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
@@ -758,8 +745,6 @@ namespace PATOnline.Views.DirigentesFADN
                             txtEditNombre2Comision.Value = data.Rows[i][3].ToString();
                             txtEditApellido1Comision.Value = data.Rows[i][4].ToString();
                             txtEditApellido2Comision.Value = data.Rows[i][5].ToString();
-                            txtEditFechaComision.Text = data.Rows[i][6].ToString();
-                            txtEditPeriodoComision.Value = data.Rows[i][8].ToString();
                         }
 
                         idEditComision.Visible = false;
@@ -772,7 +757,7 @@ namespace PATOnline.Views.DirigentesFADN
                         for (int i = 0; i < data.Rows.Count; i++)
                         {
                             idIntroObservacionSinRechazo.Text = data.Rows[i][0].ToString();
-                            txtCrearObservacionSinRechazo.Value = data.Rows[i][0].ToString();
+                            txtCrearObservacionSinRechazo.Value = data.Rows[i][1].ToString();
                         }
 
                         idIntroObservacionSinRechazo.Visible = false;
@@ -876,6 +861,14 @@ namespace PATOnline.Views.DirigentesFADN
 
                 CargarGrid();
             }
+
+            if (e.CommandName == "Eliminar")
+            {
+                dirigencia.DirigenciaDeportivaUpdate(modelo, int.Parse(row.Cells[0].Text), 12);
+
+                CargarGrid();
+            }
+            gridAsamblea.Columns[0].Visible = false;
             gridComision.Columns[0].Visible = false;
         }
 
@@ -943,25 +936,13 @@ namespace PATOnline.Views.DirigentesFADN
                             break;
 
                         case "Observación":
-                            if (obs.ObservacionCEFADNExiste(int.Parse(e.Row.Cells[0].Text), 18) == true
-                                        || obs.ObservacionAcompaniamientoExiste(int.Parse(e.Row.Cells[0].Text), 18) == true
-                                        || obs.ObservacionEvaluadorExiste(int.Parse(e.Row.Cells[0].Text), 18) == true)
+                            if (dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 3
+                                        || dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 6
+                                        || dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 9)
                             {
                                 (e.Row.FindControl("btObservacion") as LinkButton).Visible = true;
                             }
 
-                            break;
-
-                        case "PDF":
-                            break;
-
-                        case "Excel":
-                            break;
-
-                        case "Rechazar":
-                            break;
-
-                        case "Crear":
                             break;
                     }
                 }
@@ -992,8 +973,6 @@ namespace PATOnline.Views.DirigentesFADN
                             txtEditNombre2Personal.Value = data.Rows[i][3].ToString();
                             txtEditApellido1Personal.Value = data.Rows[i][4].ToString();
                             txtEditApellido2Personal.Value = data.Rows[i][5].ToString();
-                            txtEditFechaPersonal.Text = data.Rows[i][6].ToString();
-                            txtEditPeriodoPersonal.Value = data.Rows[i][8].ToString();
                         }
 
                         idEditPersonal.Visible = false;
@@ -1006,7 +985,7 @@ namespace PATOnline.Views.DirigentesFADN
                         for (int i = 0; i < data.Rows.Count; i++)
                         {
                             idIntroObservacionSinRechazo.Text = data.Rows[i][0].ToString();
-                            txtCrearObservacionSinRechazo.Value = data.Rows[i][0].ToString();
+                            txtCrearObservacionSinRechazo.Value = data.Rows[i][1].ToString();
                         }
 
                         idIntroObservacionSinRechazo.Visible = false;
@@ -1110,6 +1089,14 @@ namespace PATOnline.Views.DirigentesFADN
 
                 CargarGrid();
             }
+
+            if (e.CommandName == "Eliminar")
+            {
+                dirigencia.DirigenciaDeportivaUpdate(modelo, int.Parse(row.Cells[0].Text), 12);
+
+                CargarGrid();
+            }
+            gridAsamblea.Columns[0].Visible = false;
             gridPersonal.Columns[0].Visible = false;
         }
 
@@ -1177,25 +1164,13 @@ namespace PATOnline.Views.DirigentesFADN
                             break;
 
                         case "Observación":
-                            if (obs.ObservacionCEFADNExiste(int.Parse(e.Row.Cells[0].Text), 18) == true
-                                        || obs.ObservacionAcompaniamientoExiste(int.Parse(e.Row.Cells[0].Text), 18) == true
-                                        || obs.ObservacionEvaluadorExiste(int.Parse(e.Row.Cells[0].Text), 18) == true)
+                            if (dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 3
+                                        || dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 6
+                                        || dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 9)
                             {
                                 (e.Row.FindControl("btObservacion") as LinkButton).Visible = true;
                             }
 
-                            break;
-
-                        case "PDF":
-                            break;
-
-                        case "Excel":
-                            break;
-
-                        case "Rechazar":
-                            break;
-
-                        case "Crear":
                             break;
                     }
                 }
@@ -1226,8 +1201,6 @@ namespace PATOnline.Views.DirigentesFADN
                             txtEditNombre2Dirigente.Value = data.Rows[i][3].ToString();
                             txtEditApellido1Dirigente.Value = data.Rows[i][4].ToString();
                             txtEditApellido2Dirigente.Value = data.Rows[i][5].ToString();
-                            txtEditFechaDirigente.Text = data.Rows[i][6].ToString();
-                            txtEditPeriodoDirigente.Value = data.Rows[i][8].ToString();
                         }
 
                         idEditDirigente.Visible = false;
@@ -1240,7 +1213,7 @@ namespace PATOnline.Views.DirigentesFADN
                         for (int i = 0; i < data.Rows.Count; i++)
                         {
                             idIntroObservacionSinRechazo.Text = data.Rows[i][0].ToString();
-                            txtCrearObservacionSinRechazo.Value = data.Rows[i][0].ToString();
+                            txtCrearObservacionSinRechazo.Value = data.Rows[i][1].ToString();
                         }
 
                         idIntroObservacionSinRechazo.Visible = false;
@@ -1344,6 +1317,14 @@ namespace PATOnline.Views.DirigentesFADN
 
                 CargarGrid();
             }
+
+            if (e.CommandName == "Eliminar")
+            {
+                dirigencia.DirigenciaDeportivaUpdate(modelo, int.Parse(row.Cells[0].Text), 12);
+
+                CargarGrid();
+            }
+            gridAsamblea.Columns[0].Visible = false;
             gridDirigente.Columns[0].Visible = false;
         }
 
@@ -1411,25 +1392,13 @@ namespace PATOnline.Views.DirigentesFADN
                             break;
 
                         case "Observación":
-                            if (obs.ObservacionCEFADNExiste(int.Parse(e.Row.Cells[0].Text), 18) == true
-                                        || obs.ObservacionAcompaniamientoExiste(int.Parse(e.Row.Cells[0].Text), 18) == true
-                                        || obs.ObservacionEvaluadorExiste(int.Parse(e.Row.Cells[0].Text), 18) == true)
+                            if (dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 3
+                                        || dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 6
+                                        || dirigencia.DirigenciaDeportivaSearch(int.Parse(e.Row.Cells[0].Text)) == 9)
                             {
                                 (e.Row.FindControl("btObservacion") as LinkButton).Visible = true;
                             }
 
-                            break;
-
-                        case "PDF":
-                            break;
-
-                        case "Excel":
-                            break;
-
-                        case "Rechazar":
-                            break;
-
-                        case "Crear":
                             break;
                     }
                 }
@@ -1438,7 +1407,7 @@ namespace PATOnline.Views.DirigentesFADN
 
         protected void nuevaAsamblea_Click(object sender, EventArgs e)
         {
-            drop.Drop_Cargo(dropCrearCargoAsamblea);
+            drop.Drop_Departamento(dropCrearDepartamentoAsamblea, 2);
             mostrarCrearAsamblea.Visible = true;
         }
 
@@ -1475,27 +1444,23 @@ namespace PATOnline.Views.DirigentesFADN
         {
             try
             {
-                modelo.fk_cargo = int.Parse(dropCrearCargoAsamblea.SelectedValue);
+                modelo.fk_cargo = 0;
+                modelo.fk_departamento = int.Parse(dropCrearDepartamentoAsamblea.SelectedValue);
                 modelo.nombre1 = txtCrearNombre1Asamblea.Value;
                 modelo.nombre2 = txtCrearNombre2Asamblea.Value;
                 modelo.apellido1 = txtCrearApellido1Asamblea.Value;
                 modelo.apellido2 = txtCrearApellido2Asamblea.Value;
-                modelo.inicio = txtCrearFechaAsamblea.Text;
-                modelo.fin = 365 * (int.Parse(txtCrearPeriodoAsamblea.Value) * 4);
-                modelo.periodo = int.Parse(txtCrearPeriodoAsamblea.Value);
                 modelo.fk_persona = 1;
                 modelo.fk_estado = 1;
                 modelo.fadn = Session["Federacion"].ToString();
                 modelo.anio = year;
                 dirigencia.DirigenciaCreate(modelo);
 
-                drop.Drop_Cargo(dropCrearCargoAsamblea);
+                drop.Drop_Departamento(dropCrearDepartamentoAsamblea, 2);
                 txtCrearNombre1Asamblea.Value = null;
                 txtCrearNombre2Asamblea.Value = null;
                 txtCrearApellido1Asamblea.Value = null;
                 txtCrearApellido2Asamblea.Value = null;
-                txtCrearFechaAsamblea.Text = null;
-                txtCrearPeriodoAsamblea.Value = null;
 
                 CargarGrid();
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue ingresada', 'success');", true);
@@ -1520,9 +1485,6 @@ namespace PATOnline.Views.DirigentesFADN
                 modelo.nombre2 = txtCrearNombre2Organo.Value;
                 modelo.apellido1 = txtCrearApellido1Organo.Value;
                 modelo.apellido2 = txtCrearApellido2Organo.Value;
-                modelo.inicio = txtCrearFechaOrgano.Text;
-                modelo.fin = 365 * (int.Parse(txtCrearPeriodoOrgano.Value) * 4);
-                modelo.periodo = int.Parse(txtCrearPeriodoOrgano.Value);
                 modelo.fk_persona = 2;
                 modelo.fk_estado = 1;
                 modelo.fadn = Session["Federacion"].ToString();
@@ -1534,8 +1496,6 @@ namespace PATOnline.Views.DirigentesFADN
                 txtCrearNombre2Organo.Value = null;
                 txtCrearApellido1Organo.Value = null;
                 txtCrearApellido2Organo.Value = null;
-                txtCrearFechaOrgano.Text = null;
-                txtCrearPeriodoOrgano.Value = null;
 
                 CargarGrid();
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue ingresada', 'success');", true);
@@ -1560,9 +1520,6 @@ namespace PATOnline.Views.DirigentesFADN
                 modelo.nombre2 = txtCrearNombre2Comision.Value;
                 modelo.apellido1 = txtCrearApellido1Comision.Value;
                 modelo.apellido2 = txtCrearApellido2Comision.Value;
-                modelo.inicio = txtCrearFechaComision.Text;
-                modelo.fin = 365 * (int.Parse(txtCrearPeriodoComision.Value) * 4);
-                modelo.periodo = int.Parse(txtCrearPeriodoComision.Value);
                 modelo.fk_persona = 3;
                 modelo.fk_estado = 1;
                 modelo.fadn = Session["Federacion"].ToString();
@@ -1574,8 +1531,6 @@ namespace PATOnline.Views.DirigentesFADN
                 txtCrearNombre2Comision.Value = null;
                 txtCrearApellido1Comision.Value = null;
                 txtCrearApellido2Comision.Value = null;
-                txtCrearFechaComision.Text = null;
-                txtCrearPeriodoComision.Value = null;
 
                 CargarGrid();
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue ingresada', 'success');", true);
@@ -1600,9 +1555,6 @@ namespace PATOnline.Views.DirigentesFADN
                 modelo.nombre2 = txtCrearNombre2Personal.Value;
                 modelo.apellido1 = txtCrearApellido1Personal.Value;
                 modelo.apellido2 = txtCrearApellido2Personal.Value;
-                modelo.inicio = txtCrearFechaPersonal.Text;
-                modelo.fin = 365 * (int.Parse(txtCrearPeriodoPersonal.Value) * 4);
-                modelo.periodo = int.Parse(txtCrearPeriodoPersonal.Value);
                 modelo.fk_persona = 4;
                 modelo.fk_estado = 1;
                 modelo.fadn = Session["Federacion"].ToString();
@@ -1614,8 +1566,6 @@ namespace PATOnline.Views.DirigentesFADN
                 txtCrearNombre2Personal.Value = null;
                 txtCrearApellido1Personal.Value = null;
                 txtCrearApellido2Personal.Value = null;
-                txtCrearFechaPersonal.Text = null;
-                txtCrearPeriodoPersonal.Value = null;
 
                 CargarGrid();
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue ingresada', 'success');", true);
@@ -1640,9 +1590,6 @@ namespace PATOnline.Views.DirigentesFADN
                 modelo.nombre2 = txtCrearNombre2Dirigente.Value;
                 modelo.apellido1 = txtCrearApellido1Dirigente.Value;
                 modelo.apellido2 = txtCrearApellido2Dirigente.Value;
-                modelo.inicio = txtCrearFechaDirigente.Text;
-                modelo.fin = 365 * (int.Parse(txtCrearPeriodoDirigente.Value) * 4);
-                modelo.periodo = int.Parse(txtCrearPeriodoDirigente.Value);
                 modelo.fk_persona = 5;
                 modelo.fk_estado = 1;
                 modelo.fadn = Session["Federacion"].ToString();
@@ -1654,8 +1601,6 @@ namespace PATOnline.Views.DirigentesFADN
                 txtCrearNombre2Dirigente.Value = null;
                 txtCrearApellido1Dirigente.Value = null;
                 txtCrearApellido2Dirigente.Value = null;
-                txtCrearFechaDirigente.Text = null;
-                txtCrearPeriodoDirigente.Value = null;
 
                 CargarGrid();
                 ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue ingresada', 'success');", true);
@@ -1675,14 +1620,12 @@ namespace PATOnline.Views.DirigentesFADN
         {
             try
             {
-                modelo.fk_cargo = int.Parse(dropEditCargoAsamblea.SelectedValue);
+                modelo.fk_cargo = 0;
+                modelo.fk_departamento = int.Parse(dropEditDepartamentoAsamblea.SelectedValue);
                 modelo.nombre1 = txtEditNombre1Asamblea.Value;
                 modelo.nombre2 = txtEditNombre2Asamblea.Value;
                 modelo.apellido1 = txtEditApellido1Asamblea.Value;
                 modelo.apellido2 = txtEditApellido2Asamblea.Value;
-                modelo.inicio = txtEditFechaAsamblea.Text;
-                modelo.fin = 365 * (int.Parse(txtEditPeriodoAsamblea.Value) * 4);
-                modelo.periodo = int.Parse(txtEditPeriodoAsamblea.Value);
                 modelo.fk_persona = 1;
                 modelo.fk_estado = 1;
                 modelo.fadn = Session["Federacion"].ToString();
@@ -1694,8 +1637,6 @@ namespace PATOnline.Views.DirigentesFADN
                 txtEditNombre2Asamblea.Value = null;
                 txtEditApellido1Asamblea.Value = null;
                 txtEditApellido2Asamblea.Value = null;
-                txtEditFechaAsamblea.Text = null;
-                txtEditPeriodoAsamblea.Value = null;
 
                 mostrarEditAsamblea.Visible = false;
                 CargarGrid();
@@ -1721,9 +1662,6 @@ namespace PATOnline.Views.DirigentesFADN
                 modelo.nombre2 = txtEditNombre2Organo.Value;
                 modelo.apellido1 = txtEditApellido1Organo.Value;
                 modelo.apellido2 = txtEditApellido2Organo.Value;
-                modelo.inicio = txtEditFechaOrgano.Text;
-                modelo.fin = 365 * (int.Parse(txtEditPeriodoOrgano.Value) * 4);
-                modelo.periodo = int.Parse(txtEditPeriodoOrgano.Value);
                 modelo.fk_persona = 2;
                 modelo.fk_estado = 1;
                 modelo.fadn = Session["Federacion"].ToString();
@@ -1735,8 +1673,6 @@ namespace PATOnline.Views.DirigentesFADN
                 txtCrearNombre2Organo.Value = null;
                 txtCrearApellido1Organo.Value = null;
                 txtCrearApellido2Organo.Value = null;
-                txtCrearFechaOrgano.Text = null;
-                txtCrearPeriodoOrgano.Value = null;
 
                 mostrarEditOrgano.Visible = false;
                 CargarGrid();
@@ -1762,9 +1698,6 @@ namespace PATOnline.Views.DirigentesFADN
                 modelo.nombre2 = txtEditNombre2Comision.Value;
                 modelo.apellido1 = txtEditApellido1Comision.Value;
                 modelo.apellido2 = txtEditApellido2Comision.Value;
-                modelo.inicio = txtEditFechaComision.Text;
-                modelo.fin = 365 * (int.Parse(txtEditPeriodoComision.Value) * 4);
-                modelo.periodo = int.Parse(txtEditPeriodoComision.Value);
                 modelo.fk_persona = 3;
                 modelo.fk_estado = 1;
                 modelo.fadn = Session["Federacion"].ToString();
@@ -1776,8 +1709,6 @@ namespace PATOnline.Views.DirigentesFADN
                 txtEditNombre2Comision.Value = null;
                 txtEditApellido1Comision.Value = null;
                 txtEditApellido2Comision.Value = null;
-                txtEditFechaComision.Text = null;
-                txtEditPeriodoComision.Value = null;
 
                 mostrarEditComision.Visible = false;
                 CargarGrid();
@@ -1803,9 +1734,6 @@ namespace PATOnline.Views.DirigentesFADN
                 modelo.nombre2 = txtEditNombre2Personal.Value;
                 modelo.apellido1 = txtEditApellido1Personal.Value;
                 modelo.apellido2 = txtEditApellido2Personal.Value;
-                modelo.inicio = txtEditFechaPersonal.Text;
-                modelo.fin = 365 * (int.Parse(txtEditPeriodoPersonal.Value) * 4);
-                modelo.periodo = int.Parse(txtEditPeriodoPersonal.Value);
                 modelo.fk_persona = 4;
                 modelo.fk_estado = 1;
                 modelo.fadn = Session["Federacion"].ToString();
@@ -1817,8 +1745,6 @@ namespace PATOnline.Views.DirigentesFADN
                 txtEditNombre2Personal.Value = null;
                 txtEditApellido1Personal.Value = null;
                 txtEditApellido2Personal.Value = null;
-                txtEditFechaPersonal.Text = null;
-                txtEditPeriodoPersonal.Value = null;
 
                 mostrarEditPersonal.Visible = false;
                 CargarGrid();
@@ -1844,9 +1770,6 @@ namespace PATOnline.Views.DirigentesFADN
                 modelo.nombre2 = txtEditNombre2Dirigente.Value;
                 modelo.apellido1 = txtEditApellido1Dirigente.Value;
                 modelo.apellido2 = txtEditApellido2Dirigente.Value;
-                modelo.inicio = txtEditFechaDirigente.Text;
-                modelo.fin = 365 * (int.Parse(txtEditPeriodoDirigente.Value) * 4);
-                modelo.periodo = int.Parse(txtEditPeriodoDirigente.Value);
                 modelo.fk_persona = 5;
                 modelo.fk_estado = 1;
                 modelo.fadn = Session["Federacion"].ToString();
@@ -1858,8 +1781,6 @@ namespace PATOnline.Views.DirigentesFADN
                 txtEditNombre2Dirigente.Value = null;
                 txtEditApellido1Dirigente.Value = null;
                 txtEditApellido2Dirigente.Value = null;
-                txtEditFechaDirigente.Text = null;
-                txtEditPeriodoDirigente.Value = null;
 
                 mostrarEditDirigente.Visible = false;
                 CargarGrid();

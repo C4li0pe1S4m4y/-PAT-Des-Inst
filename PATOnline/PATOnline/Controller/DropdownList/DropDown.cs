@@ -722,5 +722,25 @@ namespace PATOnline.Controller.DropdownList
             ddl.DataValueField = "numero";
             ddl.DataBind();
         }
+
+        public void Drop_Respomsabilidad_Linea(DropDownList ddl, int id)
+        {
+            DataTable dt = new DataTable();
+            var mysql = new DBConnection.ConexionMysql();
+            mysql.AbrirConexion();
+            query = String.Format("SELECT idresponsabilidad_linea, nombre FROM admin_responsabilidad_linea WHERE idpadre = '{0}';", id);
+            MySqlDataAdapter consulta = new MySqlDataAdapter(query, mysql.conectar);
+            consulta.Fill(dt);
+            mysql.CerrarConexion();
+
+            ddl.Items.Clear();
+            ddl.AppendDataBoundItems = true;
+            ddl.Items.Add("-- Seleccionar Uno --");
+            ddl.Items[0].Value = "-1";
+            ddl.DataSource = dt;
+            ddl.DataTextField = "nombre";
+            ddl.DataValueField = "idresponsabilidad_linea";
+            ddl.DataBind();
+        }
     }
 }

@@ -94,14 +94,8 @@ namespace PATOnline.Views.Cronograma
                                 break;
 
                             case "Crear":
-                                DataTable data = new DataTable();
-                                data = pat.OrgranigramaRead(Session["Federacion"].ToString(), year, 12);
-
-                                if (data.Rows.Count > 0)
-                                {
-                                    crearOrganigramaNew.Visible = true;
-                                    nuevoOrganigrama.Visible = true;
-                                }
+                                crearOrganigramaNew.Visible = true;
+                                nuevoOrganigrama.Visible = true;
                                 break;
                         }
                     }
@@ -228,7 +222,7 @@ namespace PATOnline.Views.Cronograma
                 modelo.anio = year;
 
                 DataTable data = new DataTable();
-                data = pat.OrgranigramaRead(Session["Federacion"].ToString(), year, 12);
+                data = pat.OrgranigramaExiste(Session["Federacion"].ToString(), year, 12);
 
                 if (data.Rows.Count > 0)
                 {
@@ -298,7 +292,7 @@ namespace PATOnline.Views.Cronograma
                         for(int i = 0; i < data.Rows.Count; i++)
                         {
                             idIntroObservacionSinRechazo.Text = data.Rows[i][0].ToString();
-                            txtCrearObservacionSinRechazo.Value = data.Rows[i][0].ToString();
+                            txtCrearObservacionSinRechazo.Value = data.Rows[i][1].ToString();
                         }
 
                         idIntroObservacionSinRechazo.Visible = false;
@@ -447,7 +441,7 @@ namespace PATOnline.Views.Cronograma
                         case "Eliminar":
                             if (pat.OrganigramaSearch(int.Parse(e.Row.Cells[0].Text)) == 1 || pat.OrganigramaSearch(int.Parse(e.Row.Cells[0].Text)) == 2)
                             {
-                                (e.Row.FindControl("btEliminar") as LinkButton).Visible = true;
+                                (e.Row.FindControl("btEliminar") as LinkButton).Visible = false;
                             }
                             break;
 
@@ -478,18 +472,6 @@ namespace PATOnline.Views.Cronograma
                                 (e.Row.FindControl("btObservacion") as LinkButton).Visible = true;
                             }
 
-                            break;
-
-                        case "PDF":
-                            break;
-
-                        case "Excel":
-                            break;
-
-                        case "Rechazar":
-                            break;
-
-                        case "Crear":
                             break;
                     }
                 }

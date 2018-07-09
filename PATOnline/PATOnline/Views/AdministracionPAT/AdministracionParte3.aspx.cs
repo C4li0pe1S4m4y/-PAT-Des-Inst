@@ -34,79 +34,92 @@ namespace PATOnline.Views.AdministracionPAT
                 mostrarEditCategoria.Visible = false;
                 mostrarEditActividad.Visible = false;
 
-                CargarGrid1(0, "idpadre");
-                CargarGrid2(0);
-                CargarGrid3(0);
+                CargarGrid1();
+                CargarGrid2();
+                CargarGrid3();
             }
         }
 
-        public void CargarGrid1(int id, string palabra)
+        public void CargarGrid1()
         {
-            if (admin.FormatoCRead(id, palabra).Rows.Count != 0)
-            {
-                gvFormatoTitulo.Columns[0].Visible = true;
-                gvFormatoTitulo.DataSource = admin.FormatoCRead(id, palabra);
-                gvFormatoTitulo.DataBind();
-                gvFormatoTitulo.Columns[0].Visible = false;
-            }
+            gvFormatoTitulo.Columns[0].Visible = true;
+            gvFormatoTitulo.DataSource = admin.FormatoCGridEditRead();
+            gvFormatoTitulo.DataBind();
+            gvFormatoTitulo.Columns[0].Visible = false;
         }
 
-        public void CargarGrid2(int id)
+        public void CargarGrid2()
         {
-            if (admin.CategoriaFormatoRead(id).Rows.Count != 0)
-            {
-                gvCategoriaTitulo.Columns[0].Visible = true;
-                gvCategoriaTitulo.DataSource = admin.CategoriaFormatoRead(id);
-                gvCategoriaTitulo.DataBind();
-                gvCategoriaTitulo.Columns[0].Visible = false;
-            }
+            gvCategoriaTitulo.Columns[0].Visible = true;
+            gvCategoriaTitulo.DataSource = admin.CategoriaGridEditRead();
+            gvCategoriaTitulo.DataBind();
+            gvCategoriaTitulo.Columns[0].Visible = false;
         }
 
-        public void CargarGrid3(int id)
+        public void CargarGrid3()
         {
-            if (admin.ActividadPATRead(id).Rows.Count != 0)
-            {
-                gvActividadTitulo.Columns[0].Visible = true;
-                gvActividadTitulo.DataSource = admin.ActividadPATRead(id);
-                gvActividadTitulo.DataBind();
-                gvActividadTitulo.Columns[0].Visible = false;
-            }
+            gvActividadTitulo.Columns[0].Visible = true;
+            gvActividadTitulo.DataSource = admin.ActividadGridEditRead();
+            gvActividadTitulo.DataBind();
+            gvActividadTitulo.Columns[0].Visible = false;
         }
 
         protected void gvFormatoTitulo_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            gvFormatoTitulo.Columns[0].Visible = true;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string customerId = gvFormatoTitulo.DataKeys[e.Row.RowIndex].Value.ToString();
-                GridView gvFormatoBody = e.Row.FindControl("gvFormatoBody") as GridView;
-                gvFormatoBody.DataSource = admin.FormatoCRead(int.Parse(customerId), "idpadre");
-                gvFormatoBody.DataBind();
+                if (e.Row.Cells[0].Text == "1" || e.Row.Cells[0].Text == "2" || e.Row.Cells[0].Text == "3"
+                    || e.Row.Cells[0].Text == "4" || e.Row.Cells[0].Text == "5")
+                {
+                    e.Row.Cells[0].ForeColor = System.Drawing.Color.White;
+                    e.Row.Cells[0].BackColor = System.Drawing.Color.Chocolate;
+                    e.Row.Cells[1].ForeColor = System.Drawing.Color.White;
+                    e.Row.Cells[1].BackColor = System.Drawing.Color.Chocolate;
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.White;
+                    e.Row.Cells[2].BackColor = System.Drawing.Color.Chocolate;
+                    (e.Row.FindControl("btEditar") as LinkButton).Visible = false;
+                }
             }
         }
 
         protected void gvCategoriaTitulo_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            gvCategoriaTitulo.Columns[0].Visible = true;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string customerId = gvCategoriaTitulo.DataKeys[e.Row.RowIndex].Value.ToString();
-                GridView gvCategoriaBody = e.Row.FindControl("gvCategoriaBody") as GridView;
-                gvCategoriaBody.Columns[0].Visible = true;
-                gvCategoriaBody.DataSource = admin.CategoriaFormatoRead(int.Parse(customerId));
-                gvCategoriaBody.DataBind();
-                gvCategoriaBody.Columns[0].Visible = false;
+                if (e.Row.Cells[0].Text == "1" || e.Row.Cells[0].Text == "2" || e.Row.Cells[0].Text == "8"
+                    || e.Row.Cells[0].Text == "11" || e.Row.Cells[0].Text == "13" || e.Row.Cells[0].Text == "16"
+                     || e.Row.Cells[0].Text == "19")
+                {
+                    e.Row.Cells[0].ForeColor = System.Drawing.Color.White;
+                    e.Row.Cells[0].BackColor = System.Drawing.Color.Chocolate;
+                    e.Row.Cells[1].ForeColor = System.Drawing.Color.White;
+                    e.Row.Cells[1].BackColor = System.Drawing.Color.Chocolate;
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.White;
+                    e.Row.Cells[2].BackColor = System.Drawing.Color.Chocolate;
+                    (e.Row.FindControl("btEditar") as LinkButton).Visible = false;
+                }
             }
         }
 
         protected void gvActividadTitulo_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            gvActividadTitulo.Columns[0].Visible = true;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string customerId = gvActividadTitulo.DataKeys[e.Row.RowIndex].Value.ToString();
-                GridView gvActividadBody = e.Row.FindControl("gvActividadBody") as GridView;
-                gvActividadBody.Columns[0].Visible = true;
-                gvActividadBody.DataSource = admin.ActividadPATRead(int.Parse(customerId));
-                gvActividadBody.DataBind();
-                gvActividadBody.Columns[0].Visible = false;
+                if (e.Row.Cells[0].Text == "1" || e.Row.Cells[0].Text == "2" || e.Row.Cells[0].Text == "3"
+                    || e.Row.Cells[0].Text == "4" || e.Row.Cells[0].Text == "5" || e.Row.Cells[0].Text == "6"
+                    || e.Row.Cells[0].Text == "21" || e.Row.Cells[0].Text == "26")
+                {
+                    e.Row.Cells[0].ForeColor = System.Drawing.Color.White;
+                    e.Row.Cells[0].BackColor = System.Drawing.Color.Chocolate;
+                    e.Row.Cells[1].ForeColor = System.Drawing.Color.White;
+                    e.Row.Cells[1].BackColor = System.Drawing.Color.Chocolate;
+                    e.Row.Cells[2].ForeColor = System.Drawing.Color.White;
+                    e.Row.Cells[2].BackColor = System.Drawing.Color.Chocolate;
+                    (e.Row.FindControl("btEditar") as LinkButton).Visible = false;
+                }
             }
         }
 
@@ -147,7 +160,7 @@ namespace PATOnline.Views.AdministracionPAT
                     modelo.idpadre = int.Parse(DropIDPadreFormatoC.SelectedValue);
                     admin.FormatoCCreate(modelo);
                     TxtFormatoC.Value = null;
-                    CargarGrid1(0, "idpadre");
+                    CargarGrid1();
                     mostrarCrearFormatoC.Visible = false;
                     ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue creada', 'success');", true);
                 }
@@ -177,7 +190,7 @@ namespace PATOnline.Views.AdministracionPAT
                     modelo_categoria.idpadre = int.Parse(DropIDPadreCategoria.SelectedValue);
                     admin.CategoriaFormatoCreate(modelo_categoria);
                     TxtCategoria.Value = null;
-                    CargarGrid2(0);
+                    CargarGrid2();
                     mostrarCrearCategoria.Visible = false;
                     ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue creada', 'success');", true);
                 }
@@ -207,7 +220,7 @@ namespace PATOnline.Views.AdministracionPAT
                     modelo_actividad.idpadre = int.Parse(DropActividad.SelectedValue);
                     admin.ActividadPATCreate(modelo_actividad);
                     TxtActividad.Value = null;
-                    CargarGrid3(0);
+                    CargarGrid3();
                     mostrarCrearActividad.Visible = false;
                     ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue creada', 'success');", true);
                 }
@@ -237,7 +250,7 @@ namespace PATOnline.Views.AdministracionPAT
                     modelo.idpadre = int.Parse(DropEditPadreFormatoC.SelectedValue);
                     admin.FormatoCUpdate(modelo, int.Parse(idFormatoC.Text));
                     TxtEditFormatoC.Value = null;
-                    CargarGrid1(0, "idpadre");
+                    CargarGrid1();
                     mostrarEditFormatoC.Visible = false;
                     ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue modificada', 'success');", true);
                 }
@@ -267,7 +280,7 @@ namespace PATOnline.Views.AdministracionPAT
                     modelo_categoria.idpadre = int.Parse(DropEditPadreCategoria.SelectedValue);
                     admin.CategoriaUpdate(modelo_categoria, int.Parse(idCategoria.Text));
                     TxtEditCategoria.Value = null;
-                    CargarGrid2(0);
+                    CargarGrid2();
                     mostrarEditCategoria.Visible = false;
                     ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue modificada', 'success');", true);
                 }
@@ -297,7 +310,7 @@ namespace PATOnline.Views.AdministracionPAT
                     modelo_actividad.idpadre = int.Parse(DropEditActividad.SelectedValue);
                     admin.ActividadUpdate(modelo_actividad, int.Parse(idActividad.Text));
                     TxtEditActividad.Value = null;
-                    CargarGrid3(0);
+                    CargarGrid3();
                     mostrarEditActividad.Visible = false;
                     ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue creada', 'success');", true);
                 }
@@ -308,91 +321,97 @@ namespace PATOnline.Views.AdministracionPAT
             }
         }
 
-        protected void gvFormatoBody_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvFormatoTitulo_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            int index = int.Parse(e.CommandArgument.ToString());
+            gvFormatoTitulo.PageIndex = e.NewPageIndex;
+            CargarGrid1();
+        }
 
-            if(e.CommandName == "Editar")
+        protected void gvFormatoTitulo_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            gvFormatoTitulo.Columns[0].Visible = true;
+
+            int index = int.Parse(e.CommandArgument.ToString());
+            GridViewRow row = gvFormatoTitulo.Rows[index];
+            DataTable data = new DataTable();
+
+            if (e.CommandName == "Editar")
             {
                 drop.Drop_FormatoC(DropEditPadreFormatoC, 0);
+                data = admin.FormatoCSeleccionado(int.Parse(row.Cells[0].Text));
 
-                foreach (GridViewRow rowtitulo in gvFormatoTitulo.Rows)
+                for (int i = 0; i < data.Rows.Count; i++)
                 {
-                    if (rowtitulo.RowType == DataControlRowType.DataRow)
-                    {
-                        GridViewRow row = (rowtitulo.FindControl("gvFormatoBody") as GridView).Rows[index];
-
-                        DataTable data = new DataTable();
-                        data = admin.FormatoCSeleccionado(int.Parse(row.Cells[0].Text));
-
-                        for (int i = 0; i < data.Rows.Count; i++)
-                        {
-                            idFormatoC.Text = data.Rows[i][0].ToString();
-                            TxtEditFormatoC.Value = data.Rows[i][1].ToString();
-                            DropEditPadreFormatoC.SelectedValue = data.Rows[i][2].ToString();
-                        }
-                    }
+                    idFormatoC.Text = data.Rows[i][0].ToString();
+                    TxtEditFormatoC.Value = data.Rows[i][1].ToString();
+                    DropEditPadreFormatoC.SelectedValue = data.Rows[i][2].ToString();
                 }
                 mostrarEditFormatoC.Visible = true;
             }
+
+            gvFormatoTitulo.Columns[0].Visible = false;
         }
 
-        protected void gvCategoriaBody_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvCategoriaTitulo_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            gvCategoriaTitulo.PageIndex = e.NewPageIndex;
+            CargarGrid2();
+        }
+
+        protected void gvCategoriaTitulo_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            gvCategoriaTitulo.Columns[0].Visible = true;
+
             int index = int.Parse(e.CommandArgument.ToString());
+            GridViewRow row = gvCategoriaTitulo.Rows[index];
+            DataTable data = new DataTable();
 
             if (e.CommandName == "Editar")
             {
                 drop.Drop_CategoriaFormato(DropEditPadreCategoria, 0);
+                data = admin.CategoriaSeleccionada(int.Parse(row.Cells[0].Text));
 
-                foreach (GridViewRow rowtitulo in gvCategoriaTitulo.Rows)
+                for (int i = 0; i < data.Rows.Count; i++)
                 {
-                    if (rowtitulo.RowType == DataControlRowType.DataRow)
-                    {
-                        GridViewRow row = (rowtitulo.FindControl("gvCategoriaBody") as GridView).Rows[index];
-
-                        DataTable data = new DataTable();
-                        data = admin.CategoriaSeleccionada(int.Parse(row.Cells[0].Text));
-
-                        for (int i = 0; i < data.Rows.Count; i++)
-                        {
-                            idCategoria.Text = data.Rows[i][0].ToString();
-                            TxtEditCategoria.Value = data.Rows[i][1].ToString();
-                            DropEditPadreCategoria.SelectedValue = data.Rows[i][2].ToString();
-                        }
-                    }
+                    idCategoria.Text = data.Rows[i][0].ToString();
+                    TxtEditCategoria.Value = data.Rows[i][1].ToString();
+                    DropEditPadreCategoria.SelectedValue = data.Rows[i][2].ToString();
                 }
                 mostrarEditCategoria.Visible = true;
             }
+
+            gvCategoriaTitulo.Columns[0].Visible = false;
         }
 
-        protected void gvActividadBody_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvActividadTitulo_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            gvActividadTitulo.PageIndex = e.NewPageIndex;
+            CargarGrid3();
+        }
+
+        protected void gvActividadTitulo_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            gvActividadTitulo.Columns[0].Visible = true;
+
             int index = int.Parse(e.CommandArgument.ToString());
+            GridViewRow row = gvActividadTitulo.Rows[index];
+            DataTable data = new DataTable();
 
             if (e.CommandName == "Editar")
             {
                 drop.Drop_ActividadPAT(DropEditActividad, 0);
+                data = admin.ActividadSeleccionada(int.Parse(row.Cells[0].Text));
 
-                foreach (GridViewRow rowtitulo in gvActividadTitulo.Rows)
+                for (int i = 0; i < data.Rows.Count; i++)
                 {
-                    if (rowtitulo.RowType == DataControlRowType.DataRow)
-                    {
-                        GridViewRow row = (rowtitulo.FindControl("gvActividadBody") as GridView).Rows[index];
-
-                        DataTable data = new DataTable();
-                        data = admin.ActividadSeleccionada(int.Parse(row.Cells[0].Text));
-
-                        for (int i = 0; i < data.Rows.Count; i++)
-                        {
-                            idActividad.Text = data.Rows[i][0].ToString();
-                            TxtEditActividad.Value = data.Rows[i][1].ToString();
-                            DropEditActividad.SelectedValue = data.Rows[i][2].ToString();
-                        }
-                    }
+                    idActividad.Text = data.Rows[i][0].ToString();
+                    TxtEditActividad.Value = data.Rows[i][1].ToString();
+                    DropEditActividad.SelectedValue = data.Rows[i][2].ToString();
                 }
                 mostrarEditActividad.Visible = true;
             }
+
+            gvActividadTitulo.Columns[0].Visible = false;
         }
     }
 }

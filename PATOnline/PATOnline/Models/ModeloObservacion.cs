@@ -34,6 +34,8 @@ namespace PATOnline.Models
         public int id24 { get; set; }
         public int id25 { get; set; }
         public int id26 { get; set; }
+        public int id27 { get; set; }
+        public int id28 { get; set; }
         public int usuario { get; set; }
         public string observacion { get; set; }
         public DateTime fecha { get; set; }

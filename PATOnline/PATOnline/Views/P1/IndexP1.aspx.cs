@@ -27,7 +27,6 @@ namespace PATOnline.Views.P1
             if (!IsPostBack)
             {
                 if (this.Session["Usuario"] == null) { Response.Redirect("~/Login.aspx"); }
-
                 fadn.Text = Session["Federacion"].ToString();
                 anio.Text = year;
                 CargarGrid();
@@ -36,6 +35,8 @@ namespace PATOnline.Views.P1
 
         protected void CargarGrid()
         {
+            gridFADN2.Columns[0].Visible = true;
+
             crearP1IngresoNew.Visible = false;
             mostrarCrearP1Ingreso.Visible = false;
             mostrarCrearCodigo.Visible = false;
@@ -58,8 +59,8 @@ namespace PATOnline.Views.P1
             switch (Session["Rol"].ToString())
             {
                 case "Usuario Interno de FADN":
-                    gridFADN.DataSource = pat.Part9Read();
-                    gridFADN.DataBind();
+                    gridFADN2.DataSource = pat.Part11Read(Session["Federacion"].ToString(), year, 0);
+                    gridFADN2.DataBind();
                     gridFADN3.DataSource = pat.TotalP1Read(Session["Federacion"].ToString(), year, 0);
                     gridFADN3.DataBind();
 
@@ -96,8 +97,8 @@ namespace PATOnline.Views.P1
                     break;
 
                 case "Usuario CE de FADN":
-                    gridFADN.DataSource = pat.Part9Read();
-                    gridFADN.DataBind();
+                    gridFADN2.DataSource = pat.Part11Read(Session["Federacion"].ToString(), year, 3);
+                    gridFADN2.DataBind();
                     gridFADN3.DataSource = pat.TotalP1Read(Session["Federacion"].ToString(), year, 3);
                     gridFADN3.DataBind();
 
@@ -132,8 +133,8 @@ namespace PATOnline.Views.P1
                 case "Técnico Acompañamiento":
                     if (this.Session["FederacionAsignada"] == null) { Response.Redirect("~/DashboardFADN.aspx"); }
 
-                    gridFADN.DataSource = pat.Part9Read();
-                    gridFADN.DataBind();
+                    gridFADN2.DataSource = pat.Part11Read(Session["FederacionAsignada"].ToString(), year, 6);
+                    gridFADN2.DataBind();
                     gridFADN3.DataSource = pat.TotalP1Read(Session["FederacionAsignada"].ToString(), year, 6);
                     gridFADN3.DataBind();
 
@@ -167,8 +168,8 @@ namespace PATOnline.Views.P1
                 case "Técnico Evaluación":
                     if (this.Session["FederacionAsignada"] == null) { Response.Redirect("~/DashboardFADN.aspx"); }
 
-                    gridFADN.DataSource = pat.Part9Read();
-                    gridFADN.DataBind();
+                    gridFADN2.DataSource = pat.Part11Read(Session["FederacionAsignada"].ToString(), year, 9);
+                    gridFADN2.DataBind();
                     gridFADN3.DataSource = pat.TotalP1Read(Session["FederacionAsignada"].ToString(), year, 9);
                     gridFADN3.DataBind();
 
@@ -201,6 +202,7 @@ namespace PATOnline.Views.P1
                     }
                     break;
             }
+            gridFADN2.Columns[0].Visible = false;
         }
 
         protected void nuevoP1Ingreso_Click(object sender, EventArgs e)
@@ -304,33 +306,6 @@ namespace PATOnline.Views.P1
             }
         }
 
-        protected void editP1Ingreso_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                modelo.col1 = double.Parse(txtEditMonto1.Value);
-                modelo.col2 = double.Parse(txtEditMonto2.Value);
-                modelo.col3 = double.Parse(txtEditMonto3.Value);
-                modelo.fkingreso = int.Parse(dropEditCodigoIngreso.SelectedValue);
-                modelo.fadn = Session["Federacion"].ToString();
-                modelo.ano = year;
-                modelo.fkestado = 1;
-
-                pat.P1Update(modelo, int.Parse(idEditP1Ingreso.Text), 0);
-                CargarGrid();
-                mostrarEditP1Ingreso.Visible = false;
-                txtEditMonto1.Value = null;
-                txtEditMonto2.Value = null;
-                txtEditMonto3.Value = null;
-                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue modificado', 'success');", true);
-
-            }
-            catch
-            {
-                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Error!', 'La información no fue modificado', 'error');", true);
-            }
-        }
-
         protected void cancelEditP1Ingreso_Click(object sender, EventArgs e)
         {
             txtEditMonto1.Value = null;
@@ -430,148 +405,6 @@ namespace PATOnline.Views.P1
             }
         }
 
-        protected void gridFADN_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            GridView gridFADN2 = new GridView();
-            switch (Session["Rol"].ToString())
-            {
-                case "Usuario Interno de FADN":
-                    if (e.Row.RowType == DataControlRowType.DataRow)
-                    {
-                        string customerId = gridFADN.DataKeys[e.Row.RowIndex].Value.ToString();
-                        gridFADN2 = e.Row.FindControl("gridFADN2") as GridView;
-                        gridFADN2.DataSource = pat.Part11Read(int.Parse(customerId), Session["Federacion"].ToString(), year, 0);
-                        gridFADN2.DataBind();
-                    }
-                    break;
-
-                case "Usuario CE de FADN":
-                    if (e.Row.RowType == DataControlRowType.DataRow)
-                    {
-                        string customerId = gridFADN.DataKeys[e.Row.RowIndex].Value.ToString();
-                        gridFADN2 = e.Row.FindControl("gridFADN2") as GridView;
-                        gridFADN2.DataSource = pat.Part11Read(int.Parse(customerId), Session["Federacion"].ToString(), year, 3);
-                        gridFADN2.DataBind();
-                    }
-                    break;
-
-                case "Técnico Acompañamiento":
-                    if (this.Session["FederacionAsignada"] == null) { Response.Redirect("~/DashboardFADN.aspx"); }
-                    if (e.Row.RowType == DataControlRowType.DataRow)
-                    {
-                        string customerId = gridFADN.DataKeys[e.Row.RowIndex].Value.ToString();
-                        gridFADN2 = e.Row.FindControl("gridFADN2") as GridView;
-                        gridFADN2.DataSource = pat.Part11Read(int.Parse(customerId), Session["FederacionAsignada"].ToString(), year, 6);
-                        gridFADN2.DataBind();
-                    }
-                    break;
-
-                case "Técnico Evaluación":
-                    if (this.Session["FederacionAsignada"] == null) { Response.Redirect("~/DashboardFADN.aspx"); }
-                    if (e.Row.RowType == DataControlRowType.DataRow)
-                    {
-                        string customerId = gridFADN.DataKeys[e.Row.RowIndex].Value.ToString();
-                        gridFADN2 = e.Row.FindControl("gridFADN2") as GridView;
-                        gridFADN2.DataSource = pat.Part11Read(int.Parse(customerId), Session["FederacionAsignada"].ToString(), year, 9);
-                        gridFADN2.DataBind();
-                    }
-                    break;
-            }
-
-            foreach (GridViewRow row in gridFADN2.Rows)
-            {
-                gridFADN2.Columns[0].Visible = true;
-                DataTable mostra = new DataTable();
-                mostra = boton.BotonReadUsuario(Session["Usuario"].ToString(), "P1: INGRESOS");
-
-                if (row.RowType == DataControlRowType.DataRow)
-                {
-                    (row.FindControl("btEditar") as LinkButton).Visible = false;
-                    (row.FindControl("btVer") as LinkButton).Visible = false;
-                    (row.FindControl("btEliminar") as LinkButton).Visible = false;
-                    (row.FindControl("btObservacion") as LinkButton).Visible = false;
-                    (row.FindControl("btAprobar") as LinkButton).Visible = false;
-                    (row.FindControl("btEnviar") as LinkButton).Visible = false;
-                    if(row.Cells[3].Text != "" || row.Cells[4].Text != "" || row.Cells[5].Text != "")
-                    {
-                        for (int j = 0; j < mostra.Rows.Count; j++)
-                        {
-                            switch (mostra.Rows[j][0].ToString())
-                            {
-                                case "Guardar":
-                                    break;
-
-                                case "Editar":
-                                    if (pat.P1EstadoSearch(int.Parse(row.Cells[0].Text)) == 2)
-                                    {
-                                        (row.FindControl("btEditar") as LinkButton).Visible = true;
-                                    }
-                                    break;
-
-                                case "Ver":
-                                    if (obs.ObservacionCEFADNExiste(int.Parse(row.Cells[0].Text), 21) == true
-                                                || obs.ObservacionAcompaniamientoExiste(int.Parse(row.Cells[0].Text), 21) == true
-                                                || obs.ObservacionEvaluadorExiste(int.Parse(row.Cells[0].Text), 21) == true)
-                                    {
-                                        (row.FindControl("btVer") as LinkButton).Visible = true;
-                                    }
-                                    break;
-
-                                case "Eliminar":
-                                    if (pat.P1EstadoSearch(int.Parse(row.Cells[0].Text)) == 1 || pat.P1EstadoSearch(int.Parse(row.Cells[0].Text)) == 2)
-                                    {
-                                        (row.FindControl("btEliminar") as LinkButton).Visible = true;
-                                    }
-                                    break;
-
-                                case "Enviar":
-                                    if (pat.P1EstadoSearch(int.Parse(row.Cells[0].Text)) == 1
-                                            || pat.P1EstadoSearch(int.Parse(row.Cells[0].Text)) == 2
-                                            || pat.P1EstadoSearch(int.Parse(row.Cells[0].Text)) == 3
-                                            || pat.P1EstadoSearch(int.Parse(row.Cells[0].Text)) == 6
-                                            || pat.P1EstadoSearch(int.Parse(row.Cells[0].Text)) == 9)
-                                    {
-                                        (row.FindControl("btEnviar") as LinkButton).Visible = true;
-                                    }
-                                    break;
-
-                                case "Aprobar":
-                                    if (pat.P1EstadoSearch(int.Parse(row.Cells[0].Text)) == 3 || pat.P1EstadoSearch(int.Parse(row.Cells[0].Text)) == 9)
-                                    {
-                                        (row.FindControl("btAprobar") as LinkButton).Visible = true;
-                                    }
-
-                                    break;
-
-                                case "Observación":
-                                    if (pat.P1EstadoSearch(int.Parse(row.Cells[0].Text)) == 3
-                                            || pat.P1EstadoSearch(int.Parse(row.Cells[0].Text)) == 6
-                                            || pat.P1EstadoSearch(int.Parse(row.Cells[0].Text)) == 9)
-                                    {
-                                        (row.FindControl("btObservacion") as LinkButton).Visible = true;
-                                    }
-
-                                    break;
-
-                                case "PDF":
-                                    break;
-
-                                case "Excel":
-                                    break;
-
-                                case "Rechazar":
-                                    break;
-
-                                case "Crear":
-                                    break;
-                            }
-                        }
-                    }
-                }
-                gridFADN2.Columns[0].Visible = false;
-            }
-        }
-
         protected void cancelMostrarObservacion_Click(object sender, EventArgs e)
         {
             mostrarObservacion.Visible = false;
@@ -587,11 +420,6 @@ namespace PATOnline.Views.P1
         protected void dropCrearTipoCodigo_SelectedIndexChanged(object sender, EventArgs e)
         {
             drop.Drop_Ingreso(dropCrearListCodigo, int.Parse(dropCrearTipoCodigo.SelectedValue));
-        }
-
-        protected void cancelCrearCodigo_Click(object sender, EventArgs e)
-        {
-            mostrarCrearCodigo.Visible = false;
         }
 
         protected void crearCodigo_Click(object sender, EventArgs e)
@@ -617,52 +445,93 @@ namespace PATOnline.Views.P1
             }
         }
 
+        protected void gridFADN2_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            DataTable mostra = new DataTable();
+            mostra = boton.BotonReadUsuario(Session["Usuario"].ToString(), "P1: INGRESOS");
 
-        public string Id;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                gridFADN2.Columns[0].Visible = true;
+                e.Row.Cells[1].Text.ToString();
+                (e.Row.FindControl("btEditar") as LinkButton).Visible = false;
+                (e.Row.FindControl("btVer") as LinkButton).Visible = false;
+                (e.Row.FindControl("btEliminar") as LinkButton).Visible = false;
+                (e.Row.FindControl("btObservacion") as LinkButton).Visible = false;
+                (e.Row.FindControl("btAprobar") as LinkButton).Visible = false;
+                (e.Row.FindControl("btEnviar") as LinkButton).Visible = false;
+
+                if(e.Row.Cells[0].Text != "&nbsp;")
+                {
+                    if (int.Parse(e.Row.Cells[0].Text) > 0 && e.Row.Cells[3].Text != "&nbsp;")
+                    {
+                        for (int j = 0; j < mostra.Rows.Count; j++)
+                        {
+                            switch (mostra.Rows[j][0].ToString())
+                            {
+                                case "Guardar":
+                                    break;
+
+                                case "Editar":
+                                    if (pat.P1EstadoSearch(int.Parse(e.Row.Cells[0].Text)) == 2)
+                                    {
+                                        (e.Row.FindControl("btEditar") as LinkButton).Visible = true;
+                                    }
+                                    break;
+
+                                case "Ver":
+                                    if (obs.ObservacionCEFADNExiste(int.Parse(e.Row.Cells[0].Text), 21) == true
+                                                || obs.ObservacionAcompaniamientoExiste(int.Parse(e.Row.Cells[0].Text), 21) == true
+                                                || obs.ObservacionEvaluadorExiste(int.Parse(e.Row.Cells[0].Text), 21) == true)
+                                    {
+                                        (e.Row.FindControl("btVer") as LinkButton).Visible = true;
+                                    }
+                                    break;
+
+                                case "Eliminar":
+                                    if (pat.P1EstadoSearch(int.Parse(e.Row.Cells[0].Text)) == 1 || pat.P1EstadoSearch(int.Parse(e.Row.Cells[0].Text)) == 2)
+                                    {
+                                        (e.Row.FindControl("btEliminar") as LinkButton).Visible = true;
+                                    }
+                                    break;
+
+                                case "Enviar":
+                                    if (pat.P1EstadoSearch(int.Parse(e.Row.Cells[0].Text)) == 1
+                                            || pat.P1EstadoSearch(int.Parse(e.Row.Cells[0].Text)) == 2
+                                            || pat.P1EstadoSearch(int.Parse(e.Row.Cells[0].Text)) == 3
+                                            || pat.P1EstadoSearch(int.Parse(e.Row.Cells[0].Text)) == 6
+                                            || pat.P1EstadoSearch(int.Parse(e.Row.Cells[0].Text)) == 9)
+                                    {
+                                        (e.Row.FindControl("btEnviar") as LinkButton).Visible = true;
+                                    }
+                                    break;
+
+                                case "Aprobar":
+                                    if (pat.P1EstadoSearch(int.Parse(e.Row.Cells[0].Text)) == 3 || pat.P1EstadoSearch(int.Parse(e.Row.Cells[0].Text)) == 9)
+                                    {
+                                        (e.Row.FindControl("btAprobar") as LinkButton).Visible = true;
+                                    }
+
+                                    break;
+
+                                case "Observación":
+                                    if (pat.P1EstadoSearch(int.Parse(e.Row.Cells[0].Text)) == 3
+                                            || pat.P1EstadoSearch(int.Parse(e.Row.Cells[0].Text)) == 6
+                                            || pat.P1EstadoSearch(int.Parse(e.Row.Cells[0].Text)) == 9)
+                                    {
+                                        (e.Row.FindControl("btObservacion") as LinkButton).Visible = true;
+                                    }
+                                    break;
+                            }
+                        }
+                    }
+                }              
+            }
+        }
+
         protected void gridFADN2_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            GridView gridFADN2 = new GridView();
-            if (Session["Rol"].ToString() == "Usuario Interno de FADN")
-            {
-                foreach (GridViewRow ee in gridFADN.Rows)
-                {
-                    Id = gridFADN.DataKeys[ee.RowIndex].Value.ToString();
-                    gridFADN2 = ee.FindControl("gridFADN2") as GridView;
-                    gridFADN2.DataSource = pat.Part11Read(int.Parse(Id), Session["Federacion"].ToString(), year, 0);
-                    gridFADN2.DataBind();
-                }
-            }
-            if (Session["Rol"].ToString() == "Usuario CE de FADN")
-            {
-                foreach (GridViewRow ee in gridFADN.Rows)
-                {
-                    Id = gridFADN.DataKeys[ee.RowIndex].Value.ToString();
-                    gridFADN2 = ee.FindControl("gridFADN2") as GridView;
-                    gridFADN2.DataSource = pat.Part11Read(int.Parse(Id), Session["Federacion"].ToString(), year, 3);
-                    gridFADN2.DataBind();
-                }
-            }
-            if (Session["Rol"].ToString() == "Técnico Acompañamiento")
-            {
-                foreach (GridViewRow ee in gridFADN.Rows)
-                {
-                    Id = gridFADN.DataKeys[ee.RowIndex].Value.ToString();
-                    gridFADN2 = ee.FindControl("gridFADN2") as GridView;
-                    gridFADN2.DataSource = pat.Part11Read(int.Parse(Id), Session["FederacionAsignada"].ToString(), year, 6);
-                    gridFADN2.DataBind();
-                }
-            }
-            if (Session["Rol"].ToString() == "Técnico Evaluación")
-            {
-                foreach (GridViewRow ee in gridFADN.Rows)
-                {
-                    Id = gridFADN.DataKeys[ee.RowIndex].Value.ToString();
-                    gridFADN2 = ee.FindControl("gridFADN2") as GridView;
-                    gridFADN2.DataSource = pat.Part11Read(int.Parse(Id), Session["FederacionAsignada"].ToString(), year, 9);
-                    gridFADN2.DataBind();
-                }
-            }
-
+            gridFADN2.Columns[0].Visible = true;
             int index = int.Parse(e.CommandArgument.ToString());
             GridViewRow row = gridFADN2.Rows[index];
             DataTable data = new DataTable();
@@ -672,13 +541,28 @@ namespace PATOnline.Views.P1
                 switch (Session["Rol"].ToString())
                 {
                     case "Usuario Interno de FADN":
+                        drop.Drop_TipoIngreso(dropEditTipoIngreso);                   
                         data = pat.P1Seleccionar(int.Parse(row.Cells[0].Text));
 
                         for (int i = 0; i < data.Rows.Count; i++)
                         {
                             idEditP1Ingreso.Text = data.Rows[i][0].ToString();
+                            dropEditTipoIngreso.SelectedValue = data.Rows[i][1].ToString();
+                            drop.Drop_Ingreso(dropEditIngreso, int.Parse(dropEditTipoIngreso.SelectedValue));
+                            dropEditIngreso.SelectedValue = data.Rows[i][2].ToString();
+                            if (Session["FederacionAsignada"] == null)
+                            {
+                                drop.Drop_CodigoIngreso(dropCrearCodigoIngreso, int.Parse(dropEditIngreso.SelectedValue), Session["Federacion"].ToString());
+                            }
+                            else
+                            {
+                                drop.Drop_CodigoIngreso(dropCrearCodigoIngreso, int.Parse(dropEditIngreso.SelectedValue), Session["FederacionAsignada"].ToString());
+                            }
+                            dropEditCodigoIngreso.SelectedValue = data.Rows[i][3].ToString();
+                            txtEditMonto1.Value = data.Rows[i][4].ToString();
+                            txtEditMonto2.Value = data.Rows[i][5].ToString();
+                            txtEditMonto3.Value = data.Rows[i][6].ToString();
                         }
-
                         idEditP1Ingreso.Visible = false;
                         mostrarEditP1Ingreso.Visible = true;
                         break;
@@ -689,7 +573,7 @@ namespace PATOnline.Views.P1
                         for (int i = 0; i < data.Rows.Count; i++)
                         {
                             idIntroObservacionSinRechazo.Text = data.Rows[i][0].ToString();
-                            txtCrearObservacionSinRechazo.Value = data.Rows[i][0].ToString();
+                            txtCrearObservacionSinRechazo.Value = data.Rows[i][1].ToString();
                         }
 
                         idIntroObservacionSinRechazo.Visible = false;
@@ -759,14 +643,14 @@ namespace PATOnline.Views.P1
                 switch (Session["Rol"].ToString())
                 {
                     case "Usuario CE de FADN":
-                        obseracion.id19 = int.Parse(row.Cells[0].Text);
+                        obseracion.id20 = int.Parse(row.Cells[0].Text);
                         obseracion.usuario = id.idUsuario(Convert.ToString(Session["Usuario"]));
                         obs.observacionCreateFADN(obseracion);
                         pat.P1Update(modelo, int.Parse(row.Cells[0].Text), 6);
                         break;
 
                     case "Técnico Evaluación":
-                        obseracion.id19 = int.Parse(row.Cells[0].Text);
+                        obseracion.id20 = int.Parse(row.Cells[0].Text);
                         obseracion.usuario = id.idUsuario(Convert.ToString(Session["Usuario"]));
                         obs.observacionCreateEvaluador(obseracion);
                         pat.P1Update(modelo, int.Parse(row.Cells[0].Text), 13);
@@ -784,7 +668,7 @@ namespace PATOnline.Views.P1
                         break;
 
                     case "Técnico Acompañamiento":
-                        obseracion.id19 = int.Parse(row.Cells[0].Text);
+                        obseracion.id20 = int.Parse(row.Cells[0].Text);
                         obseracion.usuario = id.idUsuario(Convert.ToString(Session["Usuario"]));
                         obs.observacionCreateAcompaniamiento(obseracion);
                         pat.P1Update(modelo, int.Parse(row.Cells[0].Text), 9);
@@ -793,7 +677,41 @@ namespace PATOnline.Views.P1
 
                 CargarGrid();
             }
+            if (e.CommandName == "Eliminar")
+            {
+                pat.P1Update(modelo, int.Parse(row.Cells[0].Text), 12);
+                CargarGrid();
+            }
             gridFADN2.Columns[0].Visible = false;
+        }
+
+        protected void cancelCrearCodigo_Click(object sender, EventArgs e)
+        {
+            mostrarCrearCodigo.Visible = false;
+        }
+
+        protected void editP1Ingreso_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                modelo.col1 = double.Parse(txtEditMonto1.Value);
+                modelo.col2 = double.Parse(txtEditMonto2.Value);
+                modelo.col3 = double.Parse(txtEditMonto3.Value);
+                modelo.fkingreso = int.Parse(dropEditCodigoIngreso.SelectedValue);
+
+                pat.P1Update(modelo, int.Parse(idEditP1Ingreso.Text), 0);
+                CargarGrid();
+                mostrarEditP1Ingreso.Visible = false;
+                txtEditMonto1.Value = null;
+                txtEditMonto2.Value = null;
+                txtEditMonto3.Value = null;
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Completo!', 'La información fue modificado', 'success');", true);
+
+            }
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this, typeof(string), "Mensaje", "swal('¡Error!', 'La información no fue modificado', 'error');", true);
+            }
         }
     }
 }

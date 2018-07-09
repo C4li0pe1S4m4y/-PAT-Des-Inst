@@ -13,22 +13,40 @@ namespace PATOnline.Views.IntroBase {
     public partial class IntroduccionBasesLegales {
         
         /// <summary>
-        /// btPDF control.
+        /// btPDFIntroduccion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btPDF;
+        protected global::System.Web.UI.WebControls.LinkButton btPDFIntroduccion;
         
         /// <summary>
-        /// btExcel control.
+        /// btPDFBaseLegal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btExcel;
+        protected global::System.Web.UI.WebControls.LinkButton btPDFBaseLegal;
+        
+        /// <summary>
+        /// btExcelIntroduccion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btExcelIntroduccion;
+        
+        /// <summary>
+        /// btExcelBaseLegal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btExcelBaseLegal;
         
         /// <summary>
         /// secctionCrear control.

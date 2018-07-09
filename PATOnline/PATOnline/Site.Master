@@ -334,6 +334,23 @@
                     </li>
                   </ul>
                 </li>
+                <li class="nav-item has-treeview">
+                  <a id="PARTE_4" runat="server" class="nav-link"><i class="nav-icon fa fa-book"></i>
+                    <p>PAT ANEXOS<i class="right fa fa-angle-left"></i></p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a id="ENTRENADOR" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
+                        <p style="font-size: 12px">ENTRENADORES <span class="badge badge-info right"><asp:label runat="server" ID="countEntrenador"></asp:label></span></p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a id="ARBITRO" runat="server" class="nav-link"><i class="nav-icon fa fa-file-text-o"></i>
+                        <p style="font-size: 12px">ARBITROS <span class="badge badge-info right"><asp:label runat="server" ID="countArbitro"></asp:label></span></p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
               </ul>
             </li>
           </ul>
